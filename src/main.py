@@ -10,11 +10,11 @@ config = {
 
 class DemonOverlord(discord.Client):
 
-    async def on_ready(self):
+    async def on_ready(self: discord.Client) -> None:
         # change bot's status
         await self.change_presence(activity=await misc.getRandStatus())
 
-    async def on_message(self, message: discord.Message):
+    async def on_message(self: discord.Client, message: discord.Message) -> None:
     
         # handle all commands
         if message.content.startswith(config['prefix']) and message.author != self:

@@ -6,14 +6,22 @@ from random import randint
 import commands
 
 
-async def command_handler(bot:discord.User, message:discord.Message) -> None:
+async def command_handler(bot:discord.Client, message:discord.Message) -> None:
     # Assume command structure
     temp = list(filter( lambda x : x != "" and x != " ", message.content.lstrip("-mao ").split(" ")))
     command = temp[0:2] + [" ".join(temp[2:])]
 
+
+    # handle hello 
     if command[0] == "hello":
         await message.channel.send(f'**:hibiscus: Hello**\nHello, {message.author.mention}!')
-    if command[0] == "ship":
+
+    # handle help
+    elif command[0] == "help":
+        commands.help.help_handler(bot, message, command)
+    
+    # handle ship
+    elif command[0] == "ship":
         pass
 
     
