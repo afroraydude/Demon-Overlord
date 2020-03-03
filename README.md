@@ -29,6 +29,7 @@ We want to create the command `test` what do we do?
     bot      :: a reference to the bot
     message  :: a reference to the message being handled (for ease of use)
     command  :: the parsed command that is being handled.
+    devRole  :: the developer role
     ```
 3. import `test` in `src/commands/__init__.py` and add it to the `__all__` list 
 3. add the command to the `handler` function in `src/misc.py`

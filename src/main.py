@@ -7,14 +7,23 @@ import commands
 
 # bot config (will later be json)
 config = {
-    "prefix" : "-mao"
+    "prefix" : "-mao",
 }
 
+# BEHOLD THY LORD
 class DemonOverlord(discord.Client):
 
     async def on_ready(self: discord.Client) -> None:
         # save all necessary things in the bot
         self.votes = []
+        self.izzymojis = {
+            "izzyangry"  : self.get_emoji(684123588927815710),
+            "Yay"        : self.get_emoji(684280248128503855),
+            "witchcraft" : self.get_emoji(684135528047968386),
+            "izzyblush"  : self.get_emoji(684118795069292552),
+            "izzydemon"  : self.get_emoji(684124867024388162),
+            "thumbsup"   : self.get_emoji(684127134704205866)
+        }
 
         # change bot's status
         await self.change_presence(activity=await misc.getRandStatus())

@@ -11,9 +11,9 @@ async def message_handler(bot:discord.Client, message:discord.Message) -> None:
 
     # Assume command structure
     temp = list(filter( lambda x : x != "" and x != " ", message.content.lstrip("-mao ").split(" ")))
-    command = temp[0:2] + [" ".join(temp[2:])]
+    command = list(filter(lambda x : x != "" and x != " ", temp[0:2] + [" ".join(temp[2:])]))
 
-
+    print(command)
     # handle hello 
     if command[0] == "hello":
         await message.channel.send(f'**:hibiscus: Hello**\nHello, {message.author.mention}!')
@@ -26,6 +26,8 @@ async def message_handler(bot:discord.Client, message:discord.Message) -> None:
     elif command[0] == "vote":
         await commands.voting.vote_handler(bot, message, command, devRole)
     
+    elif command[0] == "izzy":
+        await commands.izzy.izzy_handler(bot, message, command, devRole)
     # handle ship
     elif command[0] == "ship":
         pass
@@ -33,7 +35,6 @@ async def message_handler(bot:discord.Client, message:discord.Message) -> None:
     
     # 20% chance to change presence
     change = randint(1, 100) % 5
-    print(change)
     if change == 0:
         await bot.change_presence(activity=await getRandStatus())
     
@@ -73,5 +74,4 @@ async def getRandStatus() -> discord.Activity:
 
     # select one and return
     index = randint(0, len(statusList)-1)
-    print(index)
     return statusList[index]

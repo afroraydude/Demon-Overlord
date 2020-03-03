@@ -2,7 +2,6 @@ import discord
 
 # handle help requests
 async def help_handler(bot: discord.Client, message: discord.Message, command: list, devRole:discord.Role) -> None:
-    
     try:
         # main help
         if len(command) < 2 or command[1] == "":
@@ -16,12 +15,12 @@ async def help_handler(bot: discord.Client, message: discord.Message, command: l
                 
             # that doesn't seem to exist...
             else:
-                response = "**:x: HELP - NONEXISTENT COMMAND **\n THAT is not a command currently supported.\n You can add a request with `$feature add {text}` or list the available commands with `$help`"
+                response = f"**{bot.izzymojis['izzyangry']} HELP - NONEXISTENT COMMAND **\n THAT is not a command currently supported.\n You can add a request with `$feature add {{text}}` or list the available commands with `$help`"
         await message.channel.send(response)
 
     # okay... i'm sick of all these errors...
     except Exception as e:
-        await message.channel.send(f"**:x: HELP - ERROR **\nHey {devRole.mention} There was an error.\n```\n{e}\n```")
+        await message.channel.send(f"**{bot.izzymojis['izzyangry']} HELP - ERROR **\nHey {devRole.mention} There was an error.\n```\n{e}\n```")
 
 
 # main help

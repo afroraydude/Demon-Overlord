@@ -9,13 +9,13 @@ async def vote_handler(bot: discord.Client, message: discord.Message, command: l
 
     try:
         if len(command) < 3:
-            await message.channel.send("**")
+            await message.channel.send("**") # todo
         # create vote
         elif command[1] == "create":
             # is there a vote with that title?
             result = list(filter(lambda vote: vote[1]['title'] == command[2] and vote[1]["active"], enumerate(bot.votes)))
             if len(result) >= 1:
-                await message.channel.send(f"**:x: VOTE - EXISTS**\n{message.author.mention} That Title has already been used in an active vote, please use another title or end the old vote.")
+                await message.channel.send(f"**{bot.izzymojis['izzyangry']} VOTE - EXISTS**\n{message.author.mention} That Title has already been used in an active vote, please use another title or end the old vote.")
                 return
             await vote_create(bot, message, command)
             
@@ -29,10 +29,10 @@ async def vote_handler(bot: discord.Client, message: discord.Message, command: l
 
             # no active votes
             if len(ongoing) == 0:
-                response = f"**:x: VOTE - NONE FOUND**\nThere are no active votes"
+                response = f"**{bot.izzymojis['izzyangry']} VOTE - NONE FOUND**\nThere are no active votes"
             # list active votes
             else:
-                response = f"\n**:x: VOTE - ONGOING**\n```asciidoc\n==== ONGOING VOTES ====\n{votelist}\n```"
+                response = f"\n**{bot.izzymojis['izzyangry']} VOTE - ONGOING**\n```asciidoc\n==== ONGOING VOTES ====\n{votelist}\n```"
             await message.channel.send(response)
         # end vote
         elif command[1] == "end":
@@ -51,10 +51,10 @@ async def vote_handler(bot: discord.Client, message: discord.Message, command: l
 
                 # no active votes
                 if len(ongoing) == 0:
-                    response = f"**:x: VOTE - NONE FOUND**\nThere are no active votes"
+                    response = f"**{bot.izzymojis['izzyangry']} VOTE - NONE FOUND**\nThere are no active votes"
                 # list active votes
                 else:
-                    response = f"**:x: VOTE - NOT FOUND**\nThat Doesn't seem to be a vote, here's a list of currently ongoing votes\n```asciidoc\n{votelist}\n```"
+                    response = f"**{bot.izzymojis['izzyangry']} VOTE - NOT FOUND**\nThat Doesn't seem to be a vote, here's a list of currently ongoing votes\n```asciidoc\n{votelist}\n```"
                 await message.channel.send(response)
 
             # there is a matching vote, get results and end it
@@ -64,11 +64,11 @@ async def vote_handler(bot: discord.Client, message: discord.Message, command: l
 
         # wrong action
         else:
-            await message.channel.send(f"**:x: VOTE - WRONG ACTION**\n{message.author.mention} -- `{command[1]}` is not a valid action for the command `{command[0]}` ")
+            await message.channel.send(f"**{bot.izzymojis['izzyangry']} VOTE - WRONG ACTION**\n{message.author.mention} -- `{command[1]}` is not a valid action for the command `{command[0]}` ")
     
     # okay.... are you even trying??? 
     except Exception as e:
-        await message.channel.send(f"**:x: VOTE**\nHey {devRole.mention} There was an error.\n```\n{e}\n```")
+        await message.channel.send(f"**{bot.izzymojis['izzyangry']} VOTE**\nHey {devRole.mention} There was an error.\n```\n{e}\n```")
 
 
 # create vote
@@ -78,16 +78,16 @@ async def vote_create(bot: any, message: any, command: list):
 
     # ERROR
     if vote == 1:
-        await message.channel.send("**:x: VOTE - NOT ENOUGH OPTIONS**\nVote is invalid, please give at least two options.")
+        await message.channel.send(f"**{bot.izzymojis['izzyangry']} VOTE - NOT ENOUGH OPTIONS**\nVote is invalid, please give at least two options.")
         return
     elif vote ==2:
-        await message.channel.send("**:x: VOTE - TOO MANY OPTIONS**\nVote is invalid, please use no more than 11 options.")
+        await message.channel.send(f"**{bot.izzymojis['izzyangry']} VOTE - TOO MANY OPTIONS**\nVote is invalid, please use no more than 11 options.")
         return
     elif vote == 3:
-        await message.channel.send("**:x: VOTE - SYNTAX ERROR**\nThe Vote is invalid, please separate `name` and `options` with `;` and each option with `,`.")
+        await message.channel.send(f"**{bot.izzymojis['izzyangry']} VOTE - SYNTAX ERROR**\nThe Vote is invalid, please separate `name` and `options` with `;` and each option with `,`.")
         return
     
-    msg = f'**:ballot_box: VOTE STARTED BY {message.author.mention}**\n**{vote["title"]}**\n{vote["message"]}'
+    msg = f'**{bot.izzymojis["witchcraft"]} VOTE STARTED BY {message.author.mention}**\n**{vote["title"]}**\n{vote["message"]}'
     sent = await message.channel.send(msg)
     vote["discMsg"] = sent
     bot.votes.append(vote)
