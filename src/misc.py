@@ -6,7 +6,7 @@ from random import randint
 import commands
 
 
-async def command_handler(bot:discord.Client, message:discord.Message) -> None:
+async def message_handler(bot:discord.Client, message:discord.Message) -> None:
     # Assume command structure
     temp = list(filter( lambda x : x != "" and x != " ", message.content.lstrip("-mao ").split(" ")))
     command = temp[0:2] + [" ".join(temp[2:])]
@@ -18,7 +18,11 @@ async def command_handler(bot:discord.Client, message:discord.Message) -> None:
 
     # handle help
     elif command[0] == "help":
-        commands.help.help_handler(bot, message, command)
+        await commands.help.help_handler(bot, message, command)
+    
+    # vote handler
+    elif command[0] == "vote":
+        await commands.voting.vote_handler(bot, message, command)
     
     # handle ship
     elif command[0] == "ship":
@@ -54,7 +58,7 @@ async def getRandStatus() -> discord.Activity:
         discord.Game(name='with my minions'),
 
         # streaming ...
-        discord.Streaming(name="the Summoning"),
+        discord.Streaming(name="the Summoning", url="https://www.instagram.com/theizzycomics/"),  # links to izzy's insta :p
         
 
         # listening to ...
