@@ -4,7 +4,7 @@ import re
 # handle all voting command stuff
 
 
-async def vote_handler(bot: discord.Client, message: discord.Message, command: list):
+async def vote_handler(bot: discord.Client, message: discord.Message, command: list) -> None:
     
 
     devRole = discord.utils.get(message.guild.roles, name="Developer")
