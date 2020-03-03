@@ -9,13 +9,23 @@ async def help_handler(bot: discord.Client, message: discord.Message, command: l
 
         # get all the different Help pages
         else:
+            # REALLY???
+            if command[1] == "help":
+                response = await help_main()
+
             # WE LOVE DEMOCRACY
-            if command[1] == "vote":
+            elif command[1] == "vote":
                 response = await voting()
+            
+            # WE LOVE IZZY
+            elif command[1] == "izzy":
+                response = await izzy()
                 
             # that doesn't seem to exist...
             else:
                 response = f"**{bot.izzymojis['izzyangry']} HELP - NONEXISTENT COMMAND **\n THAT is not a command currently supported.\n You can add a request with `$feature add {{text}}` or list the available commands with `$help`"
+        
+        #respond to the minions
         await message.channel.send(response)
 
     # okay... i'm sick of all these errors...
@@ -28,7 +38,8 @@ async def help_main() -> str:
     cList = [
         "- help     ::   sends this message",
         "- hello    ::   says hello to the sender (has no special action)",
-        "- vote     ::   creates, removes or lists active votes"
+        "- vote     ::   creates, removes or lists active votes",
+        "- izzy     ::   all things Izzy"
     ]
 
     comm = "\n".join(cList)
