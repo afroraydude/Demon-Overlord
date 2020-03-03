@@ -1,7 +1,9 @@
 import discord
 
 # handle help requests
-async def help_handler(bot: discord.Client, message: discord.Message, command: list, devRole:discord.Role) -> None:
+
+
+async def help_handler(bot: discord.Client, message: discord.Message, command: list, devRole: discord.Role) -> None:
     try:
         # main help
         if len(command) < 2 or command[1] == "":
@@ -16,16 +18,16 @@ async def help_handler(bot: discord.Client, message: discord.Message, command: l
             # WE LOVE DEMOCRACY
             elif command[1] == "vote":
                 response = await voting()
-            
+
             # WE LOVE IZZY
             elif command[1] == "izzy":
                 response = await izzy()
-                
+
             # that doesn't seem to exist...
             else:
                 response = f"**{bot.izzymojis['izzyangry']} HELP - NONEXISTENT COMMAND **\n THAT is not a command currently supported.\n You can add a request with `$feature add {{text}}` or list the available commands with `$help`"
-        
-        #respond to the minions
+
+        # respond to the minions
         await message.channel.send(response)
 
     # okay... i'm sick of all these errors...
@@ -47,6 +49,7 @@ async def help_main() -> str:
 
     return response
 
+
 # help for vote command
 async def voting() -> str:
     alist = [
@@ -58,6 +61,8 @@ async def voting() -> str:
     response = f"**:grey_question: HELP    --    vote **\nThis is a list of actions and their parameters. To use them, write `$vote {{action}} {{arguments}}`.\n```asciidoc\n===== ACTIONS =====\n{comm}\n```"
     return response
 
+
+# handle the impossible
 async def izzy() -> str:
     links = [
         "- art     :: instagram accounts",

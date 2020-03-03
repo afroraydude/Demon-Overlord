@@ -1,24 +1,24 @@
 import discord
 import re
 
+
 # handle all voting command stuff
-
-
-async def vote_handler(bot: discord.Client, message: discord.Message, command: list, devRole:discord.Role) -> None:
+async def vote_handler(bot: discord.Client, message: discord.Message, command: list, devRole: discord.Role) -> None:
     pattern = re.compile("\:(.*)\:")
 
     try:
         # create vote
         if command[1] == "create":
             # is there a vote with that title?
-            result = list(filter(lambda vote: vote[1]['title'] == command[2].split(";")[0].strip() and vote[1]["active"], enumerate(bot.votes)))
+            result = list(filter(lambda vote: vote[1]['title'] == command[2].split(
+                ";")[0].strip() and vote[1]["active"], enumerate(bot.votes)))
             if len(result) >= 1:
                 await message.channel.send(f"**{bot.izzymojis['izzyangry']} VOTE - EXISTS**\n{message.author.mention} That Title has already been used in an active vote, please use another title or end the old vote.")
                 return
             await vote_create(bot, message, command)
-            
+
         # get a list of all ongoing votes
-        elif command [1] == "list":
+        elif command[1] == "list":
             # create list of ongoing votes
             ongoing = list(filter(lambda vote: vote["active"], bot.votes))
             votelist = ""
@@ -63,8 +63,8 @@ async def vote_handler(bot: discord.Client, message: discord.Message, command: l
         # wrong action
         else:
             await message.channel.send(f"**{bot.izzymojis['izzyangry']} VOTE - WRONG ACTION**\n{message.author.mention} -- `{command[1]}` is not a valid action for the command `{command[0]}` ")
-    
-    # okay.... are you even trying??? 
+
+    # okay.... are you even trying???
     except Exception as e:
         await message.channel.send(f"**{bot.izzymojis['izzyangry']} VOTE**\nHey {devRole.mention} There was an error.\n```\n{e}\n```")
 
@@ -78,13 +78,13 @@ async def vote_create(bot: any, message: any, command: list):
     if vote == 1:
         await message.channel.send(f"**{bot.izzymojis['izzyangry']} VOTE - NOT ENOUGH OPTIONS**\nVote is invalid, please give at least two options.")
         return
-    elif vote ==2:
+    elif vote == 2:
         await message.channel.send(f"**{bot.izzymojis['izzyangry']} VOTE - TOO MANY OPTIONS**\nVote is invalid, please use no more than 11 options.")
         return
     elif vote == 3:
         await message.channel.send(f"**{bot.izzymojis['izzyangry']} VOTE - SYNTAX ERROR**\nThe Vote is invalid, please separate `name` and `options` with `;` and each option with `,`.")
         return
-    
+
     msg = f'**{bot.izzymojis["witchcraft"]} VOTE STARTED BY {message.author.mention}**\n**{vote["title"]}**\n{vote["message"]}'
     sent = await message.channel.send(msg)
     vote["discMsg"] = sent
@@ -97,7 +97,7 @@ async def vote_create(bot: any, message: any, command: list):
 
 
 # edit user vote
-async def vote_edit(bot: any, reaction: any, voteIdx: int, mode:bool):
+async def vote_edit(bot: any, reaction: any, voteIdx: int, mode: bool):
     index = await emoji_to_id(reaction.emoji)
     if index == None:
         return
@@ -144,13 +144,12 @@ async def vote_compile(string: str):
         return 3
 
     options = args[1].split(",")
-    
+
     # are we in special shit territory??
     if len(options) < 2:
         return 1
     elif len(options) > 11:
         return 2
-    
 
     # vote dict template
     vote = {
