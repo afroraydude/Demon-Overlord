@@ -47,8 +47,12 @@ class DemonOverlord(discord.Client):
 
         # is it a vote, get the title
         title = re.compile("\*\*(.*)\*\*")
-        result = list(filter(lambda vote: vote[1]['title'] == title.findall(reaction.message.content)[1] and vote[1]["active"], enumerate(self.votes)))
-        
+        if len(self.votes) < 1:
+            # this is not the message we're looking for
+            return
+
+        result = list(filter(lambda vote:vote[1]['title'] == title.findall(reaction.message.content)[1] and vote[1]["active"], enumerate(self.votes)))
+            
         # well it's not a vote
         if result == None:
             return 
