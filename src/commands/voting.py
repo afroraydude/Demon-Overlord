@@ -8,10 +8,8 @@ async def vote_handler(bot: discord.Client, message: discord.Message, command: l
     pattern = re.compile("\:(.*)\:")
 
     try:
-        if len(command) < 3:
-            await message.channel.send("**") # todo
         # create vote
-        elif command[1] == "create":
+        if command[1] == "create":
             # is there a vote with that title?
             result = list(filter(lambda vote: vote[1]['title'] == command[2] and vote[1]["active"], enumerate(bot.votes)))
             if len(result) >= 1:

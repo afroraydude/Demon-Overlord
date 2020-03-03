@@ -3,7 +3,7 @@ import os
 import misc
 import re
 import commands
-
+import pymongo
 
 # bot config (will later be json)
 config = {
@@ -14,6 +14,12 @@ config = {
 class DemonOverlord(discord.Client):
 
     async def on_ready(self: discord.Client) -> None:
+        # get all variables and create DB connection
+        dbuser = os.environ["MONGO_USER"]
+        dbpass = os.environ["MONGO_PASS"]
+        dburl = os.environ["MONGO_URL"]
+        mongoUri = f"mongodb+srv://{dbuser}:{dbpass}@{dburl}"
+
         # save all necessary things in the bot
         self.votes = []
         self.izzymojis = {
@@ -24,6 +30,10 @@ class DemonOverlord(discord.Client):
             "izzydemon"  : self.get_emoji(684124867024388162),
             "thumbsup"   : self.get_emoji(684127134704205866)
         }
+
+        # mongo stuff
+        self.mongo = pymongo.MongoClient(mongoUri, port=47410)
+        self.shipdb = self.mongo["demon-overlord"]
 
         # change bot's status
         await self.change_presence(activity=await misc.getRandStatus())
