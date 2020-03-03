@@ -7,6 +7,8 @@ import commands
 
 
 async def message_handler(bot:discord.Client, message:discord.Message) -> None:
+    devRole = discord.utils.get(message.guild.roles, name="Dev-Demons")
+
     # Assume command structure
     temp = list(filter( lambda x : x != "" and x != " ", message.content.lstrip("-mao ").split(" ")))
     command = temp[0:2] + [" ".join(temp[2:])]
@@ -18,11 +20,11 @@ async def message_handler(bot:discord.Client, message:discord.Message) -> None:
 
     # handle help
     elif command[0] == "help":
-        await commands.help.help_handler(bot, message, command)
+        await commands.help.help_handler(bot, message, command, devRole)
     
     # vote handler
     elif command[0] == "vote":
-        await commands.voting.vote_handler(bot, message, command)
+        await commands.voting.vote_handler(bot, message, command, devRole)
     
     # handle ship
     elif command[0] == "ship":
@@ -59,7 +61,7 @@ async def getRandStatus() -> discord.Activity:
 
         # streaming ...
         discord.Streaming(name="the Summoning", url="https://www.instagram.com/theizzycomics/"),  # links to izzy's insta :p
-        
+        discord.Streaming(name="Izzy Merch", url="http://theizzypeasy.ecwid.com/"),
 
         # listening to ...
         discord.Activity(name="screams of the damned", type=listening),      # listening to 

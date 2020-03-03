@@ -1,9 +1,8 @@
 import discord
 
 # handle help requests
-async def help_handler(bot: discord.Client, message: discord.Message, command: list) -> None:
-    devRole = discord.utils.get(message.guild.roles, name="Dev-Demons")
-
+async def help_handler(bot: discord.Client, message: discord.Message, command: list, devRole:discord.Role) -> None:
+    
     try:
         # main help
         if len(command) < 2 or command[1] == "":
