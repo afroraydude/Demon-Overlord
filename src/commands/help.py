@@ -31,9 +31,7 @@ async def help_main() -> str:
         "- vote     ::   creates, removes or lists active votes"
     ]
 
-    comm = ""
-    for i in cList:
-        comm += i + "\n"
+    comm = "\n".join(cList)
     response = f"**:grey_question: HELP**\nThis is a list of currently available commands.\nTo use a command, write `-mao {{command}} {{action}} {{arguments}}`.\nTo get more information about actions and their arguments, write `$help {{command}}`.\n```asciidoc\n==== COMMANDS ====\n{comm}\n```"
 
     return response
@@ -45,8 +43,17 @@ async def voting() -> str:
         "- create {name};{options}    :: creates a vote  with name {name} and all options separated by comma",
         "- end {name}                 :: removes the active quote with name {name}"
     ]
-    comm = ""
-    for i in alist:
-        comm += i + "\n"
+    comm = "\n".join(alist)
     response = f"**:grey_question: HELP    --    vote **\nThis is a list of actions and their parameters. To use them, write `$vote {{action}} {{arguments}}`.\n```asciidoc\n===== ACTIONS =====\n{comm}\n```"
     return response
+
+async def izzy() -> str:
+    links = [
+        "- art     :: instagram accounts",
+        "- social  :: any other social media account",
+        "- shop    :: all da demonic merch",
+        "- website :: The Overlords Website",
+        "- support :: Make Sacrifices to the overlord (Kofi and other financial stuff)"
+    ]
+    linkstr = "\n".join(links)
+    response = f'**:grey_question: HELP    --    vote **\nThis command can give you all the links to look at or buy Izzy stuff.\nUse `-mao izzy {{name}}` and replace name with one listed below.`\n```asciidoc\n==== ALL DA LINKS OwO ====\n{linkstr}\n```'
