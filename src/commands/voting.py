@@ -11,7 +11,8 @@ async def vote_handler(bot: discord.Client, message: discord.Message, command: l
         # create vote
         if command[1] == "create":
             # is there a vote with that title?
-            result = list(filter(lambda vote: vote[1]['title'] == command[2] and vote[1]["active"], enumerate(bot.votes)))
+            result = list(filter(lambda vote: vote[1]['title'] == command[2].split(";")[0].strip() and vote[1]["active"], enumerate(bot.votes)))
+            print(bot.votes)
             if len(result) >= 1:
                 await message.channel.send(f"**{bot.izzymojis['izzyangry']} VOTE - EXISTS**\n{message.author.mention} That Title has already been used in an active vote, please use another title or end the old vote.")
                 return
