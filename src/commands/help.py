@@ -64,7 +64,7 @@ async def voting() -> str:
         "- end {name}                 :: removes the active quote with name {name}"
     ]
     comm = "\n".join(alist)
-    response = f"**:grey_question: HELP    --    vote **\nThis is a list of actions and their parameters. To use them, write `$vote {{action}} {{arguments}}`.\n```asciidoc\n===== ACTIONS =====\n{comm}\n```"
+    response = f"**:grey_question: HELP    --    vote **\nThis is a list of actions and their parameters. To use them, write `-mao vote {{action}} {{arguments}}`.\n```asciidoc\n===== ACTIONS =====\n{comm}\n```"
     return response
 
 
