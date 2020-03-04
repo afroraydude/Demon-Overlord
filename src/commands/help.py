@@ -22,7 +22,8 @@ async def help_handler(bot: discord.Client, message: discord.Message, command: l
             # WE LOVE IZZY
             elif command[1] == "izzy":
                 response = await izzy()
-
+            elif command[1] == "interactions":
+                response = await interactions()
             # that doesn't seem to exist...
             else:
                 response = f"**{bot.izzymojis['izzyangry']} HELP - NONEXISTENT COMMAND **\n THAT is not a command currently supported.\n You can add a request with `$feature add {{text}}` or list the available commands with `$help`"
