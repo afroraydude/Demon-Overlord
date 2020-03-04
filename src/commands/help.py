@@ -42,10 +42,10 @@ async def help_main() -> str:
         "- help     ::   sends this message",
         "- hello    ::   says hello to the sender (has no special action)",
         "- vote     ::   creates, removes or lists active votes",
-        "- izzy     ::   all things Izzy"
+        "- izzy     ::   all things Izzy",
 
 
-        "==== CATEGORIES ====",
+        "\n==== CATEGORIES ====",
         "- interactions ::  all the interaction commands (too long to be listed here)"
 
     ]
