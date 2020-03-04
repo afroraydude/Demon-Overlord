@@ -39,7 +39,6 @@ async def help_handler(bot: discord.Client, message: discord.Message, command: l
 # main help
 async def help_main() -> str:
     cList = [
-        "==== COMMANDS ===="
         "- help     ::   sends this message",
         "- hello    ::   says hello to the sender (has no special action)",
         "- vote     ::   creates, removes or lists active votes",
