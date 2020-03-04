@@ -104,3 +104,4 @@ async def interactions() -> str:
 
     comm = "\n".join(list)
     response = f"**:grey_question: HELP    --    Interactions **\nThis is a list of interactions. To use them, write `-mao {{action}} {{user}}` and replace {{user}} with the user's @mention. Actions in `ALONE ONLY` don't use the @mention, you do that alone.\n```asciidoc\n===== ACTIONS =====\n{comm}\n```"
+    return response
