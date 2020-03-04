@@ -95,7 +95,8 @@ async def interactions() -> str:
         "- kiss", 
         "- poke", 
         "- tackle",
-        "- shoot"
+        "- shoot",
+        "- spank"
 
         "\n==== ALONE ONLY ====",
         "- blush",
