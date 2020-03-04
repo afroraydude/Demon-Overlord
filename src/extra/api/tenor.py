@@ -15,7 +15,9 @@ class TenorAPI(object):
         res_list = list(res["results"])
 
         index = randint(0, len(res_list)-1)
-        return res_list[index]["media"][0]["gif"]["url"]
+        result = res_list[index]["media"][0]["gif"]["url"]
+        print(result)
+        return result
 
     async def __request_list(self: object, query: str, limit: int) -> object:
         print(query)

@@ -15,7 +15,6 @@ async def interactions_handler(bot: discord.Client, message: discord.Message, co
     elif command[0] == "bite":
         await interactions.bite.handler(bot, message, command, devRole)
 
-
     elif command[0] == "shrug":
         await interactions.shrug.handler(bot, message, command, devRole)
 
@@ -39,3 +38,12 @@ async def interactions_handler(bot: discord.Client, message: discord.Message, co
 
     elif command[0] == "tackle":
         await interactions.tackle.handler(bot, message, command, devRole)
+
+    elif command[0] == "pout":
+        await interactions.pout.handler(bot, message, command, devRole)
+
+    elif command[0] == "dance":
+        await interactions.dance.handler(bot, message, command, devRole)
+    
+    elif command[0] == "kiss":
+        await interactions.kiss.handler(bot, message, command, devRole)
