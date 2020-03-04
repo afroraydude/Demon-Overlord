@@ -20,7 +20,7 @@ async def interactions_handler(bot: discord.Client, message: discord.Message, co
         await interactions.shrug.handler(bot, message, command, devRole)
 
     elif command[0] == "cry":
-        await interactions.bite.handler(bot, message, command, devRole)
+        await interactions.cry.handler(bot, message, command, devRole)
     
     elif command[0] == "wave":
         await interactions.wave.handler(bot, message, command, devRole)
