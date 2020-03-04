@@ -11,8 +11,9 @@ from . import kiss
 from . import poke
 from . import pout
 from . import tackle
+from . import shoot
 
 __all__ = [
-    "hug", "bite", "blush", "slap", "shrug", "cry",
+    "hug", "bite", "blush", "slap", "shrug", "cry", "shoot"
     "pat", "wave", "dance", "kiss", "poke", "pout", "tackle"
 ]
