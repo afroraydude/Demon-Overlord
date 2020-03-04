@@ -1,5 +1,5 @@
 import discord
-
+from . import interactions
 # handle help requests
 
 
@@ -79,3 +79,27 @@ async def izzy() -> str:
     ]
     linkstr = "\n".join(links)
     response = f'**:grey_question: HELP    --    vote **\nThis command can give you all the links to look at or buy Izzy stuff.\nUse `-mao izzy {{name}}` and replace name with one listed below.`\n```asciidoc\n==== ALL DA LINKS OwO ====\n{linkstr}\n```'
+
+async def interactions() -> str:
+    list = [
+
+        "==== USER @mention or alone",
+        "- hug", 
+        "- bite", 
+        "- slap", 
+        "- shrug", 
+        "- pat", 
+        "- wave", 
+        "- dance", 
+        "- kiss", 
+        "- poke", 
+        "- tackle",
+
+        "\n==== ALONE ONLY ====",
+        "- blush",
+        "- cry",
+        "- pout", 
+    ]
+
+    comm = "\n".join(list)
+    response = f"**:grey_question: HELP    --    Interactions **\nThis is a list of interactions. To use them, write `-mao {{action}} {{user}}` and replace {{user}} with the user's @mention. Actions in `ALONE ONLY` don't use the @mention, you do that alone.\n```asciidoc\n===== ACTIONS =====\n{comm}\n```"

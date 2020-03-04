@@ -6,5 +6,13 @@ from . import shrug
 from . import cry
 from . import pat
 from . import wave
+from . import dance
+from . import kiss
+from . import poke
+from . import pout
+from . import tackle
 
-__all__ = [ "hug", "bite", "blush", "slap", "shrug", "cry", "pat", "wave"]
+__all__ = [
+    "hug", "bite", "blush", "slap", "shrug", "cry",
+    "pat", "wave", "dance", "kiss", "poke", "pout", "tackle"
+]
