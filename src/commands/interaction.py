@@ -30,3 +30,6 @@ async def interactions_handler(bot: discord.Client, message: discord.Message, co
     
     elif command[0] == "shoot":
         await interactions.shoot.handler(bot, message, command, devRole)
+
+    elif command[0] == "spank":
+        await interactions.spank.handler(bot, message, command, devRole)
