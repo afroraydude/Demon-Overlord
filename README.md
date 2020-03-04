@@ -6,12 +6,17 @@
 /
 +-- src
 |   +-- commands            (everything to do with handling custom commands)
+|   |   +-- interactions    (the interactions package)
 |   |   +-- __init__.py
 |   |   +-- help.py         (module to handle the help command)
 |   |   +-- ship.py         (handling everything to do with Izzy's ships)
 |   |   \-- (more stuff)
 |   +-- main.py             (main bot executable)
 |   \-- misc.py             (miscellaneous functions to make main.py less crowded)
++-- extra                   (any extra modules like api integrations)
+|   +-- api                 (any api modules go here)
+|   |   \-- __init__.py
+|   \-- __init__.py
 +-- Procfile                (the start script for heroku)
 +-- requirements.txt        (the non-standard packages that are used)
 +-- LICENSE                 (The License File)

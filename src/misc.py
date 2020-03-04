@@ -32,6 +32,10 @@ async def message_handler(bot:discord.Client, message:discord.Message) -> None:
     elif command[0] == "ship":
         pass
 
+
+    # handle all interactions
+    elif command[0] in commands.interactions.__all__:
+        await commands.interaction.interactions_handler(bot, message, command, devRole)
     
     # 20% chance to change presence
     change = randint(1, 100) % 5

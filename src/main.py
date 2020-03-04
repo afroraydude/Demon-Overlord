@@ -2,8 +2,11 @@ import discord
 import os
 import misc
 import re
-import commands
 import pymongo
+
+# bot packages
+import commands
+import extra
 
 # bot config (will later be json)
 config = {
@@ -34,6 +37,11 @@ class DemonOverlord(discord.Client):
         # mongo stuff
         self.mongo = pymongo.MongoClient(mongoUri, port=47410)
         self.shipdb = self.mongo["demon-overlord"]
+
+        # extra stuff
+        tenorkey = os.environ["TENOR_KEY"]
+        self.tenor = extra.api.tenor.TenorAPI(tenorkey)
+        print(self.tenor)
 
         # change bot's status
         await self.change_presence(activity=await misc.getRandStatus())
