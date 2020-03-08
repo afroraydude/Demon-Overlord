@@ -25,7 +25,7 @@ async def bubbles_handler(bot: discord.Client, message: discord.Message, command
         await message.channel.send(response)
 
         # no permissions.
-        #await message.channel.delete_messages([message])
+        #await message.delete()
 
         bot.lastCall["bubbles"] = time()
     # okay... i'm sick of all these errors...

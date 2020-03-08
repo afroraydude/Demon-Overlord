@@ -22,16 +22,15 @@ class Interaction:
 
 class AloneInteraction(Interaction):
     def __init__(self, bot: discord.Client, action: dict, author: str):
-        Interaction.__init__(self, bot, action, author, [])
+        super().__init__(self, bot, action, author, [])
 
         # generate response
         self.response = f'{author} {action["action"]}'
         self.embed = discord.Embed(colour=0xff00e7, title=self.response)
 
-
 class SocialInteraction(Interaction):
     def __init__(self, bot: discord.Client, action: dict, author: str, target: list):
-        Interaction.__init__(self, bot, action, author, target)
+        super().__init__(self, bot, action, author, target)
 
     
 async def interactions_handler(bot:discord.Client, message:discord.Message, command:list, devRole:discord.Role) -> None:
@@ -56,7 +55,7 @@ async def interactions_handler(bot:discord.Client, message:discord.Message, comm
             interaction = AloneInteraction(bot, action, author)
         
         await message.channel.send(embed=await interaction.handler(bot))
-        
+
     # okay... i'm sick of all these errors...
     except Exception as e:
        await message.channel.send(f"**{bot.izzymojis['izzyangry']} INTERACTIONS - ERROR **\nHey {devRole.mention} There was an error.\n```\n{e}\n```")

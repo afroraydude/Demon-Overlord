@@ -2,14 +2,12 @@
 import requests as req
 import json
 from random import randint
+from . import api
 
-
-class TenorAPI(object):
-
-    def __init__(self: object, apikey: str):
-        self.apikey = apikey
-        self.url = "https://api.tenor.com/v1"
-
+class TenorAPI(api.API):
+    def __init__(self, name, url):
+        super().__init__(name, url)
+    
     async def get_interact(self: object, name: str) -> str:
         res = await self.__request_list(name, 20)
         res_list = list(res["results"])
