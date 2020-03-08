@@ -11,14 +11,14 @@ async def help_handler(bot: discord.Client, message: discord.Message, command: l
         
         # main help
         if len(command) < 2 or command[1] == "":
-            response = f"**:grey_question: HELP**\nThis is a list of currently available commands.\nTo use a command, write `-mao {{command}} {{action}} {{arguments}}`.\nTo get more information about actions and their arguments, write `$help {{command}}`.\n```asciidoc\n{comm}\n```"
+            response = f"**:grey_question: HELP**\nThis is a list of currently available commands.\nTo use a command, write `-mao {{command}} {{action}} {{arguments}}`.\nTo get more information about actions and their arguments, write `-mao help {{command}}`.\n```asciidoc\n{comm}\n```"
 
         # get all the different Help pages
         else:
             
             # REALLY???
             if command[1] == "help":
-                response = f"**:grey_question: HELP**\nThis is a list of currently available commands.\nTo use a command, write `-mao {{command}} {{action}} {{arguments}}`.\nTo get more information about actions and their arguments, write `$help {{command}}`.\n```asciidoc\n{comm}\n```"
+                response = f"**:grey_question: HELP**\nThis is a list of currently available commands.\nTo use a command, write `-mao {{command}} {{action}} {{arguments}}`.\nTo get more information about actions and their arguments, write `-mao help {{command}}`.\n```asciidoc\n{comm}\n```"
 
             # WE LOVE DEMOCRACY
             elif command[1] == "vote":
@@ -31,7 +31,7 @@ async def help_handler(bot: discord.Client, message: discord.Message, command: l
             
             # HUGGIEEES
             elif command[1] == "interactions":
-                response = f"**:grey_question: HELP    --    interactions **\nThis is a list of interactions. To use them, write `-mao {{action}} {{user}}` and replace {{user}} with the user's @mention. Actions in `ALONE ONLY` don't use the @mention, you do that alone.\n```asciidoc\n===== ACTIONS =====\n{comm}\n```"
+                response = f"**:grey_question: HELP    --    interactions **\nThis is a list of interactions. To use them, write `-mao {{action}} {{user}} {{custom message}}` and replace {{user}} with the user's @mention. Actions in `ALONE ONLY` don't use the @mention, you do that alone.\n```asciidoc\n===== ACTIONS =====\n{comm}\n```"
             
             # that doesn't seem to exist...
             else:
