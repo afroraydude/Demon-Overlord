@@ -38,9 +38,12 @@ async def interactions_handler(bot:discord.Client, message:discord.Message, comm
     
 
     try:
+        # get all the stuffs
         action = bot.interactions[command[0]]
         author = message.author.display_name
         mentions = [x.display_name for x in message.mentions]
+
+        # frens? 
         if action["type"] == "social":
         
             if len(message.mentions) == 0 and command[2] == "everyone":
@@ -48,9 +51,12 @@ async def interactions_handler(bot:discord.Client, message:discord.Message, comm
             elif len(message.mentions) > 0:
                 interaction = SocialInteraction(bot, action, author, mentions)
 
+        # we alone here... 
         elif action["type"] == "alone":
             interaction = AloneInteraction(bot, action, author)
+        
         await message.channel.send(embed=await interaction.handler(bot))
+        
     # okay... i'm sick of all these errors...
     except Exception as e:
        await message.channel.send(f"**{bot.izzymojis['izzyangry']} INTERACTIONS - ERROR **\nHey {devRole.mention} There was an error.\n```\n{e}\n```")

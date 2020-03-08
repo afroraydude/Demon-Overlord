@@ -1,21 +1,33 @@
 import discord
+from time import time
 
 async def bubbles_handler(bot: discord.Client, message: discord.Message, command: list, devRole: discord.Role) -> None:
-    
+    # no error handling allowed in here except for the try-except
 
     try:
+
+        if len(command) < 3:
+            return
+
         x = int(command[1])
         y = int(command[2])
 
+        if int(time() - bot.lastCall["bubbles"]) < 86400:
+            return
+        elif (x > 20 or x < 1)  or (y > 20 or y <1):
+            return
+        
+
         # syntax: bubbles {x} {y}
-        if (x > 10 or x < 1)  or (y > 10 or y <1):
-            response = 'some error'
         else:
             bubbles = "\n".join([" ".join(["||pop||"] * x)]*y)
             response = f'**{bot.izzymojis["Yay"]} BUBBLE WRAP **\n{bubbles}'
-        message.channel.send(response)
+        await message.channel.send(response)
 
-        bot.lastCall["bubbles"] = None
+        # no permissions.
+        #await message.channel.delete_messages([message])
+
+        bot.lastCall["bubbles"] = time()
     # okay... i'm sick of all these errors...
     except Exception as e:
         await message.channel.send(f"**{bot.izzymojis['izzyangry']} HELP - ERROR **\nHey {devRole.mention} There was an error.\n```\n{e}\n```")

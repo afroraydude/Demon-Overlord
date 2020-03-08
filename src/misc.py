@@ -35,7 +35,7 @@ async def message_handler(bot:discord.Client, message:discord.Message) -> None:
     
     # handle bubbles OwO
     elif command[0] == "bubbles":
-        commands.bubbles.bubbles_handler(bot, message, command, devRole)
+        await commands.bubbles.bubbles_handler(bot, message, command, devRole)
     
     # handle all interactions
     elif command[0] in bot.interactions.keys():
