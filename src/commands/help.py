@@ -8,6 +8,8 @@ async def help_handler(bot: discord.Client, message: discord.Message, command: l
         # get the help page from config
         if len(command) > 1 and command[1] in bot.config["help"].keys():
             comm = "\n".join(bot.config["help"][command[1]])
+        else:
+            comm = "\n".join(bot.config["help"]["help"])
         
         # main help
         if len(command) < 2 or command[1] == "":
