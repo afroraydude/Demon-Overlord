@@ -38,7 +38,7 @@ class SocialInteraction(Interaction):
 
     
 async def interactions_handler(bot:discord.Client, message:discord.Message, command:list, devRole:discord.Role) -> None:
-    # try:
+    try:
         # get all the stuffs
         action = bot.interactions[command[0]]
         author = message.author.display_name
@@ -54,7 +54,7 @@ async def interactions_handler(bot:discord.Client, message:discord.Message, comm
 
             #create a temp array
             temp = " ".join(command[1:]).split(" ")
-            
+
             # add custom message uwu
             if command[0] == "everyone" and len(temp) > 1:
                 interaction.set_message(" ".join(temp[1:]))
@@ -72,5 +72,5 @@ async def interactions_handler(bot:discord.Client, message:discord.Message, comm
         await message.channel.send(embed=await interaction.handler(bot))
 
     # okay... i'm sick of all these errors...
-    # except Exception as e:
-    #    await message.channel.send(f"**{bot.izzymojis['izzyangry']} INTERACTIONS - ERROR **\nHey {devRole.mention} There was an error.\n```\n{e}\n```")
+    except Exception as e:
+       await message.channel.send(f"**{bot.izzymojis['izzyangry']} INTERACTIONS - ERROR **\nHey {devRole.mention} There was an error.\n```\n{e}\n```")
