@@ -12,7 +12,7 @@ async def message_handler(bot:discord.Client, message:discord.Message) -> None:
     # Assume command structure
     temp = list(filter( lambda x : x != "" and x != " ", message.content.lstrip("-mao ").split(" ")))
     command = list(filter(lambda x : x != "" and x != " ", temp[0:2] + [" ".join(temp[2:])]))
-
+    
     # handle hello 
     if command[0] == "hello":
         await message.channel.send(f'**:hibiscus: Hello**\nHello, {message.author.mention}!')

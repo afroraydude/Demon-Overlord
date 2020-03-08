@@ -19,6 +19,9 @@ class Interaction:
         self.embed.set_image(url=await bot.tenor.get_interact(f'anime {self.action["name"]}'))
         return self.embed
 
+    def set_message(self, message:str) -> None:
+        self.embed.add_field(name="Message:", value=message, inline=False)
+
 
 class AloneInteraction(Interaction):
     def __init__(self, bot: discord.Client, action: dict, author: str):
@@ -43,14 +46,22 @@ async def interactions_handler(bot:discord.Client, message:discord.Message, comm
         # frens? 
         if action["type"] == "social":
         
-            if len(message.mentions) == 0 and command[2] == "everyone":
+            if len(message.mentions) == 0 and command[1] == "everyone":
                 interaction = SocialInteraction(bot, action, author, ["everyone"])
             elif len(message.mentions) > 0:
                 interaction = SocialInteraction(bot, action, author, mentions)
 
+            # add custom message uwu
+            if len(command) > 1+ len(mentions):
+                interaction.set_message(" ".join(command[1+len(mentions):]))
+
         # we alone here... 
         elif action["type"] == "alone":
             interaction = AloneInteraction(bot, action, author)
+
+            # add custom message
+            if len(command) > 2 + len(mentions):
+                interaction.set_message(" ".join(command[1:]))
         
         await message.channel.send(embed=await interaction.handler(bot))
 
