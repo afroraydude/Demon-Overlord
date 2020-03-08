@@ -13,7 +13,7 @@ async def help_handler(bot: discord.Client, message: discord.Message, command: l
         
         # main help
         if len(command) < 2 or command[1] == "":
-            response = f"**:grey_question: HELP**\nThis is a list of currently available commands.\nTo use a command, write `-mao {{command}} {{action}} {{arguments}}`.\nTo get more information about actions and their arguments, write `-mao help {{command}}`.\n```asciidoc\n{comm}\n```"
+            response = f"**:grey_question: HELP**\n\nTo use a command, write `-mao {{command}} {{action}} {{arguments}}`.\nTo get more information about actions and their arguments, write `-mao help {{command}}`.\n\n__Here is a list of all currently available commands:__\n```asciidoc\n{comm}\n```"
 
         # get all the different Help pages
         else:
