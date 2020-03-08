@@ -22,7 +22,6 @@ async def help_handler(bot: discord.Client, message: discord.Message, command: l
 
             # WE LOVE DEMOCRACY
             elif command[1] == "vote":
-                
                 response = f"**:grey_question: HELP    --    vote **\nThis is a list of actions and their parameters. To use them, write `-mao vote {{action}} {{arguments}}`.\n```asciidoc\n===== ACTIONS =====\n{comm}\n```"
 
             # WE LOVE IZZY
@@ -31,7 +30,7 @@ async def help_handler(bot: discord.Client, message: discord.Message, command: l
             
             # HUGGIEEES
             elif command[1] == "interactions":
-                response = f"**:grey_question: HELP    --    interactions **\nThis is a list of interactions. To use them, write `-mao {{action}} {{user}} {{custom message}}` and replace {{user}} with the user's @mention. Actions in `ALONE ONLY` don't use the @mention, you do that alone.\n```asciidoc\n===== ACTIONS =====\n{comm}\n```"
+                response = f"**:grey_question: HELP    --    interactions **\nThis is a list of interactions. To use them, write `-mao {{action}} {{target}} {{custom message}}`\n`{{custom message}}` is optional.\nTarget can be one of two things:\n```asciidoc\n1 :: a list of @ mentions\n2 :: 'everryone'\n```\n\nHre is a list of currently available interactions. Actions in `ALONE ONLY` don't use the @mention, you do that alone.\n```asciidoc\n===== ACTIONS =====\n{comm}\n```"
             
             # that doesn't seem to exist...
             else:
