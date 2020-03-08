@@ -49,10 +49,11 @@ async def interactions_handler(bot:discord.Client, message:discord.Message, comm
 
             #create a temp array
             temp = " ".join(command[2:]).split(" ")
-
+            print(temp)
+            
             # error handling
-            if len(command) < 3 or ( len(mentions) == 0 and not "everyone" in temp):
-                await message.channel.send(f'**{bot.izzymojis["izzyangry"]} ERROR - NO TARGET SPECIFIED**\nSorry, but this is a social interaction, you have to specify a target like this: `-mao {{interaction}} {{target}} {{message}}`.\nThe possible values for `target` are user @ mentions and `everyone`. to find out more, do `-mao help interactions`')
+            if len(command) < 3:
+                await message.channel.send(f'**{bot.izzymojis["izzyangry"]} ERROR - NO TARGET SPECIFIED**\nSorry, but this is a social interaction, you have to specify a target like this: `-mao {{interaction}} {{target}} {{message}}`.\nThe possible values for `target` are:\nuser @ mentions and `everyone`. to find out more, do `-mao help interactions`')
                 return
             
             # handle everyone target
@@ -63,10 +64,10 @@ async def interactions_handler(bot:discord.Client, message:discord.Message, comm
             elif len(message.mentions) > 0:
                 interaction = SocialInteraction(bot, action, author, mentions)
 
-
+            print(" ".join(temp))
             # add custom message uwu
             if command[0] == "everyone" and len(temp) > 1:
-                interaction.set_message(" ".join(temp[1:]))
+                interaction.set_message(" ".join(temp))
             elif len(temp) > len(mentions) and command[0] != "everyone":
                 interaction.set_message(" ".join(temp[len(mentions):]))
 
