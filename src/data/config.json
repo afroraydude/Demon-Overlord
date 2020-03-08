@@ -37,6 +37,7 @@
             "- hello        ::   says hello to the sender (has no special action)",
             "- vote         ::   creates, removes or lists active votes",
             "- izzy         ::   all things Izzy",
+            "- quote        ::   random quotes",
             "\n==== CATEGORIES ====",
             "- interactions ::  all the interaction commands (too long to be listed here)"
         ],
