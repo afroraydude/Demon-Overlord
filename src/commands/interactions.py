@@ -46,15 +46,24 @@ async def interactions_handler(bot:discord.Client, message:discord.Message, comm
 
         # frens? 
         if action["type"] == "social":
-        
-            if len(message.mentions) == 0 and command[1] == "everyone":
-                interaction = SocialInteraction(bot, action, author, ["everyone"])
-            elif len(message.mentions) > 0:
-                interaction = SocialInteraction(bot, action, author, mentions)
 
             #create a temp array
             temp = " ".join(command[2:]).split(" ")
-            print(temp)
+
+            # error handling
+            if len(command) < 3 or ( len(mentions) == 0 and not "everyone" in temp):
+                message.channel.send(f'**{bot.izzymojis["izzyangry"]} ERROR - NO TARGET SPECIFIED**\nSorry, but this is a social interaction, you have to specify a target like this: `-mao {{interaction}} {{target}} {{message}}`.\nThe possible values for `target` are user @ mentions and `everyone`. to find out more, do `-mao help interactions`')
+            
+            
+            # handle everyone target
+            if len(message.mentions) == 0 and command[1] == "everyone":
+                interaction = SocialInteraction(bot, action, author, ["everyone"])
+
+            # handle 
+            elif len(message.mentions) > 0:
+                interaction = SocialInteraction(bot, action, author, mentions)
+
+
             # add custom message uwu
             if command[0] == "everyone" and len(temp) > 1:
                 interaction.set_message(" ".join(temp[1:]))
