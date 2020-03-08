@@ -34,8 +34,6 @@ class SocialInteraction(Interaction):
 
     
 async def interactions_handler(bot:discord.Client, message:discord.Message, command:list, devRole:discord.Role) -> None:
-    
-
     try:
         # get all the stuffs
         action = bot.interactions[command[0]]

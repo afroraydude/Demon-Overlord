@@ -31,6 +31,11 @@
         "type": "alone",
         "action": "shrugs"
     },
+    "nut": {
+        "name": "nut",
+        "type": "alone",
+        "action": "nuts"
+    },
 
 
 
@@ -83,5 +88,10 @@
         "name": "wave",
         "type": "social",
         "action": "waves at"
+    },
+    "stab": {
+        "name": "stab",
+        "type": "social",
+        "action": "stabs"
     }
 }

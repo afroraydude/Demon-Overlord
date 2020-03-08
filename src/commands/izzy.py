@@ -10,7 +10,10 @@ async def izzy_handler(bot:discord.Client, message:discord.Message, command:list
             response = f'**{bot.izzymojis["izzyblush"]} Links to please The Overlord**\nUse `-mao izzy {{name}}` and replace name with one listed below.`\n```asciidoc\n==== ALL DA LINKS OwO ====\n{linkstr}\n```'
 
         else:
-            linkstr = "\n".join(bot.config["izzylinks"][command[1]])
+            if command[1] in bot.config["izzylinks"]:
+                linkstr = "\n".join(bot.config["izzylinks"][command[1]])
+            else:
+                return
 
             # all the instagram links
             if command[1] == "art":
