@@ -6,7 +6,7 @@ from . import interactions
 async def help_handler(bot: discord.Client, message: discord.Message, command: list, devRole: discord.Role) -> None:
     try:
         # get the help page from config
-        if command[1] in bot.config["help"].keys():
+        if len(command) > 1 and command[1] in bot.config["help"].keys():
             comm = "\n".join(bot.config["help"][command[1]])
         
         # main help
