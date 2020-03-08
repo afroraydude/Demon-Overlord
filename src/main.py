@@ -99,7 +99,8 @@ class DemonOverlord(discord.Client):
             await commands.voting.vote_edit(bot, reaction, result[0][0], False)
     
     async def on_message(self: discord.Client, message: discord.Message) -> None:
-    
+        if message.author == self.get_user(679056317557637131):
+            return
         # handle all commands
         if message.content.startswith(self.config['prefix']) and message.author != self:
             await misc.message_handler(self, message)
