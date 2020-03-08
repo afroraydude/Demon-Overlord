@@ -53,10 +53,10 @@ async def interactions_handler(bot:discord.Client, message:discord.Message, comm
                 interaction = SocialInteraction(bot, action, author, mentions)
 
             #create a temp array
-            temp = " ".join(command[1:]).split(" ")
+            temp = " ".join(command[2:]).split(" ")
             print(temp)
             # add custom message uwu
-            if command[0] == "everyone" and len(temp) > 2:
+            if command[0] == "everyone" and len(temp) > 1:
                 interaction.set_message(" ".join(temp[1:]))
             elif len(temp) > len(mentions) and command[0] != "everyone":
                 interaction.set_message(" ".join(temp[len(mentions):]))
