@@ -27,7 +27,7 @@ async def help_handler(bot: discord.Client, message: discord.Message, command: l
 
             # WE LOVE DEMOCRACY
             elif command[1] == "vote":
-                response = f"**{bot.izzymojis['what']} HELP    --    vote **\n\nThis is a list of actions and their parameters. To use them, write `-mao vote {{action}} {{arguments}}`.\n```asciidoc\n===== ACTIONS =====\n{comm}\n```"
+                response = f"**{bot.izzymojis['what']} HELP    --    vote **\n\nThis is a list of actions and their parameters. To use them, write `-mao vote {{action}} {{arguments}}`.\n```asciidoc\n{comm}\n```"
 
             # WE LOVE IZZY
             elif command[1] == "izzy":
