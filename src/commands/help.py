@@ -13,30 +13,33 @@ async def help_handler(bot: discord.Client, message: discord.Message, command: l
         
         # main help
         if len(command) < 2 or command[1] == "":
-            response = f"**:grey_question: HELP**\n\nTo use a command, write `-mao {{command}} {{action}} {{arguments}}`.\nTo get more information about actions and their arguments, write `-mao help {{command}}`.\n\n__Here is a list of all currently available commands:__\n```asciidoc\n{comm}\n```"
+            response = f"**{bot.izzymojis['what']} HELP**\n\nTo use a command, write `-mao {{command}} {{action}} {{arguments}}`.\nTo get more information about actions and their arguments, write `-mao help {{command}}`.\n\n__Here is a list of all currently available commands:__\n```asciidoc\n{comm}\n```"
 
         # get all the different Help pages
         else:
             
+            if command[1] == "hello":
+                return
+            
             # REALLY???
-            if command[1] == "help":
-                response = f"**:grey_question: HELP**\nThis is a list of currently available commands.\nTo use a command, write `-mao {{command}} {{action}} {{arguments}}`.\nTo get more information about actions and their arguments, write `-mao help {{command}}`.\n```asciidoc\n{comm}\n```"
+            elif command[1] == "help":
+                response = f"**{bot.izzymojis['what']} HELP**\n\nTo use a command, write `-mao {{command}} {{action}} {{arguments}}`.\nTo get more information about actions and their arguments, write `-mao help {{command}}`.\n\n__Here is a list of all currently available commands:__\n```asciidoc\n{comm}\n```"
 
             # WE LOVE DEMOCRACY
             elif command[1] == "vote":
-                response = f"**:grey_question: HELP    --    vote **\nThis is a list of actions and their parameters. To use them, write `-mao vote {{action}} {{arguments}}`.\n```asciidoc\n===== ACTIONS =====\n{comm}\n```"
+                response = f"**{bot.izzymojis['what']} HELP    --    vote **\nThis is a list of actions and their parameters. To use them, write `-mao vote {{action}} {{arguments}}`.\n```asciidoc\n===== ACTIONS =====\n{comm}\n```"
 
             # WE LOVE IZZY
             elif command[1] == "izzy":
-                response = f'**:grey_question: HELP    --    izzy **\nThis command can give you all the links to look at or buy Izzy stuff.\nUse `-mao izzy {{name}}` and replace name with one listed below.`\n```asciidoc\n==== ALL DA LINKS OwO ====\n{comm}\n```'
+                response = f'**{bot.izzymojis['what']} HELP    --    izzy **\nThis command can give you all the links to look at or buy Izzy stuff.\nUse `-mao izzy {{name}}` and replace name with one listed below.`\n```asciidoc\n==== ALL DA LINKS OwO ====\n{comm}\n```'
             
             # HUGGIEEES
             elif command[1] == "interactions":
-                response = f"**:grey_question: HELP    --    interactions **\nThis is a list of interactions. To use them, write `-mao {{action}} {{target}} {{custom message}}`\n\n`{{custom message}}` is optional.\n`{{target}}`can be one of two things:\n```asciidoc\n1 :: a list of @ mentions\n2 :: 'everryone'\n```\n\nHere is a list of currently available interactions. Actions in `ALONE ONLY` don't use the @mention, you do that alone.\n```asciidoc\n===== ACTIONS =====\n{comm}\n```"
+                response = f"**{bot.izzymojis['what']} HELP    --    interactions **\nThis is a list of interactions. To use them, write `-mao {{action}} {{target}} {{custom message}}`\n\n`{{custom message}}` is optional.\n`{{target}}`can be one of two things:\n```asciidoc\n1 :: a list of @ mentions\n2 :: 'everryone'\n```\n\nHere is a list of currently available interactions. Actions in `ALONE ONLY` don't use the @mention, you do that alone.\n```asciidoc\n===== ACTIONS =====\n{comm}\n```"
             
             # that doesn't seem to exist...
             else:
-                response = f"**{bot.izzymojis['izzyangry']} HELP - NONEXISTENT COMMAND **\n THAT is not a command currently supported.\n You can add a request with `$feature add {{text}}` or list the available commands with `$help`"
+                response = f"**{bot.izzymojis['izzyangry']} HELP - NONEXISTENT COMMAND **\n THAT is not a command currently supported.\n You can add list the available commands with `-mao help`"
 
         # respond to the minions
         await message.channel.send(response)
