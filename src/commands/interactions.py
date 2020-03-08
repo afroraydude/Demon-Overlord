@@ -57,7 +57,7 @@ async def interactions_handler(bot:discord.Client, message:discord.Message, comm
             elif len(command) > 1+ len(mentions) and command[1] != "everyone":
                 temp = " ".join(command[1:]).split(" ")
                 
-                interaction.set_message(" ".join(temp))
+                interaction.set_message(" ".join(temp[1+len[mentions]:]))
 
         # we alone here... 
         elif action["type"] == "alone":
