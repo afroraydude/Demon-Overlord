@@ -52,8 +52,8 @@ async def interactions_handler(bot:discord.Client, message:discord.Message, comm
 
             # error handling
             if len(command) < 3 or ( len(mentions) == 0 and not "everyone" in temp):
-                message.channel.send(f'**{bot.izzymojis["izzyangry"]} ERROR - NO TARGET SPECIFIED**\nSorry, but this is a social interaction, you have to specify a target like this: `-mao {{interaction}} {{target}} {{message}}`.\nThe possible values for `target` are user @ mentions and `everyone`. to find out more, do `-mao help interactions`')
-            
+                await message.channel.send(f'**{bot.izzymojis["izzyangry"]} ERROR - NO TARGET SPECIFIED**\nSorry, but this is a social interaction, you have to specify a target like this: `-mao {{interaction}} {{target}} {{message}}`.\nThe possible values for `target` are user @ mentions and `everyone`. to find out more, do `-mao help interactions`')
+                return
             
             # handle everyone target
             if len(message.mentions) == 0 and command[1] == "everyone":
