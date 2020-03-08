@@ -3,6 +3,7 @@ import os
 import misc
 import re
 import pymongo
+import json
 
 # bot packages
 import commands
@@ -17,6 +18,17 @@ config = {
 class DemonOverlord(discord.Client):
 
     async def on_ready(self: discord.Client) -> None:
+        dirname = os.path.dirname(os.path.abspath(__file__))
+
+        # load interactions
+        with open(os.path.join(dirname, 'data/interactions.json')) as f:
+            self.interactions = json.load(f)
+
+        # load config
+        with open(os.path.join(dirname, 'data/config.json')) as f:
+            self.config = json.load(f)
+
+
         # get all variables and create DB connection
         dbuser = os.environ["MONGO_USER"]
         dbpass = os.environ["MONGO_PASS"]
@@ -25,15 +37,13 @@ class DemonOverlord(discord.Client):
 
         # save all necessary things in the bot
         self.votes = []
-        self.izzymojis = {
-            "izzyangry"  : self.get_emoji(684123588927815710),
-            "Yay"        : self.get_emoji(684280248128503855),
-            "witchcraft" : self.get_emoji(684135528047968386),
-            "izzyblush"  : self.get_emoji(684118795069292552),
-            "izzydemon"  : self.get_emoji(684124867024388162),
-            "thumbsup"   : self.get_emoji(684127134704205866)
-        }
+        self.izzymojis = {}
+        for key in self.config["izzymojis"].keys():
+            self.izzymojis[key] = self.get_emoji(self.config["izzymojis"][key])
 
+        self.lastCall = {
+            "bubbles": 0
+        }
         # mongo stuff
         self.mongo = pymongo.MongoClient(mongoUri, port=47410)
         self.shipdb = self.mongo["demon-overlord"]
@@ -41,7 +51,6 @@ class DemonOverlord(discord.Client):
         # extra stuff
         tenorkey = os.environ["TENOR_KEY"]
         self.tenor = extra.api.tenor.TenorAPI(tenorkey)
-        print(self.tenor)
 
         # change bot's status
         await self.change_presence(activity=await misc.getRandStatus())
@@ -92,7 +101,7 @@ class DemonOverlord(discord.Client):
     async def on_message(self: discord.Client, message: discord.Message) -> None:
     
         # handle all commands
-        if message.content.startswith(config['prefix']) and message.author != self:
+        if message.content.startswith(self.config['prefix']) and message.author != self:
             await misc.message_handler(self, message)
 
 

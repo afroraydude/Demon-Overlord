@@ -16,11 +16,9 @@ class TenorAPI(object):
 
         index = randint(0, len(res_list)-1)
         result = res_list[index]["media"][0]["gif"]["url"]
-        print(result)
         return result
 
     async def __request_list(self: object, query: str, limit: int) -> object:
-        print(query)
         try:
             url = f'{self.url}/search?q={query.replace(" ", "+")}&key={self.apikey}&limit={limit}'
             response = req.get(url)

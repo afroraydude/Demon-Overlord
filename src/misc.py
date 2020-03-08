@@ -13,7 +13,6 @@ async def message_handler(bot:discord.Client, message:discord.Message) -> None:
     temp = list(filter( lambda x : x != "" and x != " ", message.content.lstrip("-mao ").split(" ")))
     command = list(filter(lambda x : x != "" and x != " ", temp[0:2] + [" ".join(temp[2:])]))
 
-    print(command)
     # handle hello 
     if command[0] == "hello":
         await message.channel.send(f'**:hibiscus: Hello**\nHello, {message.author.mention}!')
@@ -26,21 +25,27 @@ async def message_handler(bot:discord.Client, message:discord.Message) -> None:
     elif command[0] == "vote":
         await commands.voting.vote_handler(bot, message, command, devRole)
     
+    # handle izzy UwU 
     elif command[0] == "izzy":
         await commands.izzy.izzy_handler(bot, message, command, devRole)
+    
     # handle ship
     elif command[0] == "ship":
         pass
-
-
+    
+    # handle bubbles OwO
+    elif command[0] == "bubbles":
+        commands.bubbles.bubbles_handler(bot, message, command, devRole)
+    
     # handle all interactions
-    elif command[0] in commands.interactions.__all__:
-        await commands.interaction.interactions_handler(bot, message, command, devRole)
+    elif command[0] in bot.interactions.keys():
+        await commands.interactions.interactions_handler(bot, message, command, devRole)
     
     # 20% chance to change presence
     change = randint(1, 100) % 5
     if change == 0:
         await bot.change_presence(activity=await getRandStatus())
+
     
     
 async def getRandStatus() -> discord.Activity: 
