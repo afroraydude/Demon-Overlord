@@ -54,7 +54,7 @@ async def interactions_handler(bot:discord.Client, message:discord.Message, comm
             # add custom message uwu
             if command[1] == "everyone" and len(command) > 2:
                 interaction.set_message(" ".join(command[2:]))
-            elif len(command) > 1+ len(mentions):
+            elif len(command) > 1+ len(mentions) and command[1] != "everyone":
                 interaction.set_message(" ".join(command[1+len(mentions):]))
 
         # we alone here... 
