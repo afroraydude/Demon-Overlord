@@ -6,7 +6,7 @@ class Interaction:
         self.action = action
 
         if len(target) > 0:
-            if author == target[0]:
+            if author in target and len(target) < 2:
                 self.response = f'{author} {action["action"]} themselves'
             elif len(target) > 1:
                 self.response = f'{author} {action["action"]} {", ".join(target[:-1])} and {target[-1]}'
