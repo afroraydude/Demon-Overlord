@@ -1,0 +1,87 @@
+{
+
+    
+    "blush": {
+        "name": "blush",
+        "type": "alone",
+        "action": "blushes"
+    },
+    "cry": {
+        "name": "cry",
+        "type": "alone",
+        "action": "cries"
+    },
+    "dance": {
+        "name": "dance",
+        "type": "alone",
+        "action": "dances"
+    },
+    "laugh": {
+        "name": "laugh",
+        "type": "alone",
+        "action": "laughs"
+    },
+    "pout": {
+        "name": "pout",
+        "type": "alone",
+        "action": "pouts"
+    },
+    "shrug": {
+        "name": "shrug",
+        "type": "alone",
+        "action": "shrugs"
+    },
+
+
+
+    "bite": {
+        "name": "bite",
+        "type": "social",
+        "action": "bites"
+    },
+    "hug": {
+        "name": "hug",
+        "type": "social",
+        "action": "hugs"
+    },
+    "kiss": {
+        "name": "kiss",
+        "type": "social",
+        "action": "kisses"
+    },
+    "pat": {
+        "name": "pat",
+        "type": "social",
+        "action": "pats"
+    },
+    "poke": {
+        "name": "poke",
+        "type": "social",
+        "action": "pokes"
+    },
+    "shoot": {
+        "name": "shoot",
+        "type": "social",
+        "action": "shoots"
+    },
+    "slap": {
+        "name": "slap",
+        "type": "social",
+        "action": "slaps"
+    },
+    "spank": {
+        "name": "spank",
+        "type": "social",
+        "action": "spanks"
+    },
+    "tackle": {
+        "name": "tackle",
+        "type": "social",
+        "action": "tackles"
+    },
+    "wave": {
+        "name": "wave",
+        "type": "social",
+        "action": "waves at"
+    }
+}

@@ -1,0 +1,75 @@
+{
+    "prefix": "-mao",
+    "izzymojis": {
+        "izzyangry": 684123588927815710,
+        "Yay": 684280248128503855,
+        "witchcraft": 684135528047968386,
+        "izzyblush": 684118795069292552,
+        "izzydemon": 684124867024388162,
+        "thumbsup": 684127134704205866
+    },
+    "izzylinks": {
+        "art": [
+            "`The Overlord's Art Account` : https://www.instagram.com/theizzypeasy/",
+            "`The Overlord's Unholy Comics` : https://www.instagram.com/theizzycomics"
+        ],
+        "social": [
+            "`Izzy's unholy Facebook` : https://www.facebook.com/theizzypeasy",
+            "`The Demonic Twitter` : https://twitter.com/theizzypeasy",
+            "`Forbidden Tumblr` : https://theizzypeasy.tumblr.com/"
+        ],
+        "shop": [
+            "`INTERNATIONAL GREATNESS FROM IZZY` : http://theizzypeasy.ecwid.com/",
+            "`GREATNESS TO THE PHILLIPINES` : https://theizzypeasyph.ecwid.com/"
+        ],
+        "website": [
+            "`ALL DA THINGS` : https://theizzypeasy.carrd.co/"
+        ],
+        "support": [
+            "`Buy a coffee for our overlord` : https://ko-fi.com/theizzypeasy"
+        ]
+    },
+    "help": {
+        "help": [
+            "==== COMMANDS ====",
+            "- help         ::   sends this message",
+            "- hello        ::   says hello to the sender (has no special action)",
+            "- vote         ::   creates, removes or lists active votes",
+            "- izzy         ::   all things Izzy",
+            "\n==== CATEGORIES ====",
+            "- interactions ::  all the interaction commands (too long to be listed here)"
+        ],
+        "izzy": [
+            "- art     :: instagram accounts",
+            "- social  :: any other social media account",
+            "- shop    :: all da demonic merch",
+            "- website :: The Overlords Website",
+            "- support :: Make Sacrifices to the overlord (Kofi and other financial stuff)"
+        ],
+        "vote": [
+            "- list                       :: list all currently active votes",
+            "- create {name};{options}    :: creates a vote  with name {name} and all options separated by comma",
+            "- end {name}                 :: removes the active quote with name {name}"
+        ],
+        "interactions": [
+            "==== SOCIAL ====",
+            "- hug",
+            "- bite",
+            "- slap",
+            "- pat",
+            "- wave",
+            "- dance",
+            "- kiss",
+            "- poke",
+            "- tackle",
+            "- shoot",
+            "- spank",
+            "\n==== ALONE ====",
+            "- blush",
+            "- cry",
+            "- pout",
+            "-laugh",
+            "- shrug"
+        ]
+    }
+}
