@@ -30,7 +30,7 @@ async def help_handler(bot: discord.Client, message: discord.Message, command: l
             
             # HUGGIEEES
             elif command[1] == "interactions":
-                response = f"**:grey_question: HELP    --    interactions **\nThis is a list of interactions. To use them, write `-mao {{action}} {{target}} {{custom message}}`\n`{{custom message}}` is optional.\nTarget can be one of two things:\n```asciidoc\n1 :: a list of @ mentions\n2 :: 'everryone'\n```\n\nHre is a list of currently available interactions. Actions in `ALONE ONLY` don't use the @mention, you do that alone.\n```asciidoc\n===== ACTIONS =====\n{comm}\n```"
+                response = f"**:grey_question: HELP    --    interactions **\nThis is a list of interactions. To use them, write `-mao {{action}} {{target}} {{custom message}}`\n\n`{{custom message}}` is optional.\n`{{target}}`can be one of two things:\n```asciidoc\n1 :: a list of @ mentions\n2 :: 'everryone'\n```\n\nHre is a list of currently available interactions. Actions in `ALONE ONLY` don't use the @mention, you do that alone.\n```asciidoc\n===== ACTIONS =====\n{comm}\n```"
             
             # that doesn't seem to exist...
             else:
