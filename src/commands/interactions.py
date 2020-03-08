@@ -51,13 +51,13 @@ async def interactions_handler(bot:discord.Client, message:discord.Message, comm
             elif len(message.mentions) > 0:
                 interaction = SocialInteraction(bot, action, author, mentions)
 
+            temp = " ".join(command[1:]).split(" ")
+
             # add custom message uwu
-            if command[1] == "everyone" and len(command) > 2:
-                interaction.set_message(" ".join(command[2:]))
-            elif len(command) > 1+ len(mentions) and command[1] != "everyone":
-                temp = " ".join(command[1:]).split(" ")
-                
-                interaction.set_message(" ".join(temp[1+len[mentions]:]))
+            if temp[1] == "everyone" and len(temp) > 1:
+                interaction.set_message(" ".join(temp[1:]))
+            elif len(temp) > len(mentions) and temp[1] != "everyone":
+                interaction.set_message(" ".join(temp[len(mentions):]))
 
         # we alone here... 
         elif action["type"] == "alone":
