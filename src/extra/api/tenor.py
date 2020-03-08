@@ -5,8 +5,8 @@ from random import randint
 from . import api
 
 class TenorAPI(api.API):
-    def __init__(self, name, url):
-        super().__init__(name, url)
+    def __init__(self, apikey:str):
+        super().__init__(apikey, "tenor", "https://api.tenor.com/v1")
     
     async def get_interact(self: object, name: str) -> str:
         res = await self.__request_list(name, 20)

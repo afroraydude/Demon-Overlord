@@ -22,7 +22,7 @@ class Interaction:
 
 class AloneInteraction(Interaction):
     def __init__(self, bot: discord.Client, action: dict, author: str):
-        super().__init__(self, bot, action, author, [])
+        super().__init__(bot, action, author, [])
 
         # generate response
         self.response = f'{author} {action["action"]}'
@@ -30,7 +30,7 @@ class AloneInteraction(Interaction):
 
 class SocialInteraction(Interaction):
     def __init__(self, bot: discord.Client, action: dict, author: str, target: list):
-        super().__init__(self, bot, action, author, target)
+        super().__init__(bot, action, author, target)
 
     
 async def interactions_handler(bot:discord.Client, message:discord.Message, command:list, devRole:discord.Role) -> None:

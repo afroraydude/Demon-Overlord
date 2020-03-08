@@ -1,4 +1,5 @@
 class API:
-    def __init__(self, name:str, url:str):
+    def __init__(self, apikey:str, name:str, url:str):
         self.apikey = apikey
-        self.url = "https://api.tenor.com/v1"
+        self.name = name
+        self.url = url
