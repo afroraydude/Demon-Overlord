@@ -27,23 +27,23 @@ async def help_handler(bot: discord.Client, message: discord.Message, command: l
 
             # WE LOVE DEMOCRACY
             elif command[1] == "vote":
-                response = f"**{bot.izzymojis['what']} HELP    --    vote **\nThis is a list of actions and their parameters. To use them, write `-mao vote {{action}} {{arguments}}`.\n```asciidoc\n===== ACTIONS =====\n{comm}\n```"
+                response = f"**{bot.izzymojis['what']} HELP    --    vote **\n\nThis is a list of actions and their parameters. To use them, write `-mao vote {{action}} {{arguments}}`.\n```asciidoc\n===== ACTIONS =====\n{comm}\n```"
 
             # WE LOVE IZZY
             elif command[1] == "izzy":
-                response = f'**{bot.izzymojis['what']} HELP    --    izzy **\nThis command can give you all the links to look at or buy Izzy stuff.\nUse `-mao izzy {{name}}` and replace name with one listed below.`\n```asciidoc\n==== ALL DA LINKS OwO ====\n{comm}\n```'
+                response = f'**{bot.izzymojis["what"]} HELP    --    izzy **\n\nThis command can give you all the links to look at or buy Izzy stuff.\nUse `-mao izzy {{name}}` and replace name with one listed below.`\n```asciidoc\n==== ALL DA LINKS OwO ====\n{comm}\n```'
             
             # HUGGIEEES
             elif command[1] == "interactions":
-                response = f"**{bot.izzymojis['what']} HELP    --    interactions **\nThis is a list of interactions. To use them, write `-mao {{action}} {{target}} {{custom message}}`\n\n`{{custom message}}` is optional.\n`{{target}}`can be one of two things:\n```asciidoc\n1 :: a list of @ mentions\n2 :: 'everryone'\n```\n\nHere is a list of currently available interactions. Actions in `ALONE ONLY` don't use the @mention, you do that alone.\n```asciidoc\n===== ACTIONS =====\n{comm}\n```"
+                response = f"**{bot.izzymojis['what']} HELP    --    interactions **\n\nTo use this command, write `-mao {{action}} {{target}} {{custom message}}`\n\n`{{custom message}}` is optional.\n`{{target}}`can be one of two things:\n```asciidoc\n1 :: a list of @ mentions\n2 :: 'everryone'\n```\n\nHere is a list of currently available interactions. Actions in `ALONE ONLY` don't use the @mention, you do that alone.\n```asciidoc\n===== ACTIONS =====\n{comm}\n```"
             
             # that doesn't seem to exist...
             else:
-                response = f"**{bot.izzymojis['izzyangry']} HELP - NONEXISTENT COMMAND **\n THAT is not a command currently supported.\n You can add list the available commands with `-mao help`"
+                response = f"**{bot.izzymojis['izzyangry']} HELP - NONEXISTENT COMMAND **\n\nTHAT is not a command currently supported.\n You can add list the available commands with `-mao help`"
 
         # respond to the minions
         await message.channel.send(response)
 
     # okay... i'm sick of all these errors...
     except Exception as e:
-        await message.channel.send(f"**{bot.izzymojis['izzyangry']} HELP - ERROR **\nHey {devRole.mention} There was an error.\n```\n{e}\n```")
+        await message.channel.send(f"**{bot.izzymojis['izzyangry']} HELP - ERROR **\n\nHey {devRole.mention} There was an error.\n```\n{e}\n```")
