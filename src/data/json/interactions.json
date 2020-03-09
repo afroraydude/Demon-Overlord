@@ -118,6 +118,6 @@
     "run":{
         "name":"run",
         "type":"social",
-        "action":"runs"
+        "action":"runs from"
     }
 }
