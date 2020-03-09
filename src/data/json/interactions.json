@@ -109,5 +109,10 @@
         "name":"lewd",
         "type":"social",
         "action":"lewds with"
+    },
+    "dodge":{
+        "name":"dodge",
+        "type":"social",
+        "action":"dodges"
     }
 }
