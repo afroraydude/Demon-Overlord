@@ -114,5 +114,10 @@
         "name":"dodge",
         "type":"social",
         "action":"dodges"
+    },
+    "run":{
+        "name":"run",
+        "type":"social",
+        "action":"runs"
     }
 }
