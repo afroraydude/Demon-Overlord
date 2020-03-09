@@ -61,7 +61,16 @@
         "type":"alone",
         "action": "~nya"
     },
-
+    "yes":{
+        "name":"approve",
+        "type":"alone",
+        "action": "approves"
+    },
+    "no":{
+        "name":"no",
+        "type":"alone",
+        "action": "disapproes"
+    },
 
 
     "bite": {
