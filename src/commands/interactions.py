@@ -76,7 +76,7 @@ async def interactions_handler(bot:discord.Client, message:discord.Message, comm
             interaction = AloneInteraction(bot, action, author)
 
             # add custom message
-            if len(command) > 2 + len(mentions):
+            if len(temp) > 0:
                 interaction.set_message(" ".join(temp))
         
         await message.channel.send(embed=await interaction.handler(bot))
