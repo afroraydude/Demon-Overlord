@@ -45,7 +45,8 @@
         "name":"sleep",
         "type":"alone",
         "action":"sleeps"
-    }
+    },
+    
 
 
 
@@ -103,5 +104,10 @@
         "name": "stab",
         "type": "social",
         "action": "stabs"
+    },
+    "lewd":{
+        "name":"lewd",
+        "type":"social",
+        "action":"lewds with"
     }
 }
