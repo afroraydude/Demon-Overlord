@@ -14,7 +14,7 @@ async def bubbles_handler(bot: discord.Client, message: discord.Message, command
 
         if int(time() - bot.lastCall["bubbles"]) < 3000:
             return
-        elif (x > 20 or x < 1)  or (y > 20 or y <1):
+        elif (x > 10 or x < 1)  or (y > 10 or y <1):
             return
         
 
