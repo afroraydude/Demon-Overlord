@@ -93,7 +93,8 @@
             "- nut",
             "- sleep",
             "- run",
-            "- panic"
+            "- panic",
+            "- nya"
         ]
     }
 }

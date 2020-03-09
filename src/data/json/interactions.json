@@ -56,6 +56,11 @@
         "type":"alone",
         "action":"panics"
     },
+    "nya":{
+        "name":"neko",
+        "type":"alone",
+        "action": "~nya"
+    },
 
 
 
