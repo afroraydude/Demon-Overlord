@@ -56,7 +56,7 @@ class DemonOverlord(discord.Client):
             self.izzymojis[key] = self.get_emoji(self.config["izzymojis"][key])
 
         self.lastCall = {
-            "bubbles": 0
+            "bubbles": []
         }
         # mongo stuff
         self.mongo = pymongo.MongoClient(mongoUri, port=47410)
