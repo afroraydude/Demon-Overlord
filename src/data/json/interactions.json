@@ -53,7 +53,7 @@
     },
     "panic":{
         "name":"panic",
-        "type":"social",
+        "type":"alone",
         "action":"panics"
     },
 
