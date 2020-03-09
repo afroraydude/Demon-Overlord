@@ -37,6 +37,9 @@ async def help_handler(bot: discord.Client, message: discord.Message, command: l
             elif command[1] == "interactions":
                 response = f"**{bot.izzymojis['what']} HELP    --    interactions **\n\nTo use this command, write `-mao {{action}} {{target}} {{custom message}}`\n\n`{{custom message}}` is optional.\n`{{target}}`can be one of two things:\n```asciidoc\n1 :: a list of @ mentions\n2 :: 'everyone'\n```\n\nHere is a list of currently available interactions. Actions in `ALONE ONLY` don't use the @mention, you do that alone.\n```asciidoc\n{comm}\n```"
             
+            elif command[1] == "chat":
+                categories = "\n".join([f'- {" ".join(x.split("_"))}' for x in bot.data["chat"].keys()])
+                response = f'**{bot.izzymojis["what"]} CHAT - DESCRIPTIONS**\n\nThis function shows the descriptions for all chats.\nYou can use it like this: `-mao chat {{category}}`\nReplace `{{category}}` with one of the chat caategories.\n```asciidoc\n==== CATEGORIES ====\n{categories}\n```'
             # that doesn't seem to exist...
             else:
                 response = f"**{bot.izzymojis['izzyangry']} HELP - NONEXISTENT COMMAND **\n\nTHAT is not a command currently supported.\n You can add list the available commands with `-mao help`"
