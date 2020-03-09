@@ -46,7 +46,16 @@
         "type":"alone",
         "action":"sleeps"
     },
-    
+    "run":{
+        "name":"run",
+        "type":"alone",
+        "action":"runs"
+    },
+    "panic":{
+        "name":"panic",
+        "type":"social",
+        "action":"panics"
+    },
 
 
 
@@ -115,9 +124,5 @@
         "type":"social",
         "action":"dodges"
     },
-    "run":{
-        "name":"run",
-        "type":"social",
-        "action":"runs from"
-    }
+    
 }

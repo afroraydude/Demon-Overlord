@@ -83,7 +83,7 @@
             "- stab",
             "- lewd",
             "- dodge",
-            "- run",
+
             "\n==== ALONE ====",
             "- blush",
             "- cry",
@@ -91,7 +91,9 @@
             "- laugh",
             "- shrug",
             "- nut",
-            "- sleep"
+            "- sleep",
+            "- run",
+            "- panic"
         ]
     }
 }
