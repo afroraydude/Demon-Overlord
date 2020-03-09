@@ -59,7 +59,12 @@ async def vote_handler(bot: discord.Client, message: discord.Message, command: l
             if len(result) > 0:
                 response = await vote_end(bot, result[0][0])
                 await message.channel.send(response)
-
+        
+        # default
+        elif len(command) == 1:
+            comm = "\n".join(bot.config["help"][command["vote"]])
+            response = f"**{bot.izzymojis['what']} VOTE**\n\nThis command creates and removes votes.\nTo use them, write `-mao vote {{action}} {{arguments}}`.\n```asciidoc\n{comm}\n```"
+        
         # wrong action
         else:
             await message.channel.send(f"**{bot.izzymojis['izzyangry']} VOTE - WRONG ACTION**\n{message.author.mention} -- `{command[1]}` is not a valid action for the command `{command[0]}` ")
