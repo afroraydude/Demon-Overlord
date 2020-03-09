@@ -63,7 +63,6 @@ async def interactions_handler(bot:discord.Client, message:discord.Message, comm
             elif len(mentions) > 0:
                 interaction = SocialInteraction(bot, action, author, mentions)
 
-
     
             # add custom message uwu
             if temp[0] == "everyone" and len(temp) > 1:
