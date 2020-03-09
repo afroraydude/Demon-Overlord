@@ -17,7 +17,7 @@ async def bubbles_handler(bot: discord.Client, message: discord.Message, command
         lastcall = list(filter(lambda x : x["user"] == message.author, bot.lastCall["bubbles"]))
         # this is not the error you're looking for
         if len(lastcall) > 0:
-            if int(time() - lastcall[0]["time"]) < 300:
+            if int(time() - lastcall[0]["time"]) >= 300:
                 return
         elif (x > 10 or x < 1)  or (y > 10 or y <1):
             return
@@ -29,7 +29,7 @@ async def bubbles_handler(bot: discord.Client, message: discord.Message, command
             bubbles = "\n".join([" ".join(["||pop||"] * x)]*y)
             response = f'**{bot.izzymojis["Yay"]} BUBBLE WRAP **\n{bubbles}'
 
-        await message.channel.send(response)
+            await message.channel.send(response)
 
         # delete message
         # currently the bot doesn't have the permissions

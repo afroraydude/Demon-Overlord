@@ -2,4 +2,3 @@ discord
 pymongo
 dnspython
 requests
-aiofile
