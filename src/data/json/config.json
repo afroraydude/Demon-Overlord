@@ -1,5 +1,15 @@
 {
     "prefix": "-mao",
+    "data":{
+        "chat":[
+            "demon_speak",
+            "demonic_chanting",
+            "ear_hell",
+            "games",
+            "important",
+            "programmer_demons"
+        ]
+    },
     "izzymojis": {
         "izzyangry": 684123588927815710,
         "Yay": 684280248128503855,
@@ -8,7 +18,8 @@
         "izzydemon": 684124867024388162,
         "thumbsup": 684127134704205866,
         "what":685399354827079717,
-        "badplant":686301708607029255
+        "badplant":686301708607029255,
+        "done":684138794257088629
     },
     "izzylinks": {
         "art": [

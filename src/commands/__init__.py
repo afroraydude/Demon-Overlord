@@ -4,3 +4,4 @@ from . import interactions
 from . import izzy
 from . import ship
 from . import voting
+from . import chat

@@ -9,11 +9,6 @@ import json
 import commands
 import extra
 
-# bot config (will later be json)
-config = {
-    "prefix" : "-mao",
-}
-
 # BEHOLD THY LORD
 class DemonOverlord(discord.Client):
 
@@ -21,12 +16,31 @@ class DemonOverlord(discord.Client):
         dirname = os.path.dirname(os.path.abspath(__file__))
 
         # load interactions
-        with open(os.path.join(dirname, 'data/interactions.json')) as f:
+        interactions = os.path.join(dirname, 'data/json/interactions.json')
+        with open(interactions, "r") as f:
             self.interactions = json.load(f)
 
         # load config
-        with open(os.path.join(dirname, 'data/config.json')) as f:
+        config = os.path.join(dirname, 'data/json/config.json')
+        with open(config, "r") as f:
             self.config = json.load(f)
+
+        # create data dict
+        self.data = {}
+
+        #load text files
+        for i in self.config["data"].keys():
+
+            # create data
+            self.data[i] = {}
+
+            # get all files in subfolder
+            for j in self.config["data"][i]:
+                path = os.path.join(dirname, f'data/text/{i}/{j}')
+
+                # save data
+                with open(path, "r") as f:
+                    self.data[i][j] = f.read()
 
 
         # get all variables and create DB connection
