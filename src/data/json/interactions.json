@@ -73,11 +73,6 @@
     },
 
 
-    "bite": {
-        "name": "bite",
-        "type": "social",
-        "action": "bites"
-    },
     "hug": {
         "name": "hug",
         "type": "social",
@@ -127,11 +122,6 @@
         "name": "stab",
         "type": "social",
         "action": "stabs"
-    },
-    "lewd":{
-        "name":"lewd",
-        "type":"social",
-        "action":"lewds with"
     },
     "dodge":{
         "name":"dodge",
