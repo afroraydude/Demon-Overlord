@@ -76,6 +76,11 @@
         "type":"alone",
         "action":"dodges"
     },
+    "smile":{
+        "name":"smile",
+        "type":"alone",
+        "action":"smiles"
+    },
     
 
 
