@@ -71,6 +71,12 @@
         "type":"alone",
         "action": "disapproes"
     },
+    "dodge":{
+        "name":"dodge",
+        "type":"alone",
+        "action":"dodges"
+    }
+    
 
 
     "hug": {
@@ -122,11 +128,5 @@
         "name": "stab",
         "type": "social",
         "action": "stabs"
-    },
-    "dodge":{
-        "name":"dodge",
-        "type":"social",
-        "action":"dodges"
     }
-    
 }
