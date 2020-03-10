@@ -81,7 +81,11 @@
         "type":"alone",
         "action":"smiles"
     },
-    
+    "boop":{
+        "name":"cheek kiss",
+        "type":"alone",
+        "action":"kisses"
+    },
 
 
     "hug": {
