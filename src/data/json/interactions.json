@@ -81,14 +81,15 @@
         "type":"alone",
         "action":"smiles"
     },
+
+
+
     "boop":{
         "name":"cheek kiss",
-        "type":"alone",
+        "type":"social",
         "action":"kisses"
     },
-
-
-    "hug": {
+   "hug": {
         "name": "hug",
         "type": "social",
         "action": "hugs"
