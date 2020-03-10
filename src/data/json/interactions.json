@@ -31,11 +31,6 @@
         "type": "alone",
         "action": "shrugs"
     },
-    "nut": {
-        "name": "nut",
-        "type": "alone",
-        "action": "nuts"
-    },
     "question": {
         "name":"question",
         "type":"alone",
