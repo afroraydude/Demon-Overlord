@@ -1,5 +1,6 @@
 import discord
 from time import time
+from random import randint
 
 async def bubbles_handler(bot: discord.Client, message: discord.Message, command: list, devRole: discord.Role) -> None:
     # no error handling allowed in here except for the try-except
@@ -11,8 +12,7 @@ async def bubbles_handler(bot: discord.Client, message: discord.Message, command
             return
 
         # set grid size
-        x = int(command[1])
-        y = int(command[2])
+        x, y = int(command[1]) , int(command[2])
         
         lastcall = list(filter(lambda x : x[1]["user"] == message.author, enumerate(bot.lastCall["bubbles"])))
         print(lastcall)
@@ -30,6 +30,13 @@ async def bubbles_handler(bot: discord.Client, message: discord.Message, command
         # create the bubbles uwu
         else:
             bubbles = "\n".join([" ".join(["||pop||"] * x)]*y)
+            posX, posY = randint(0, len(bubbles)) , randint(0, len(bubbles[0]))
+            replacements = [
+                "||nut||",
+                "||owo||"
+            ]
+            if randint(0,100) % 16 == 0:
+                bubbles[posY][posX] = replacements[randint(0,1)]
             response = f'**{bot.izzymojis["Yay"]} BUBBLE WRAP **\n{bubbles}'
 
             await message.channel.send(response)
