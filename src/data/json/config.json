@@ -59,11 +59,12 @@
             "- interactions ::  all the interaction commands (too long to be listed here)"
         ],
         "izzy": [
-            "- art     :: instagram accounts",
-            "- social  :: any other social media account",
-            "- shop    :: all da demonic merch",
-            "- website :: The Overlords Website",
-            "- support :: Make Sacrifices to the overlord (Kofi and other financial stuff)"
+            "- art      :: instagram accounts",
+            "- social   :: any other social media account",
+            "- shop     :: all da demonic merch",
+            "- website  :: The Overlords Website",
+            "- support  :: Make Sacrifices to the overlord (Kofi and other financial stuff)",
+            "- stickers :: List links to all sticker packs"
         ],
         "vote": [
             "- list                       :: list all currently active votes",
