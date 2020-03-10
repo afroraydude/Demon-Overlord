@@ -34,6 +34,8 @@ async def izzy_handler(bot:discord.Client, message:discord.Message, command:list
             # all the financial support
             elif command[1] == "support":
                 response = f'**{bot.izzymojis["izzydemon"]} WORLDLY SACRIFICES FOR OUR UNHOLY OVERLORD**\n\n{linkstr}'
+            elif command[1] == "stickers":
+                response = f'**{bot.izzymojis["izzydemon"]} ALL DA STICKERS**\n\n{linkstr}'
             # N O P E
             else:
                 response = f'**{bot.izzymojis["izzyangry"]} THY WISH IS NOT MY COMMAND**\n\nSorryyy, but {command[1]} is not a link that exists OwO.'
