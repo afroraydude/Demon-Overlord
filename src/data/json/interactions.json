@@ -81,6 +81,12 @@
         "type":"alone",
         "action":"smiles"
     },
+    "eat":{
+        "name":"eat",
+        "type":"alone",
+        "action":"eats"
+    },
+
 
 
 
