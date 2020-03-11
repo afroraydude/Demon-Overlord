@@ -1,6 +1,4 @@
 {
-
-    
     "blush": {
         "name": "blush",
         "type": "alone",
@@ -81,7 +79,11 @@
         "type":"alone",
         "action":"eats"
     },
-    
+    "counter":{
+        "name":"counter",
+        "type":"alone",
+        "action":"counters"
+    },
     
     
     
