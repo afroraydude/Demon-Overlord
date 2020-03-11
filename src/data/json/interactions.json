@@ -81,10 +81,16 @@
         "type":"alone",
         "action":"eats"
     },
-
-
-
-
+    
+    
+    
+    
+    
+    "hold":{
+        "name":"hold hands",
+        "type":"social",
+        "action":"holds hands with"
+    },
     "boop":{
         "name":"cheek kiss",
         "type":"social",
