@@ -82,7 +82,11 @@
     
     
     
-    
+    "kick":{
+        "name":"kick",
+        "type":"social",
+        "action":"kicks"
+    },
     "hold":{
         "name":"hold hands",
         "type":"social",
