@@ -64,11 +64,6 @@
         "type":"alone",
         "action": "disapproes"
     },
-    "dodge":{
-        "name":"dodge",
-        "type":"alone",
-        "action":"dodges"
-    },
     "smile":{
         "name":"smile",
         "type":"alone",
