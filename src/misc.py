@@ -40,6 +40,10 @@ async def message_handler(bot:discord.Client, message:discord.Message) -> None:
     # chat descriptions
     elif command[0] == "chat":
         await commands.chat.chat_handler(bot, message, command, devRole)
+
+    elif command[0] == "lmgtfy":
+        await commands.lmgtfy.lmgtfy_handler(bot, message, command, devRole)
+        
     # handle all interactions
     elif command[0] in bot.interactions.keys():
         await commands.interactions.interactions_handler(bot, message, command, devRole)
