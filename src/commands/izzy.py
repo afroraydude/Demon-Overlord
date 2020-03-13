@@ -29,7 +29,7 @@ async def izzy_handler(bot:discord.Client, message:discord.Message, command:list
 
             # W E B S I T E
             elif command[1] == "website":
-                response = f'**{bot.izzymojis["izzydemon"]}'
+                response = f'**{bot.izzymojis["izzydemon"]} THE GREAT WEBSITE OF OUR LEADER**\n\n{linkstr}'
 
             # all the financial support
             elif command[1] == "support":
