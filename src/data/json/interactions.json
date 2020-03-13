@@ -84,6 +84,11 @@
         "type":"alone",
         "action": "screams"
     },
+    "drink":{
+        "name":"drink",
+        "type":"alone",
+        "action":"drinks"
+    },
     
     
     
