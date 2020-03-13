@@ -79,6 +79,11 @@
         "type":"alone",
         "action":"counters"
     },
+    "scream":{
+        "name":"scream",
+        "type":"alone",
+        "action": "screams"
+    },
     
     
     
