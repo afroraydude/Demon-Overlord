@@ -3,7 +3,7 @@ import discord
 async def lmgtfy_handler(bot:discord.Client, message:discord.Message, command:list, devRole:discord.Role):
     try:
         if len(command) >1:
-            lookup = '%20'.join(" ".join(command[1:]).replace(" ", "%20")) 
+            lookup = " ".join(command[1:]).replace(" ", "%20")
             google_icon = 'https://maxcdn.icons8.com/Share/icon/Logos/google_logo1600.png'
             query_url = f'http://lmgtfy.com/?q={lookup}'
             response = discord.Embed(color=0xF9F9F9)
