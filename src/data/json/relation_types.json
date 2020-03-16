@@ -1,12 +1,14 @@
 {
-    "friend": {
-        "name": "friend",
+    "friendship": {
+        "name": "friendship",
+        "usage_name": "friends",
         "make": "both",
         "break": "single"
     },
     "enemy": {
         "name": "enemy",
+        "usage_name": "enemies",
         "make": "single",
-        "break": "both"
+        "break": "break"
     }
 }
