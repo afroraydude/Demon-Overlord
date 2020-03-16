@@ -67,7 +67,7 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
         relations = json.load(f)
 
     # stuff i copied from Dragonsight
-    relation_request = bot.relation_types[command[0]]
+    relation_request = bot.relation_types[command[1]]
     author = message.author.displayname
     mentions = [x.display_name for x in message.mentions]
 

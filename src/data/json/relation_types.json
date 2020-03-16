@@ -1,6 +1,6 @@
 {
-    "friendship": {
-        "name": "friendship",
+    "friend": {
+        "name": "friend",
         "usage_name": "friends",
         "make": "both",
         "break": "single"
