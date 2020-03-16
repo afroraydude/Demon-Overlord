@@ -4,16 +4,13 @@ import os
 
 
 # this goes through the data to see if a given relationship exists (checked with 2 people)
-def check_relationship_spesific(people: list, relationship_type, relations): # check if a relationship exists
+def check_relationship_spesific(person1, person2, relationship_type, relations): # check if a relationship exists
     keys = relations.keys() # get all relationship names
 
-    people_id = []
+    people_id1 = person1.id
+    people_id2 = person2.id
 
-    for i in people:
-        people_id.append(i.id())
-    people_id.sort()
-
-    search = f"{people_id[0]}_{people_id[1]}_{relationship_type}"
+    search = f"{people_id1}_{people_id2}_{relationship_type}"
     
     for i in keys:
         if search in i:
@@ -24,8 +21,8 @@ def check_relationship_spesific(people: list, relationship_type, relations): # c
     return False
 
 def create_relationship(person1, person2, relationship_type, relations, relation_types_place):
-    person1_id = person1.id()
-    person2_id = person2.id()
+    person1_id = person1.id
+    person2_id = person2.id
 
     people_id = [person1_id, person2_id]
     people_id.sort()
@@ -42,8 +39,8 @@ def create_relationship(person1, person2, relationship_type, relations, relation
 
 
 def remove_relationship(person1, person2, relationship_type, relations, relation_types_place):
-    person1_id = person1.id()
-    person2_id = person2.id()
+    person1_id = person1.id
+    person2_id = person2.id
 
     people_id = [person1_id, person2_id]
     people_id.sort()
@@ -86,7 +83,7 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
     target_person = mentions[0] # since there is 1 target we dont need a list
     mention_id = message.mentions[0]
 
-    relationship_exists = check_relationship_spesific([author, mention_id], relation_request["name"] , relations) # use the function above to see if the relationship exists
+    relationship_exists = check_relationship_spesific(author, mention_id, relation_request["name"] , relations) # use the function above to see if the relationship exists
 
     if command[0] is "break": # if user wants a relationship terminated
         if not relationship_exists: # if relationship doesent exist, you cannot terminate it
