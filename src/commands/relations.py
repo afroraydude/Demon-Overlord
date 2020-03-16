@@ -73,11 +73,11 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
         #       idx 0          idx 1            idx 2
 
         if len(mentions) == 0: # if no mentions made
-            await message.channel.send(f'**{bot.izzymojis["izzyangry"]} ERROR - NO TARGET SPECIFIED**\nSorry, but in order to make/break relationship with someone, you need to specify that person. usage: -moe make/break [relationship type] [person]')
+            await message.channel.send(f'**ERROR - NO TARGET SPECIFIED**\nSorry, but in order to make/break relationship with someone, you need to specify that person. usage: -moe make/break [relationship type] [person]')
             return # be  a n g e r y
 
         elif len(mentions) > 1: # if tries to make relationships with more than 1 person
-            await message.channel.send(f'**{bot.izzymojis["izzyangry"]} ERROR - TOO MANY TARGETS**\nSorry, but you can only make/break relationships with 1 person at a time. usage: -moe make/break [relationship type] [person]'
+            await message.channel.send(f'**ERROR - TOO MANY TARGETS**\nSorry, but you can only make/break relationships with 1 person at a time. usage: -moe make/break [relationship type] [person]'
             return
 
         target_person = mentions[0] # since there is 1 target we dont need a list
@@ -86,7 +86,7 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
 
         if command[0] is "break": # if user wants a relationship terminated
             if not relationship_exists: # if relationship doesent exist, you cannot terminate it
-                await message.channel.send(f'**{bot.izzymojis["izzyangry"]} ERROR - RELATIONSHIP DOESENT EXIST**\nSorry, but you cannot delete a relationship that doesent exist. Thats just sad.'
+                await message.channel.send(f'**ERROR - RELATIONSHIP DOESENT EXIST**\nSorry, but you cannot delete a relationship that doesent exist. Thats just sad.'
                 return
             
             if relation_request["break"] == "single": # if relationship can be terminated by 1 side 
@@ -113,7 +113,7 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
             
         elif command[0] is "make": # if user wants to start a relationship
             if relationship_exists:
-                await message.channel.send(f'**{bot.izzymojis["izzyangry"]} ERROR - RELATIONSHIP ALREADY EXISTS**\nSorry, but that relationship already exists between you 2, please calm down.'
+                await message.channel.send(f'**ERROR - RELATIONSHIP ALREADY EXISTS**\nSorry, but that relationship already exists between you 2, please calm down.'
                 return
             
             if relation_request["make"] == "single":
@@ -136,6 +136,8 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
                     remove_relationship(author, target_person, relation_request["name"], relations, relation_types_place)
                     await message.channel.send(f"{author} is now {relation_request["usage_name"]} with {target_person}!!!")
                     return
-
+        # okay... i'm sick of all these errors...
+    except Exception as e:
+        await message.channel.send(f"**CHAT - ERROR **\n\nHey {devRole.mention} There was an error.\n```\n{e}\n```")
 
 
