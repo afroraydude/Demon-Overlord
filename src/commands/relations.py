@@ -68,7 +68,7 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
 
     # stuff i copied from Dragonsight
     relation_request = bot.relation_types[command[1]]
-    author = message.author.displayname
+    author = message.author.display_name
     mentions = [x.display_name for x in message.mentions]
 
     # a normal relationship command looks like:
@@ -84,8 +84,9 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
         return
 
     target_person = mentions[0] # since there is 1 target we dont need a list
+    mention_id = message.mentions[0]
 
-    relationship_exists = check_relationship_spesific([author, target_person], relation_request["name"] , relations) # use the function above to see if the relationship exists
+    relationship_exists = check_relationship_spesific([author, mention_id], relation_request["name"] , relations) # use the function above to see if the relationship exists
 
     if command[0] is "break": # if user wants a relationship terminated
         if not relationship_exists: # if relationship doesent exist, you cannot terminate it
@@ -93,7 +94,7 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
             return
         
         if relation_request["break"] == "single": # if relationship can be terminated by 1 side 
-            remove_relationship(author, target_person, relation_request["name"], relations, relation_types_place) # delete dat relationship
+            remove_relationship(message.author, mention_id, relation_request["name"], relations, relation_types_place) # delete dat relationship
             await message.channel.send(f"{author} is no longer {relation_request['usage_name']} with {target_person}!!!")
             return
         
@@ -110,7 +111,7 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
                 message.channel.send(f"{target_person} did not accept the request in time. F in the chat for {author}...")
                 return
             else:
-                remove_relationship(author, target_person, relation_request["name"], relations, relation_types_place)
+                remove_relationship(message.author, mention_id, relation_request["name"], relations, relation_types_place)
                 await message.channel.send(f"{author} is no longer {relation_request['usage_name']} with {target_person}!!!")
                 return
         
@@ -120,7 +121,7 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
             return
         
         if relation_request["make"] == "single":
-            create_relationship(author, target_person, relation_request["name"], relations, relation_types_place)
+            create_relationship(message.author, mention_id, relation_request["name"], relations, relation_types_place)
             await message.channel.send(f"{author} is now {relation_request['usage_name']} with {target_person}!!!")
 
         elif relation_request["make"] == "both":
@@ -136,7 +137,7 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
                 message.channel.send(f"{target_person} did not accept the request in time. F in the chat for {author}...")
                 return
             else:
-                remove_relationship(author, target_person, relation_request["name"], relations, relation_types_place)
+                remove_relationship(message.author, mention_id, relation_request["name"], relations, relation_types_place)
                 await message.channel.send(f"{author} is now {relation_request['usage_name']} with {target_person}!!!")
                 return
         # okay... i'm sick of all these errors...
