@@ -60,7 +60,7 @@ def remove_relationship(person1, person2, relationship_type, relations, relation
 async def relation_request_handler(bot:discord.Client, message:discord.Message, command:list, devRole:discord.Role) -> None:
     try:
 
-        dirname = os.path.dirname(os.path.abspath(__file__))
+        dirname = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
         # import relationships from JSON
         relation_types_place = os.path.join(dirname, 'data/json/relations.json')
         with open(relation_types_place, "r") as f:
@@ -85,7 +85,7 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
 
         target_person = mentions[0] # since there is 1 target we dont need a list
 
-        relationship_exists = check_relationship([author, target_person], relation_request["name"] , relations) # use the function above to see if the relationship exists
+        relationship_exists = check_relationship_spesific([author, target_person], relation_request["name"] , relations) # use the function above to see if the relationship exists
 
         if command[0] is "break": # if user wants a relationship terminated
             if not relationship_exists: # if relationship doesent exist, you cannot terminate it
