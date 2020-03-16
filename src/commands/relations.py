@@ -34,7 +34,7 @@ def create_relationship(person1, person2, relationship_type, relations, relation
         "relationship": relationship_type
     }
 
-    with open(relation_types_place, "r") as f:
+    with open(relation_types_place, "w") as f:
         json.dump(relations, f)
 
 
@@ -49,7 +49,7 @@ def remove_relationship(person1, person2, relationship_type, relations, relation
     savename = f"{people_id[0]}_{people_id[1]}_{relationship_type}"
     del relations[savename]
 
-    with open(relation_types_place, "r") as f:
+    with open(relation_types_place, "w") as f:
         json.dump(relations, f)
 
 
@@ -100,7 +100,7 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
             await message.channel.send(f"{author} is asking to no longer be {relation_request['usage_name']} with {target_person} \n He/She must do \"-mao accept\" in 60 seconds order to accept!")
 
             def check(msg):
-                return msg.content == "-mao accept" and msg.author == target_person
+                return msg.content == "-mao accept" and msg.author == mention_id
 
             try:
                 msg = await bot.wait_for('message', timeout=60.0, check=check)
@@ -126,7 +126,7 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
             await message.channel.send(f"{author} is asking to be {relation_request['usage_name']} with {target_person}\n He/She must do \"-mao accept\" in 60 seconds order to accept!")
             
             def check(msg):
-                return msg.content == "-mao accept" and msg.author == target_person
+                return msg.content == "-mao accept" and msg.author == mention_id
 
             try:
                 msg = await bot.wait_for('message', timeout=60.0, check=check)
@@ -134,7 +134,7 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
                 message.channel.send(f"{target_person} did not accept the request in time. F in the chat for {author}...")
                 return
             else:
-                remove_relationship(message.author, mention_id, relation_request["name"], relations, relation_types_place)
+                create_relationship(message.author, mention_id, relation_request["name"], relations, relation_types_place)
                 await message.channel.send(f"{author} is now {relation_request['usage_name']} with {target_person}!!!")
                 return
         # okay... i'm sick of all these errors...
