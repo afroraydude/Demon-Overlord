@@ -97,6 +97,11 @@
         "type":"social",
         "action":"kicks"
     },
+    "snuggle":{
+        "name":"snuggle",
+        "type":"social",
+        "action":"snuggles with"
+    },
     "hold":{
         "name":"hold hands",
         "type":"social",
