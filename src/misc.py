@@ -10,8 +10,8 @@ async def message_handler(bot:discord.Client, message:discord.Message) -> None:
     devRole = discord.utils.get(message.guild.roles, name="Dev-Demons")
 
     # Assume command structure
-    temp = list(filter( lambda x : x != "" and x != " ", message.content.lstrip("-mao ").split(" ")))
-    command = list(filter(lambda x : x != "" and x != " ", temp[0:2] + [" ".join(temp[2:])]))
+    temp = list(filter( lambda x : x != "" and x != " ", message.content.split(" ")))
+    command = list(filter(lambda x : x != "" and x != " ", temp[1:3] + [" ".join(temp[3:])]))
     
     # handle hello 
     if command[0] == "hello":
@@ -43,7 +43,7 @@ async def message_handler(bot:discord.Client, message:discord.Message) -> None:
 
     elif command[0] == "lmgtfy":
         await commands.lmgtfy.lmgtfy_handler(bot, message, command, devRole)
-        
+
     # handle all interactions
     elif command[0] in bot.interactions.keys():
         await commands.interactions.interactions_handler(bot, message, command, devRole)
