@@ -85,7 +85,7 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
 
     relationship_exists = check_relationship_spesific(author, mention_id, relation_request["name"] , relations) # use the function above to see if the relationship exists
 
-    if command[0] is "break": # if user wants a relationship terminated
+    if command[0] == "break": # if user wants a relationship terminated
         if not relationship_exists: # if relationship doesent exist, you cannot terminate it
             await message.channel.send(f'**ERROR - RELATIONSHIP DOESENT EXIST**\nSorry, but you cannot delete a relationship that doesent exist. Thats just sad.')
             return
@@ -112,7 +112,7 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
                 await message.channel.send(f"{author} is no longer {relation_request['usage_name']} with {target_person}!!!")
                 return
         
-    elif command[0] is "make": # if user wants to start a relationship
+    elif command[0] == "make": # if user wants to start a relationship
         if relationship_exists:
             await message.channel.send(f'**ERROR - RELATIONSHIP ALREADY EXISTS**\nSorry, but that relationship already exists between you 2, please calm down.')
             return
