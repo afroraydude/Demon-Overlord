@@ -6,3 +6,4 @@ from . import ship
 from . import voting
 from . import chat
 from . import lmgtfy
+from . import relations
