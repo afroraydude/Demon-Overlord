@@ -36,7 +36,7 @@ class SocialInteraction(Interaction):
     def __init__(self, bot: discord.Client, action: dict, author: str, target: list):
         super().__init__(bot, action, author, target)
 
-    
+     
 async def interactions_handler(bot:discord.Client, message:discord.Message, command:list, devRole:discord.Role) -> None:
     try:
         # get all the stuffs

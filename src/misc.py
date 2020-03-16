@@ -47,6 +47,10 @@ async def message_handler(bot:discord.Client, message:discord.Message) -> None:
     # handle all interactions
     elif command[0] in bot.interactions.keys():
         await commands.interactions.interactions_handler(bot, message, command, devRole)
+
+    # handle all relation requests
+    elif command[0] == in bot.relation_types.keys():
+        await commands.relations.relation_request_handler(bot, message, command, devRole)
     
     # 20% chance to change presence
     change = randint(1, 100) % 5

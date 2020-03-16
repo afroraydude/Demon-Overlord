@@ -1,0 +1,12 @@
+{
+    "friend": {
+        "name": "friend",
+        "make": "both",
+        "break": "single"
+    },
+    "enemy": {
+        "name": "enemy",
+        "make": "single",
+        "break": "both"
+    }
+}

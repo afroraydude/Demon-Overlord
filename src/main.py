@@ -20,6 +20,11 @@ class DemonOverlord(discord.Client):
         with open(interactions, "r") as f:
             self.interactions = json.load(f)
 
+        # load relation types
+        relation_types = os.path.join(dirname, 'data/json/relation_types.json')
+        with open(relation_types, "r") as f: # mother if u reading this thanks for dev role
+            self.relation_types = json.load(f)
+
         # load config
         config = os.path.join(dirname, 'data/json/config.json')
         with open(config, "r") as f:
@@ -59,8 +64,8 @@ class DemonOverlord(discord.Client):
             "bubbles": []
         }
         # mongo stuff
-        self.mongo = pymongo.MongoClient(mongoUri, port=47410)
-        self.shipdb = self.mongo["demon-overlord"]
+        #self.mongo = pymongo.MongoClient(mongoUri, port=47410)
+        #self.shipdb = self.mongo["demon-overlord"]
 
         # extra stuff
         tenorkey = os.environ["TENOR_KEY"]
