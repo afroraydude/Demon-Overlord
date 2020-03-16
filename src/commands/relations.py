@@ -29,11 +29,10 @@ def create_relationship(person1, person2, relationship_type, relations, relation
 
     savename = f"{people_id[0]}_{people_id[1]}_{relationship_type}"
     relations[savename] = {
-        "person1": person1,
-        "person2": person2,
+        "person1": person1_id,
+        "person2": person2_id,
         "relationship": relationship_type
-    }
-
+}
     with open(relation_types_place, "w") as f:
         json.dump(relations, f)
 
