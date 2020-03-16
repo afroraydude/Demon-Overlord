@@ -83,7 +83,7 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
     target_person = mentions[0] # since there is 1 target we dont need a list
     mention_id = message.mentions[0]
 
-    relationship_exists = check_relationship_spesific(author, mention_id, relation_request["name"] , relations) # use the function above to see if the relationship exists
+    relationship_exists = check_relationship_spesific(message.author, mention_id, relation_request["name"] , relations) # use the function above to see if the relationship exists
 
     if command[0] == "break": # if user wants a relationship terminated
         if not relationship_exists: # if relationship doesent exist, you cannot terminate it
@@ -100,7 +100,7 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
             await message.channel.send(f"{author} is asking to no longer be {relation_request['usage_name']} with {target_person} \n He/She must do \"-mao accept\" in 60 seconds order to accept!")
 
             def check(msg):
-                return msg.content == "-mao accept" and msg.user == target_person
+                return msg.content == "-mao accept" and msg.author == target_person
 
             try:
                 msg = await bot.wait_for('message', timeout=60.0, check=check)
@@ -126,7 +126,7 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
             await message.channel.send(f"{author} is asking to be {relation_request['usage_name']} with {target_person}\n He/She must do \"-mao accept\" in 60 seconds order to accept!")
             
             def check(msg):
-                return msg.content == "-mao accept" and msg.user == target_person
+                return msg.content == "-mao accept" and msg.author == target_person
 
             try:
                 msg = await bot.wait_for('message', timeout=60.0, check=check)
