@@ -105,7 +105,7 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
                     return msg.content == "-mao accept" and msg.user == target_person
 
                 try:
-                    msg = await client.wait_for('message', timeout=60.0, check=check)
+                    msg = await bot.wait_for('message', timeout=60.0, check=check)
                 except asyncio.TimeoutError:
                     message.channel.send(f"{target_person} did not accept the request in time. F in the chat for {author}...")
                     return
@@ -131,7 +131,7 @@ async def relation_request_handler(bot:discord.Client, message:discord.Message, 
                     return msg.content == "-mao accept" and msg.user == target_person
 
                 try:
-                    msg = await client.wait_for('message', timeout=60.0, check=check)
+                    msg = await bot.wait_for('message', timeout=60.0, check=check)
                 except asyncio.TimeoutError:
                     message.channel.send(f"{target_person} did not accept the request in time. F in the chat for {author}...")
                     return
