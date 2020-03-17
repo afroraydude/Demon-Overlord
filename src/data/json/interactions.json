@@ -114,11 +114,6 @@
         "type": "social",
         "action": "hugs"
     },
-    "kiss": {
-        "name": "kiss",
-        "type": "social",
-        "action": "kisses"
-    },
     "pat": {
         "name": "pat",
         "type": "social",
@@ -138,11 +133,6 @@
         "name": "slap",
         "type": "social",
         "action": "slaps"
-    },
-    "spank": {
-        "name": "spank",
-        "type": "social",
-        "action": "spanks"
     },
     "tackle": {
         "name": "tackle",
