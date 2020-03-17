@@ -1,1 +1,1 @@
-worker: python3 src/main.py --dev
+worker: python3 src/main.py
