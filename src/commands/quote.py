@@ -18,7 +18,7 @@ async def quote_handler(bot:discord.Client, message:discord.Message, command:lis
             e.set_image(url=response)
             
             await message.channel.send(embed=e)
-            bot.lastCall = time()
+            bot.lastCall["quote"] = time()
     # NO NO NO NO, WHY U DO DIS???
     except Exception as e:
         await message.channel.send(f"**{bot.izzymojis['izzyangry']} IZZY**\nHey {devRole.mention} There was an error.\n```\n{e}\n```")
