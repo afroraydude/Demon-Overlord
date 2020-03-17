@@ -3,7 +3,7 @@ from time import time
 
 async def quote_handler(bot:discord.Client, message:discord.Message, command:list, devRole:discord.Role) -> None:
     try:
-        ratelimit = 800
+        ratelimit = 300
         lastcall = int(time() - bot.lastCall["quote"])
         print(ratelimit)
         print(lastcall)
