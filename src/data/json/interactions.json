@@ -162,5 +162,10 @@
         "name": "stab",
         "type": "social",
         "action": "stabs"
+    },
+    "highfive":{
+        "name":"highfive",
+        "type":"social",
+        "action": "highfives"
     }
 }
