@@ -67,7 +67,7 @@ class DemonOverlord(discord.Client):
 
         self.lastCall = {
             "bubbles": [],
-            "quote":[]
+            "quote":0
         }
         # mongo stuff
         #self.mongo = pymongo.MongoClient(mongoUri, port=47410)
