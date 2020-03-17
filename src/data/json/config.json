@@ -1,5 +1,6 @@
 {
     "prefix": "-mao",
+    "dev_prefix":"-testmao",
     "data":{
         "chat":[
             "demon_speak",

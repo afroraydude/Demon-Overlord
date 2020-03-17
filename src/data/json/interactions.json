@@ -1,4 +1,3 @@
-
 {
     "blush": {
         "name": "blush",
@@ -31,89 +30,86 @@
         "action": "shrugs"
     },
     "question": {
-        "name":"question",
-        "type":"alone",
+        "name": "question",
+        "type": "alone",
         "action": "tilts head"
     },
-    "sleep":{
-        "name":"sleep",
-        "type":"alone",
-        "action":"sleeps"
+    "sleep": {
+        "name": "sleep",
+        "type": "alone",
+        "action": "sleeps"
     },
-    "run":{
-        "name":"run",
-        "type":"alone",
-        "action":"runs"
+    "run": {
+        "name": "run",
+        "type": "alone",
+        "action": "runs"
     },
-    "panic":{
-        "name":"panic",
-        "type":"alone",
-        "action":"panics"
+    "panic": {
+        "name": "panic",
+        "type": "alone",
+        "action": "panics"
     },
-    "nya":{
-        "name":"neko",
-        "type":"alone",
+    "nya": {
+        "name": "neko",
+        "type": "alone",
         "action": "~nya"
     },
-    "yes":{
-        "name":"approve",
-        "type":"alone",
+    "yes": {
+        "name": "approve",
+        "type": "alone",
         "action": "approves"
     },
-    "no":{
-        "name":"no",
-        "type":"alone",
+    "no": {
+        "name": "no",
+        "type": "alone",
         "action": "disapproes"
     },
-    "smile":{
-        "name":"smile",
-        "type":"alone",
-        "action":"smiles"
+    "smile": {
+        "name": "smile",
+        "type": "alone",
+        "action": "smiles"
     },
-    "eat":{
-        "name":"eat",
-        "type":"alone",
-        "action":"eats"
+    "eat": {
+        "name": "eat",
+        "type": "alone",
+        "action": "eats"
     },
-    "counter":{
-        "name":"counter",
-        "type":"alone",
-        "action":"counters"
+    "counter": {
+        "name": "counter",
+        "type": "alone",
+        "action": "counters"
     },
-    "scream":{
-        "name":"scream",
-        "type":"alone",
+    "scream": {
+        "name": "scream",
+        "type": "alone",
         "action": "screams"
     },
-    "drink":{
-        "name":"drink",
-        "type":"alone",
-        "action":"drinks"
+    "drink": {
+        "name": "drink",
+        "type": "alone",
+        "action": "drinks"
     },
-    
-    
-    
-    "kick":{
-        "name":"kick",
-        "type":"social",
-        "action":"kicks"
+    "kick": {
+        "name": "kick",
+        "type": "social",
+        "action": "kicks"
     },
-    "snuggle":{
-        "name":"snuggle",
-        "type":"social",
-        "action":"snuggles with"
+    "snuggle": {
+        "name": "snuggle",
+        "type": "social",
+        "action": "snuggles with"
     },
-    "hold":{
-        "name":"hold hands",
-        "type":"social",
-        "action":"holds hands with"
+    "hold": {
+        "name": "hold hands",
+        "type": "social",
+        "action": "holds hands with"
     },
-    "boop":{
-        "name":"cheek kiss",
-        "type":"social",
-        "action":"kisses"
+    "boop": {
+        "name": "cheek kiss",
+        "type": "social",
+        "action": "kisses"
     },
-   "hug": {
+    "hug": {
         "name": "hug",
         "type": "social",
         "action": "hugs"
@@ -162,5 +158,10 @@
         "name": "stab",
         "type": "social",
         "action": "stabs"
+    },
+    "highfive": {
+        "name": "highfive",
+        "type": "social",
+        "action": "highfives"
     }
 }
