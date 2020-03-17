@@ -7,3 +7,4 @@ from . import voting
 from . import chat
 from . import lmgtfy
 from . import relations
+from . import quote

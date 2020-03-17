@@ -14,6 +14,7 @@ import extra
 class DemonOverlord(discord.Client):
 
     async def on_ready(self: discord.Client) -> None:
+        print(sys.argv)
         dirname = os.path.dirname(os.path.abspath(__file__))
 
         # load interactions
@@ -65,7 +66,8 @@ class DemonOverlord(discord.Client):
         
 
         self.lastCall = {
-            "bubbles": []
+            "bubbles": [],
+            "quote":0
         }
         # mongo stuff
         #self.mongo = pymongo.MongoClient(mongoUri, port=47410)
@@ -75,6 +77,7 @@ class DemonOverlord(discord.Client):
         tenorkey = os.environ["TENOR_KEY"]
         self.tenor = extra.api.tenor.TenorAPI(tenorkey)
 
+        self.inspirobot = extra.api.inspirobot.InspirobotAPI()
         # change bot's status
         await self.change_presence(activity=await misc.getRandStatus())
 
@@ -108,7 +111,8 @@ class DemonOverlord(discord.Client):
         # no reacting to own reactions
         if user == self.user:
             return
-
+        elif self.config == None:
+            return
         # find the vote
         title = re.compile("\*\*(.*)\*\*")
         result = list(filter(lambda vote: vote[1]['title'] == title.findall(reaction.message.content)[1] and vote[1]["active"], enumerate(self.votes)))
@@ -124,7 +128,7 @@ class DemonOverlord(discord.Client):
     async def on_message(self: discord.Client, message: discord.Message) -> None:
 
         # handle all commands
-        if message.content.startswith(self.config["prefix"]) and message.author != self:
+        if message.content.startswith(self.config["dev_prefix"] if sys.argv[1] == "--dev" else self.config["prefix"]) and message.author != self:
             await misc.message_handler(self, message)
 
 
