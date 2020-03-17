@@ -9,7 +9,10 @@ async def quote_handler(bot:discord.Client, message:discord.Message, command:lis
         print(lastcall)
         
         if lastcall <= ratelimit:
-            await message.channel.send(f'**{bot.izzymojis["izzyangry"]} RATE LIMIT**\nSorry, but this command has a rate limit to prevent spam. please try again in `{ratelimit - lastcall} Seconds`')
+            remain = ratelimit - lastcall
+            minutes = remain //60
+            seconds = remain % 60
+            await message.channel.send(f'**{bot.izzymojis["izzyangry"]} RATE LIMIT**\nSorry, but this command has a rate limit to prevent spam. please try again in `{minutes} Minutes {seconds} Seconds`')
             return
 
         elif command[1] == "inspirobot":
