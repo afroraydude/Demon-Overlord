@@ -43,6 +43,9 @@ async def message_handler(bot:discord.Client, message:discord.Message) -> None:
 
     elif command[0] == "lmgtfy":
         await commands.lmgtfy.lmgtfy_handler(bot, message, command, devRole)
+    
+    elif command[0] == "quote":
+        await commands.quote.quote_handler(bot, message, command, devRole)
         
     # handle all interactions
     elif command[0] in bot.interactions.keys():
