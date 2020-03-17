@@ -56,18 +56,13 @@ class DemonOverlord(discord.Client):
         mongoUri = f"mongodb+srv://{dbuser}:{dbpass}@{dburl}"
 
 
-        # save all necessary things in the bot
-        devMode = True if sys.argv[1] == "--dev" else False
-        self.prefix = config["prefix"] if not devMode else config["dev_prefix"]
-        print(self.prefix)
-
         self.votes = []
         self.izzymojis = {}
 
 
         for key in self.config["izzymojis"].keys():
             self.izzymojis[key] = self.get_emoji(self.config["izzymojis"][key])
-
+        
 
         self.lastCall = {
             "bubbles": []
@@ -129,7 +124,7 @@ class DemonOverlord(discord.Client):
     async def on_message(self: discord.Client, message: discord.Message) -> None:
 
         # handle all commands
-        if message.content.startswith(self.prefix) and message.author != self:
+        if message.content.startswith(self.config["prefix"]) and message.author != self:
             await misc.message_handler(self, message)
 
 
