@@ -66,7 +66,8 @@ class DemonOverlord(discord.Client):
         
 
         self.lastCall = {
-            "bubbles": []
+            "bubbles": [],
+            "quote":[]
         }
         # mongo stuff
         #self.mongo = pymongo.MongoClient(mongoUri, port=47410)
@@ -76,6 +77,7 @@ class DemonOverlord(discord.Client):
         tenorkey = os.environ["TENOR_KEY"]
         self.tenor = extra.api.tenor.TenorAPI(tenorkey)
 
+        self.inspirobot = extra.api.inspirobot.InspirobotAPI()
         # change bot's status
         await self.change_presence(activity=await misc.getRandStatus())
 

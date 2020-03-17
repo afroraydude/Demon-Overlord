@@ -1,6 +1,6 @@
 import discord
 
-async def lmgtfy_handler(bot:discord.Client, message:discord.Message, command:list, devRole:discord.Role):
+async def lmgtfy_handler(bot:discord.Client, message:discord.Message, command:list, devRole:discord.Role) -> None:
     try:
         if len(command) >1:
             lookup = " ".join(command[1:]).replace(" ", "%20")
@@ -15,4 +15,4 @@ async def lmgtfy_handler(bot:discord.Client, message:discord.Message, command:li
         
     # NO NO NO NO, WHY U DO DIS???
     except Exception as e:
-        await message.channel.send(f"**{bot.izzymojis['izzyangry']} IZZY**\nHey {devRole.mention} There was an error.\n```\n{e}\n```")
+        await message.channel.send(f"**{bot.izzymojis['izzyangry']} LMGTFY**\nHey {devRole.mention} There was an error.\n```\n{e}\n```")
