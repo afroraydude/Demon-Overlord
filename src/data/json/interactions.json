@@ -153,5 +153,10 @@
         "name": "highfive",
         "type": "social",
         "action": "highfives"
+    },
+    "smug":{
+        "name":"smug",
+        "type":"alone",
+        "action":"smugs"
     }
 }
