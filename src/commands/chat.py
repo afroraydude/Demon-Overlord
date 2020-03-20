@@ -3,6 +3,7 @@ import discord
 async def chat_handler(bot: discord.Client, message: discord.Message, command: list, devRole: discord.Role) -> None:
 
     try:
+        command[3] = command[3].replace(" ", "_")
         category = "_".join(command[1:]).lower()
         categories = "\n".join([f'- {" ".join(x.split("_"))}' for x in bot.data["chat"].keys()])
         print(command)
