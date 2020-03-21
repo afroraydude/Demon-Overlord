@@ -1,0 +1,25 @@
+{
+    "default_prefix" :"-mao",
+    "data":{
+        "chat":[
+            "demon_speak",
+            "demonic_chanting",
+            "ear_hell",
+            "games",
+            "important",
+            "programmer_demons",
+            "artists_supporting_artists"
+        ]
+    },
+    "izzymojis": {
+        "izzyangry": 684123588927815710,
+        "Yay": 684280248128503855,
+        "witchcraft": 684135528047968386,
+        "izzyblush": 684118795069292552,
+        "izzydemon": 684124867024388162,
+        "thumbsup": 684127134704205866,
+        "what":685399354827079717,
+        "badplant":686301708607029255,
+        "done":684138794257088629
+    }
+}

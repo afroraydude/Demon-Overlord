@@ -1,0 +1,37 @@
+{
+    "help": [
+        "==== COMMANDS ====",
+        "- help         ::   sends this message",
+        "- hello        ::   says hello to the sender (has no special action)",
+        "- vote         ::   creates, removes or lists active votes",
+        "- izzy         ::   all things Izzy",
+        "- chat         ::   descriptions for all chats",
+        "- quote        ::   random quotes",
+        "\n==== CATEGORIES ====",
+        "- interactions ::  all the interaction commands (too long to be listed here)"
+    ],
+    "izzy": [
+        "- art      :: instagram accounts",
+        "- social   :: any other social media account",
+        "- shop     :: all da demonic merch",
+        "- website  :: The Overlords Website",
+        "- support  :: Make Sacrifices to the overlord (Kofi and other financial stuff)",
+        "- stickers :: List links to all sticker packs"
+    ],
+    "vote": [
+        "- list                       :: list all currently active votes",
+        "- create {name};{options}    :: creates a vote  with name {name} and all options separated by comma",
+        "- end {name}                 :: removes the active quote with name {name}"
+    ],
+    "interactions": {
+        "alone":[
+            "==== ALONE ===="
+        ],
+        "social":[
+            "==== SOCIAL ===="
+        ],
+        "music":[
+            "==== MUSIC ===="
+        ]
+    }
+}
