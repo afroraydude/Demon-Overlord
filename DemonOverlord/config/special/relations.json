@@ -1,6 +1,11 @@
 {
     "good": {
-        "friend": {}
+        "friend": {
+
+        },
+        "marry":{
+            
+        }
     },
     "bad": {
         "enemy": {

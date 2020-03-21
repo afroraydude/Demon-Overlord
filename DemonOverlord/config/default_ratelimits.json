@@ -1,38 +1,38 @@
 {
     "all":{
         "limit":0,
-        "global":false
+        "user_dependent":true
     },
     "interaction":{
         "limit":0,
-        "global":false
+        "user_dependent":true
     },
     "relation":{
         "limit":0,
-        "global":false
+        "user_dependent":true
     },
     "quote":{
         "limit":300,
-        "global":true
+        "user_dependent":true
     },
     "bubble":{
         "limit":0,
-        "global":false
+        "user_dependent":true
     },
     "vote":{
         "limit":0,
-        "global":false
+        "user_dependent":true
     },
     "izzy":{
         "limit":0,
-        "global":false
+        "user_dependent":true
     },
     "help":{
         "limit":0,
-        "global":false
+        "user_dependent":true
     },
     "chat":{
         "limit":0,
-        "global":false
+        "user_dependent":true
     }
 }

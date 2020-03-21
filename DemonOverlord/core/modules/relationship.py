@@ -56,6 +56,7 @@ class Relationship:
         self.status = status
 
 
+
 class GoodRelationship(Relationship):
     def __init__(self, status: str, user: User):
         super().__init__(status, user)
