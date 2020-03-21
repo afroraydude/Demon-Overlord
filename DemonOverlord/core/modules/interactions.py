@@ -4,9 +4,9 @@ import discord
 from DemonOverlord.core.util.responses import ImageResponse
 from DemonOverlord.core.util.api import TenorAPI
 
+
 async def handler(command) -> discord.Embed:
     pass
-    
 
 
 # base interaction
@@ -16,9 +16,9 @@ class Interaction(ImageResponse):
         self.type = type
         self.user = user
 
-    def add_message(self, msg:str) -> None:
+    def add_message(self, msg: str) -> None:
         self.add_field(name="Message:", value=msg)
-    
+
 
 # social Interaction
 class SocialInteraction(Interaction):

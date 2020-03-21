@@ -17,7 +17,7 @@ class RateLimiter:
             self.lastExec[key] = template
             if key != "all":
                 self.limits[key] = RateLimit(
-                    limits_raw[key]["limit"], True) # to be assumed true for now
+                    limits_raw[key]["limit"], True)  # to be assumed true for now
 
     # use the ratelimiter
     def exec(self, command) -> bool:
@@ -34,9 +34,7 @@ class RateLimiter:
         # is it registered at all??
         if not command.action in self.lastExec.keys():
             self.lastExec[command.action] = exec_template
-
-
-        # is this command limited? overwrites global limis 
+        # is this command limited? overwrites global limis
         if command.action in self.limits.keys():
             last_exec = list(filter(lambda x: x[1]["user"] == command.invoked_by.id, enumerate(
                 self.lastExec[command.action]["ulist"])))
@@ -44,9 +42,10 @@ class RateLimiter:
             if len(last_exec) > 0:
 
                 if self.limits[command.action].test(int(time()), last_exec[0][1]):
-                    self.lastExec[command.action]["ulist"][last_exec[0][0]]["timestamp"] = int(time())
+                    self.lastExec[command.action]["ulist"][last_exec[0]
+                                                           [0]]["timestamp"] = int(time())
                     return True
-                else: 
+                else:
                     return False
 
             else:
@@ -67,9 +66,10 @@ class RateLimiter:
             if len(last_exec) > 0:
                 print(self.all.test(int(time()), last_exec[0][1]))
                 if self.all.test(int(time()), last_exec[0][1]):
-                    self.lastExec["all"]["ulist"][last_exec[0][0]]["timestamp"] = int(time())
+                    self.lastExec["all"]["ulist"][last_exec[0]
+                                                  [0]]["timestamp"] = int(time())
                     return True
-                else: 
+                else:
                     return False
 
             else:

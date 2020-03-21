@@ -1,9 +1,11 @@
 import discord
-import sys, os
+import sys
+import os
 
 # core imports
 from DemonOverlord.core.util.config import CommandConfig, BotConfig, DatabaseConfig, APIConfig, RelationshipConfig
 from DemonOverlord.core.util.command import Command
+
 
 class DemonOverlord(discord.Client):
 
@@ -28,9 +30,7 @@ class DemonOverlord(discord.Client):
         print("====== CONNECTED SUCCESSFULLY ======")
         print(f'Connected as: {self.user.name}')
 
-    async def on_message(self, message:discord.Message):
+    async def on_message(self, message: discord.Message):
         if message.author != self.user and message.content.startswith(self.config.mode["prefix"]):
             command = Command(self, message)
             await command.exec()
-
-    

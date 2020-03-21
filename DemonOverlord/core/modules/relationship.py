@@ -19,7 +19,7 @@ import discord
 
 class User:
     __slots__ = (
-        "uid", "relationships", "build_relationship", "__dict__"
+        "uid", "relationships"
     )
 
     def __init__(self, user: discord.Member = None, user_dict: dict = None):

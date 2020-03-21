@@ -1,7 +1,6 @@
 import discord
 
 
-
 class TextResponse(discord.Embed):
     def __init__(self, title: str, color: int = 0xffffff, icon: str = "", msg: dict = None):
         super().__init__(title=f'{icon} {title}', color=color)
@@ -18,7 +17,8 @@ class RateLimitResponse(TextResponse):
             icon='⛔'
         )
         self.add_field(name="Full Command:", value=command.full, inline=False)
-        self.add_field(name="Message", value="Sorry, but this command is rate limited. Please be patient and don't spam the command.")
+        self.add_field(
+            name="Message", value="Sorry, but this command is rate limited. Please be patient and don't spam the command.")
 
 
 class ErrorResponse(TextResponse):
@@ -29,7 +29,8 @@ class ErrorResponse(TextResponse):
             icon='🚫'
         )
         self.add_field(name="Full Command:", value=command.full, inline=False)
-        self.add_field(name="Traceback:", value=f'```\n{tb}\n```', inline=False)
+        self.add_field(name="Traceback:",
+                       value=f'```\n{tb}\n```', inline=False)
 
 
 class ImageResponse(discord.Embed):

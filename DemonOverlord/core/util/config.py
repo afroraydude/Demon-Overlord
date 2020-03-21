@@ -1,5 +1,6 @@
 import discord
-import os, sys
+import os
+import sys
 import json
 
 from DemonOverlord.core.util.api import TenorAPI, InspirobotAPI
@@ -10,7 +11,8 @@ class BotConfig(object):
     __slots__ = (
         "raw", "token", "izzymojis", "prefix", "mode", "env"
     )
-    def __init__(self, bot:discord.Client, confdir:str, argv:list):
+
+    def __init__(self, bot: discord.Client, confdir: str, argv: list):
         # set all vars None first, this also gives us a list of all currently available vars
         self.raw = None
         self.mode = None
@@ -23,20 +25,20 @@ class BotConfig(object):
         # get the raw config.json
         with open(os.path.join(confdir, "config.json")) as f:
             self.raw = json.load(f)
-            
+
         # generate izzymoji list
         for key in self.raw["izzymojis"].keys():
             self.izzymojis[key] = self.raw["izzymojis"][key]
-        
+
         # create config from cli stuff
         for arg in argv:
             # set bot mode
             if arg in self.raw["cli_options"]["bot_modes"]:
                 self.mode = self.raw["cli_options"]["bot_modes"][argv[1]]
-            else: 
+            else:
                 self.raw["cli_options"]["bot_modes"]["--prod"]
         print(self.mode)
-        # set the token   
+        # set the token
         self.token = os.environ.get(self.mode["tokenvar"])
         self.env = self.raw["env_vars"]
 
@@ -58,7 +60,8 @@ class APIConfig(object):
     __slots__ = (
         "tenor", "inspirobot"
     )
-    def __init__(self, config:BotConfig):
+
+    def __init__(self, config: BotConfig):
         # var init
         self.tenor = None
         self.inspirobot = InspirobotAPI()
@@ -67,7 +70,8 @@ class APIConfig(object):
         tenor_key = os.environ.get(config.env["api"]["tenor"][0])
         if tenor_key:
             self.tenor = TenorAPI(tenor_key)
-        
+
+
 class DatabaseConfig(object):
     def __init__(self):
         pass
@@ -77,10 +81,11 @@ class CommandConfig(object):
     __slots__ = (
         "ratelimits", "interactions", "relations"
     )
-    def __init__(self, confdir:str):
+
+    def __init__(self, confdir: str):
         with open(os.path.join(confdir, "default_ratelimits.json")) as f:
             self.ratelimits = RateLimiter(json.load(f))
-            
+
         with open(os.path.join(confdir, "special/interactions.json")) as f:
             self.interactions = json.load(f)
 
@@ -94,5 +99,5 @@ class HelpConfig(object):
 
 
 class RelationshipConfig(object):
-    def __init__(self, db:DatabaseConfig):
+    def __init__(self, db: DatabaseConfig):
         pass
