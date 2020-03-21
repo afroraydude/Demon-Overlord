@@ -10,9 +10,15 @@ class TextResponse(discord.Embed):
             self.add_field(name=msg["name"], value=msg["value"], inline=False)
 
 
-class ApproveResponse(TextResponse):
-    def __init__(self, msg: str, command):
-        pass
+class RateLimitResponse(TextResponse):
+    def __init__(self, command):
+        super().__init__(
+            f'RATELIMIT ERROR FOR: {command.action} ',
+            color=0xff0000,
+            icon='⛔'
+        )
+        self.add_field(name="Full Command:", value=command.full, inline=False)
+        self.add_field(name="Message", value="Sorry, but this command is rate limited. Please be patient and don't spam the command.")
 
 
 class ErrorResponse(TextResponse):

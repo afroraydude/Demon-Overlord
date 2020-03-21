@@ -1,11 +1,12 @@
 import discord
 
-from DemonOverlord.core.modules import hello, quote
+from DemonOverlord.core.modules import hello, quote, interactions
+from DemonOverlord.core.util.responses import RateLimitResponse, ErrorResponse
 
 class Command(object):
     __slots__ = (
         # properties
-        "invoked_by", "mentions", "prefix", "command", "action", "params", "bot", "channel", "full"
+        "invoked_by", "mentions", "prefix", "command", "action", "params", "bot", "channel", "full", "special", "message"
     )
     def __init__(self, bot:discord.Client, message:discord.message):
         self.invoked_by = message.author
@@ -14,6 +15,9 @@ class Command(object):
         self.bot = bot
         self.channel = message.channel
         self.full = message.content.replace("\n", " ")
+        self.special = None
+        self.message = message
+
         # create the command
         to_filter = ["", " ", None] 
         temp = list( filter( lambda x : not x in to_filter,  message.content.split(" ")))
@@ -24,6 +28,7 @@ class Command(object):
         # WE DO
         if temp[1] in bot.commands.interactions.keys():
             self.action = "interaction"
+            self.special = bot.commands.interactions
             self.params = temp[2:] if len(temp) > 2 else None
 
         # WE LUV 
@@ -35,16 +40,37 @@ class Command(object):
         else:
             self.action = temp[1]
             self.params = temp[2:] if len(temp) > 3 else None 
+
     
     async def exec(self):
 
+        if self.bot.commands.ratelimits.exec(self):
 
-        if self.action == "hello":
-            response = await hello.handler(self)
-        elif self.action == "quote":
-            response = await  quote.handler(self)
+            if self.action == "hello":
+                response = await hello.handler(self)
+            elif self.action == "quote":
+                response = await  quote.handler(self)
+            elif self.action == "interactions":
+                response = interactions.handler(self)
+        else:
+            # special case error 
+            response = RateLimitResponse(self)
+        
+        message = await self.channel.send(embed=response)
+        
 
-        await self.channel.send(embed=response)
+        # remove traces
+        if isinstance(response, (RateLimitResponse, ErrorResponse)):
+            await message.delete(delay=10)
+
+            if isinstance(response, (ErrorResponse)):
+
+                # send an error meassage to dev channel
+                dev_channel = message.guild.get_channel(684100408700043303)
+                await dev_channel.send(embed=response)
+
+        await self.message.delete(delay=1)
+        
         
     
     async def rand_status(self):

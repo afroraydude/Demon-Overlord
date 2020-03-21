@@ -1,7 +1,6 @@
 {
     "all":{
-        "limit":0,
-        "user_dependent":true
+        "limit":10
     },
     "interaction":{
         "limit":0,
@@ -12,11 +11,11 @@
         "user_dependent":true
     },
     "quote":{
-        "limit":300,
+        "limit":120,
         "user_dependent":true
     },
     "bubble":{
-        "limit":0,
+        "limit":120,
         "user_dependent":true
     },
     "vote":{

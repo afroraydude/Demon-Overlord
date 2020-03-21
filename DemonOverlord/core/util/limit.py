@@ -5,14 +5,19 @@ from time import time
 class RateLimiter:
     # create the rate limiter
     def __init__(self, limits_raw: dict):
-        self.all = limits_raw["all"]
+        self.all = RateLimit(limits_raw["all"]["limit"], True)
         self.limits = {}
         self.lastExec = {}
 
         for key in limits_raw.keys():
+            template = {
+                "name": key,
+                "ulist": list()
+            }
+            self.lastExec[key] = template
             if key != "all":
                 self.limits[key] = RateLimit(
-                    limits_raw[key]["limit"], limits_raw[key]["user_dependent"])
+                    limits_raw[key]["limit"], True) # to be assumed true for now
 
     # use the ratelimiter
     def exec(self, command) -> bool:
@@ -27,52 +32,57 @@ class RateLimiter:
         }
 
         # is it registered at all??
-        if not command.action in self.lastExec and not command.action in self.limits:
+        if not command.action in self.lastExec.keys():
             self.lastExec[command.action] = exec_template
-            self.limits[command.action] = RateLimit(0, True)
 
-        # welp we know the command but it hasn't been used yet
-        if not command.action in self.lastExec and command.action in self.limits:
-            self.lastExec[command.action] = exec_template
+
+        # is this command limited? overwrites global limis 
+        if command.action in self.limits.keys():
+            last_exec = list(filter(lambda x: x[1]["user"] == command.invoked_by.id, enumerate(
+                self.lastExec[command.action]["ulist"])))
+
+            if len(last_exec) > 0:
+
+                if self.limits[command.action].test(int(time()), last_exec[0][1]):
+                    self.lastExec[command.action]["ulist"][last_exec[0][0]]["timestamp"] = int(time())
+                    return True
+                else: 
+                    return False
+
+            else:
+                # set the user profile, first execution so we can let it pass
+                self.lastExec[command.action]["ulist"].append(
+                    {
+                        "user": command.invoked_by.id,
+                        "timestamp": int(time())
+                    }
+                )
+                return True
 
         # do he have a global limit?
-        if self.all != 0:
-            if int(time()) - self.lastExec["all"] <= self.all:
-                return False
+        if self.all.limit != 0:
+            last_exec = list(filter(lambda x: x[1]["user"] == command.invoked_by.id, enumerate(
+                self.lastExec["all"]["ulist"])))
+
+            if len(last_exec) > 0:
+                print(self.all.test(int(time()), last_exec[0][1]))
+                if self.all.test(int(time()), last_exec[0][1]):
+                    self.lastExec["all"]["ulist"][last_exec[0][0]]["timestamp"] = int(time())
+                    return True
+                else: 
+                    return False
+
             else:
-                self.lastExec["all"] = time()
+                # set the user profile, first execution so we can let it pass
+                self.lastExec["all"]["ulist"].append(
+                    {
+                        "user": command.invoked_by.id,
+                        "timestamp": int(time())
+                    }
+                )
                 return True
-
-        # do we have a comand limit?
-        elif command.action in self.limits.keys():
-            if self.limits[command.action].limt == 0:
-                return True
-            else:
-                if self.limits[command.action].user_dependent:
-                    last_exec = list(filter(lambda x: x[1]["user"] == command.invoked_by.id, enumerate(
-                        self.lastExec[command.action]["ulist"])))
-
-                    # user has used this command before
-                    if len(last_exec) > 0:
-                        allow = self.limits[command.action].test(
-                            int(time()), last_exec[0][1])
-                        self.lastExec[command.action]["ulist"][last_exec[0][0]]["timestamp"] = int(
-                            time())
-                        return allow
-
-                    # user never used this command
-                    else:
-                        # set the user profile, first execution so we can let it pass
-                        self.lastExec[command.action].append({
-                            {
-                                "user": command.invoked_by.id,
-                                "timestamp": int(time())
-                            }
-                        })
-                        return True
-        else: 
+        else:
             return False
-                    
 
 
 # rate limit object

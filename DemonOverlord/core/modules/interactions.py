@@ -6,6 +6,8 @@ from DemonOverlord.core.util.api import TenorAPI
 
 async def handler(command) -> discord.Embed:
     pass
+    
+
 
 # base interaction
 class Interaction(ImageResponse):
