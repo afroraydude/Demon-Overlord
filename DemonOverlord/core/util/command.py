@@ -5,10 +5,6 @@ from DemonOverlord.core.util.responses import RateLimitResponse, ErrorResponse
 
 
 class Command(object):
-    __slots__ = (
-        # properties
-        "invoked_by", "mentions", "prefix", "command", "action", "params", "bot", "channel", "full", "special", "message"
-    )
 
     def __init__(self, bot: discord.Client, message: discord.message):
         self.invoked_by = message.author

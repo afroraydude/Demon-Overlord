@@ -8,9 +8,6 @@ from DemonOverlord.core.util.limit import RateLimiter
 
 
 class BotConfig(object):
-    __slots__ = (
-        "raw", "token", "izzymojis", "prefix", "mode", "env"
-    )
 
     def __init__(self, bot: discord.Client, confdir: str, argv: list):
         # set all vars None first, this also gives us a list of all currently available vars
@@ -57,9 +54,6 @@ class BotConfig(object):
 
 
 class APIConfig(object):
-    __slots__ = (
-        "tenor", "inspirobot"
-    )
 
     def __init__(self, config: BotConfig):
         # var init
@@ -78,9 +72,6 @@ class DatabaseConfig(object):
 
 
 class CommandConfig(object):
-    __slots__ = (
-        "ratelimits", "interactions", "relations"
-    )
 
     def __init__(self, confdir: str):
         with open(os.path.join(confdir, "default_ratelimits.json")) as f:

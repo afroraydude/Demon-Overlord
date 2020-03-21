@@ -18,9 +18,6 @@ import discord
 
 
 class User:
-    __slots__ = (
-        "uid", "relationships"
-    )
 
     def __init__(self, user: discord.Member = None, user_dict: dict = None):
         self.uid = user.id
@@ -48,9 +45,6 @@ class User:
 
 
 class Relationship:
-    __slots__ = (
-        "user", "status"
-    )
     def __init__(self, status: str, user: User):
         self.user = user
         self.status = status

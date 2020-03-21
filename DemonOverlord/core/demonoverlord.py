@@ -8,11 +8,6 @@ from DemonOverlord.core.util.command import Command
 
 
 class DemonOverlord(discord.Client):
-
-    __slots__ = (
-        "config", "commands", "database", "api"
-    )
-
     def __init__(self, argv):
         workdir = os.path.dirname(os.path.abspath(__file__))
         confdir = os.path.join(workdir, "../config")

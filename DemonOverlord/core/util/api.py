@@ -5,9 +5,6 @@ from random import randint
 
 
 class API:
-    __slots = (
-        "apikey", "name", "url"
-    )
     def __init__(self, apikey:str, name:str, url:str):
         self.apikey = apikey
         self.name = name
