@@ -5,7 +5,10 @@ from DemonOverlord.core.modules.interactions.interactions import *
 class Command(object):
     __slots__ = (
         # properties
-        "invoked_by", "mentions", "prefix", "command", "action", "params"
+        "invoked_by", "mentions", "prefix", "command", "action", "params", "bot"
+
+        # methods
+        "exec", "rand_status"
     )
     def __init__(self, bot:discord.Client, message:discord.message):
         self.invoked_by = message.author
@@ -33,11 +36,11 @@ class Command(object):
             self.action = temp[2]
             self.params = temp[3:] if len(temp) > 3 else None 
     
-    async def exec(self, fun):
+    async def exec(self, bot:discord.Member):
         pass
         
     
-    async def getRandStatus(self):
+    async def rand_status(self):
         pass
 
     

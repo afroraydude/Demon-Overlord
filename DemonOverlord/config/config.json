@@ -1,7 +1,35 @@
 {
-    "default_prefix" :"-mao",
-    "data":{
-        "chat":[
+    "cli_options": {
+        "bot_modes": {
+            "--dev": {
+                "name": "development",
+                "prefix": "-testmao",
+                "tokenvar":"DISCORD_TESTBOT_TOKEN"
+            },
+            "--prod": {
+                "name": "production",
+                "prefix": "-mao",
+                "tokenvar":"DISCORD_MAIN_TOKEN"
+            }
+        }
+    },
+    "env_vars":{
+        "db":{
+            "mongodb":[
+                "MONGO_URL",
+                "MONGO_USER",
+                "MONGO_PASS"
+            ]
+        },
+        "api":{
+            "tenor":[
+                "TENOR_TOKEN"
+            ]
+        }
+        
+    },
+    "data": {
+        "chat": [
             "demon_speak",
             "demonic_chanting",
             "ear_hell",
@@ -18,8 +46,8 @@
         "izzyblush": 684118795069292552,
         "izzydemon": 684124867024388162,
         "thumbsup": 684127134704205866,
-        "what":685399354827079717,
-        "badplant":686301708607029255,
-        "done":684138794257088629
+        "what": 685399354827079717,
+        "badplant": 686301708607029255,
+        "done": 684138794257088629
     }
 }
