@@ -19,7 +19,7 @@
                 "syntax": "hello",
                 "description": "Responds by greeting the user. no extra actions needed.",
                 "ratelimit": {
-                    "limit": 0,
+                    "limit": 30,
                     "user_dependent": true
                 },
                 "actions": null

@@ -1,10 +1,10 @@
 {
     "good": {
         "friend": {
-
+            "multiple": true
         },
-        "marry":{
-            
+        "spouse":{
+            "multiple": false
         }
     },
     "bad": {
