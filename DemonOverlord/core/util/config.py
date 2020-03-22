@@ -25,7 +25,7 @@ class BotConfig(object):
 
         # generate izzymoji list
         for key in self.raw["izzymojis"].keys():
-            self.izzymojis[key] = self.raw["izzymojis"][key]
+            self.izzymojis[key] = bot.get_emoji(self.raw["izzymojis"][key])
 
         # create config from cli stuff
         for arg in argv:
@@ -77,8 +77,8 @@ class CommandConfig(object):
         self.ratelimits = None
         self.interactions = None
         self.relations = None
-        self.help = None
-
+        self.command_info = None
+        self.list = []
         with open(os.path.join(confdir, "default_ratelimits.json")) as f:
             self.ratelimits = RateLimiter(json.load(f))
 
@@ -88,15 +88,14 @@ class CommandConfig(object):
         with open(os.path.join(confdir, "special/relations.json")) as f:
             self.relations = json.load(f)
         
-        with open(os.path.join(confdir, "help.json")) as f:
-            self.help = json.load(f)
+        with open(os.path.join(confdir, "cmd_info.json")) as f:
+            self.command_info = json.load(f)
 
-
-class HelpConfig(object):
-    def __init__(self):
-        pass
-
+        for i in self.command_info.keys():
+            self.command_info[i]
+            for j in self.command_info[i]["commands"]:
+                self.list.append(j)
 
 class RelationshipConfig(object):
-    def __init__(self, db: DatabaseConfig):
+    def __init__(self, db_config:DatabaseConfig):
         pass

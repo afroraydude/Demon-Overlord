@@ -1,0 +1,221 @@
+{
+    "help": {
+        "command_syntax": "help {command}",
+        "description": "This shows all Comands and how to use them. To get more info, use this command with a command or a category.",
+        "timeout": 25,
+        "commands": [
+            {
+                "command": "help",
+                "syntax": "help {command}",
+                "description": "Calls this Help page.",
+                "ratelimit": {
+                    "limit": 0,
+                    "user_dependent": true
+                },
+                "actions": null
+            },
+            {
+                "command": "hello",
+                "syntax": "hello",
+                "description": "Responds by greeting the user. no extra actions needed.",
+                "ratelimit": {
+                    "limit": 0,
+                    "user_dependent": true
+                },
+                "actions": null
+            },
+            {
+                "command": "izzy",
+                "syntax": "izzy {action}",
+                "description": "Shows Information about Izzy's pages, including some hidden stuff.",
+                "ratelimit": {
+                    "limit": 10,
+                    "user_dependent": true
+                },
+                "actions": [
+                    {
+                        "action": "art",
+                        "description": "Our overlord's instagram accounts.",
+                        "usage": "izzy art",
+                        "params": null
+                    },
+                    {
+                        "action": "social",
+                        "description": "Our overlord's social Media Accounts.",
+                        "usage": "izzy social",
+                        "params": null
+                    },
+                    {
+                        "action": "shop",
+                        "description": "Find all the links to her shops.",
+                        "usage": "izzy shop",
+                        "params": null
+                    },
+                    {
+                        "action": "website",
+                        "description": "a link to Izzy's website. HOW FUN.",
+                        "usage": "izzy website",
+                        "params": null
+                    },
+                    {
+                        "action": "stickers",
+                        "description": "Get links to all available sticker packs.",
+                        "usage": "izzy stickers",
+                        "params": null
+                    }
+                ]
+            }
+        ],
+        "categories": [
+            {
+                "command": "interactions",
+                "description": "Commands that allow gif based interactions between server members."
+            },
+            {
+                "command": "relations",
+                "description": "Commands that allow relationships between server members."
+            },
+            {
+                "command": "utility",
+                "description": "useful bot commands to manage certain things and get info about stuff."
+            },
+            {
+                "command": "admin",
+                "description": "All the commands related to administration. Only Developers and Moderators can use this"
+            },
+            {
+                "command": "fun",
+                "description": "commands that have no purpose but fun itself."
+            }
+        ]
+    },
+    "interactions": {
+        "command_syntax": "{action} {@user}",
+        "description": "Commands for easier interactions",
+        "timeout": 25,
+        "commands": []
+    },
+    "relations": {
+        "command_syntax": "{command} {action} {@user}",
+        "description": "",
+        "timeout": 25,
+        "commands": []
+    },
+    "utility": {
+        "command_syntax": "{command} {action} {args}",
+        "timeout": 20,
+        "description": "Commands that can be used to get info and tools to make stuff easier",
+        "commands": [
+            {
+                "command": "chat",
+                "description": "shows information about the Chats on the Server.",
+                "ratelimit": {
+                    "limit": 0,
+                    "user_dependent": true
+                },
+                "actions": null
+            },
+            {
+                "command": "vote",
+                "syntax": "vote {action} {params}",
+                "description": "creates or removes a vote.",
+                "ratelimit": {
+                    "limit": 0,
+                    "user_dependent": true
+                },
+                "actions": [
+                    {
+                        "action": "create",
+                        "description": "creates a vote with given parameters.",
+                        "usage": "create {name};{options}",
+                        "params": [
+                            {
+                                "name": "name",
+                                "description": "The Name of the vote."
+                            },
+                            {
+                                "name": "options",
+                                "description": "a comma separated list of vote options."
+                            }
+                        ]
+                    },
+                    {
+                        "action": "end",
+                        "description": "ends the vote ",
+                        "usage": "vote end {name}",
+                        "params": [
+                            {
+                                "name": "name",
+                                "description": "The Name of the vote."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "admin": {
+        "command_syntax": "{command} {action} {params}",
+        "description": "All the commands for bot and server administration",
+        "timeout": 15,
+        "commands": [
+            {
+                "command": "limit",
+                "syntax": "limit {action} {params}",
+                "description": "a command to add or remove a limit from a command or all commands",
+                "ratelimit": {
+                    "limit": 0,
+                    "user_dependent": true
+                },
+                "actions": [
+                    {
+                        "action": "set",
+                        "description": "creates a vote with given parameters.",
+                        "usage": "set {command} {time} <{local}>",
+                        "params": [
+                            {
+                                "name": "command",
+                                "description": "The Name of the command to limit or 'all'"
+                            },
+                            {
+                                "name": "interval",
+                                "description": "A time interval in seconds."
+                            },
+                            {
+                                "name": "local",
+                                "description": "can be `yes/no`. makes limit user depedent"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "fun": {
+        "command_syntax": "{command} {action} {params}",
+        "description": "All the Fun commands UwU",
+        "timeout": 15,
+        "commands": [
+            {
+                "command": "quote",
+                "syntax": "quote",
+                "description": "Gets a random Inspirational Image Quote from Inspirobot.",
+                "ratelimit": {
+                    "limit": 0,
+                    "user_dependent": true
+                },
+                "actions": null
+            },
+            {
+                "command": "bubble",
+                "syntax": "bubble",
+                "description": "creates a 10x10 grid of 'pop' spoilers where one may be replaced with nut or uwu",
+                "ratelimit": {
+                    "limit": 0,
+                    "user_dependent": true
+                },
+                "actions": null
+            }
+        ]
+    }
+}

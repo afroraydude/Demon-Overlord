@@ -9,6 +9,7 @@ from DemonOverlord.core.util.command import Command
 
 class DemonOverlord(discord.Client):
     def __init__(self, argv):
+        super().__init__()
         workdir = os.path.dirname(os.path.abspath(__file__))
         confdir = os.path.join(workdir, "../config")
 
@@ -18,8 +19,6 @@ class DemonOverlord(discord.Client):
         self.database = DatabaseConfig()
         self.api = APIConfig(self.config)
         self.relationships = RelationshipConfig(self.database)
-
-        super().__init__()
 
     async def on_ready(self):
         print("====== CONNECTED SUCCESSFULLY ======")

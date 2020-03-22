@@ -49,6 +49,8 @@ class Command(object):
                 response = await quote.handler(self)
             elif self.command == "help":
                 response = await help.handler(self)
+            else:
+                response = BadCommandResponse(self)
         else:
             # rate limit error
             response = RateLimitResponse(self)
