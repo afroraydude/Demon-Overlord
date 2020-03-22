@@ -9,7 +9,7 @@
                 "syntax": "help {command}",
                 "description": "Calls this Help page.",
                 "ratelimit": {
-                    "limit": 0,
+                    "limit": 10,
                     "user_dependent": true
                 },
                 "actions": null

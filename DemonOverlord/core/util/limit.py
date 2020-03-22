@@ -29,8 +29,8 @@ class RateLimiter(object):
 
             if len(last_exec) > 0:
 
-                if self.limits[command.action].test(int(time()), last_exec[0][1]):
-                    self.lastExec[command.action]["ulist"][last_exec[0]
+                if self.limits[command.command].test(int(time()), last_exec[0][1]):
+                    self.lastExec[command.command]["ulist"][last_exec[0]
                                                            [0]]["timestamp"] = int(time())
                     return True
                 else:
@@ -38,7 +38,7 @@ class RateLimiter(object):
 
             else:
                 # set the user profile, first execution so we can let it pass
-                self.lastExec[command.action]["ulist"].append(
+                self.lastExec[command.command]["ulist"].append(
                     {
                         "user": command.invoked_by.id,
                         "timestamp": int(time())
