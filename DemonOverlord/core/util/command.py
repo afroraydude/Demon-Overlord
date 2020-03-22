@@ -56,7 +56,7 @@ class Command(object):
 
         message = await self.channel.send(embed=response)
 
-        # remove traces
+        # remove error messages
         if isinstance(response, (RateLimitResponse, ErrorResponse)):
             await message.delete(delay=10)
 
