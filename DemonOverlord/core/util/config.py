@@ -74,13 +74,11 @@ class DatabaseConfig(object):
 class CommandConfig(object):
 
     def __init__(self, confdir: str):
-        self.ratelimits = None
         self.interactions = None
         self.relations = None
         self.command_info = None
         self.list = []
-        with open(os.path.join(confdir, "default_ratelimits.json")) as f:
-            self.ratelimits = RateLimiter(json.load(f))
+        self.ratelimits = None
 
         with open(os.path.join(confdir, "special/interactions.json")) as f:
             self.interactions = json.load(f)
@@ -92,10 +90,10 @@ class CommandConfig(object):
             self.command_info = json.load(f)
 
         for i in self.command_info.keys():
-            self.command_info[i]
             for j in self.command_info[i]["commands"]:
                 self.list.append(j)
-
+        
+        self.ratelimits = RateLimiter(self.list)
 class RelationshipConfig(object):
     def __init__(self, db_config:DatabaseConfig):
         pass

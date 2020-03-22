@@ -2,7 +2,7 @@ import discord
 from time import time
 
 
-class RateLimiter:
+class RateLimiter(object):
     # create the rate limiter
     def __init__(self, cmd_list: dict):
         self.limits = {}
@@ -22,7 +22,6 @@ class RateLimiter:
             "user": command.invoked_by.id,
             "timestamp": 0
         }
-
         # is this command limited? overwrites global limis
         if self.limits[command.command].limit > 0:
             last_exec = list(filter(lambda x: x[1]["user"] == command.invoked_by.id, enumerate(
@@ -47,11 +46,11 @@ class RateLimiter:
                 )
                 return True
         else:
-            return False
+            return True
 
 
 # rate limit object
-class RateLimit:
+class RateLimit(object):
     def __init__(self, limit: int, user_dependent: bool):
         self.limit = limit
         self.user_dependent = user_dependent
@@ -60,3 +59,6 @@ class RateLimit:
         if time - lastExec["timestamp"] < self.limit:
             return False
         return True
+
+    def __str__(self):
+        return f'{self.limit} - {self.user_dependent}'
