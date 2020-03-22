@@ -1,7 +1,7 @@
 import discord
 
-from DemonOverlord.core.modules import hello, quote, interactions
-from DemonOverlord.core.util.responses import RateLimitResponse, ErrorResponse
+from DemonOverlord.core.modules import hello, quote, help
+from DemonOverlord.core.util.responses import TextResponse, RateLimitResponse, ErrorResponse, BadCommandResponse
 
 
 class Command(object):
@@ -37,19 +37,18 @@ class Command(object):
 
         # Y'AIN'T SPECIAL, YA LIL BITCH
         else:
-            self.action = temp[1]
+            self.action = temp[2] if len(temp) > 2 else None
             self.params = temp[2:] if len(temp) > 3 else None
 
     async def exec(self) -> None:
-
         if self.bot.commands.ratelimits.exec(self):
 
-            if self.action == "hello":
+            if self.command == "hello":
                 response = await hello.handler(self)
-            elif self.action == "quote":
+            elif self.command == "quote":
                 response = await quote.handler(self)
-            elif self.action == "interactions":
-                response = interactions.handler(self)
+            elif self.command == "help":
+                response = await help.handler(self)
         else:
             # rate limit error
             response = RateLimitResponse(self)
@@ -57,8 +56,9 @@ class Command(object):
         message = await self.channel.send(embed=response)
 
         # remove error messages
-        if isinstance(response, (RateLimitResponse, ErrorResponse)):
-            await message.delete(delay=10)
+        if isinstance(response, (TextResponse)):
+            if response.timeout >0:
+                await message.delete(delay=response.timeout)
 
             if isinstance(response, (ErrorResponse)):
 

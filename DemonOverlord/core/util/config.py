@@ -74,6 +74,11 @@ class DatabaseConfig(object):
 class CommandConfig(object):
 
     def __init__(self, confdir: str):
+        self.ratelimits = None
+        self.interactions = None
+        self.relations = None
+        self.help = None
+
         with open(os.path.join(confdir, "default_ratelimits.json")) as f:
             self.ratelimits = RateLimiter(json.load(f))
 
@@ -82,6 +87,9 @@ class CommandConfig(object):
 
         with open(os.path.join(confdir, "special/relations.json")) as f:
             self.relations = json.load(f)
+        
+        with open(os.path.join(confdir, "help.json")) as f:
+            self.help = json.load(f)
 
 
 class HelpConfig(object):
