@@ -1,6 +1,6 @@
 import discord
 
-from DemonOverlord.core.modules import hello, quote, help, interactions
+from DemonOverlord.core.modules import hello, quote, help, interactions, izzy
 from DemonOverlord.core.util.responses import TextResponse, RateLimitResponse, ErrorResponse, BadCommandResponse
 
 
@@ -52,6 +52,8 @@ class Command(object):
                 response = await help.handler(self)
             elif self.command == "interactions":
                 response = await interactions.handler(self)
+            elif self.command == "izzy":
+                response = await izzy.handler(self)
             else:
                 response = BadCommandResponse(self)
         else:

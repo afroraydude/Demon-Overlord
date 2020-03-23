@@ -80,6 +80,7 @@ class CommandConfig(object):
         self.command_info = None
         self.list = []
         self.ratelimits = None
+        self.izzylinks = None
 
         with open(os.path.join(confdir, "special/interactions.json")) as f:
             self.interactions = json.load(f)
@@ -89,6 +90,9 @@ class CommandConfig(object):
         
         with open(os.path.join(confdir, "cmd_info.json")) as f:
             self.command_info = json.load(f)
+        
+        with open(os.path.join(confdir, "../data/command/izzylinks.json")) as f:
+            self.izzylinks = json.load(f)
 
         for i in self.command_info.keys():
             for j in self.command_info[i]["commands"]:
