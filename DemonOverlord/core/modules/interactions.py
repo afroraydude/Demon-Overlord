@@ -1,7 +1,7 @@
 import discord
 
 
-from DemonOverlord.core.util.responses import ImageResponse
+from DemonOverlord.core.util.responses import ImageResponse, BadCommandResponse
 
 
 async def handler(command) -> discord.Embed:
@@ -12,20 +12,49 @@ async def handler(command) -> discord.Embed:
 
     # what interaction do we have?
     if command.action in alone_interactions.keys():
-        return AloneInteractions(command.bot, alone_interactions[command.action], command.invoked_by)
-    elif command.action in social_interactions.keys():
-        pass
-    elif command.action in music_interactions.keys():
-        pass
+        url = await command.bot.api.tenor.get_interact(f'anime {alone_interactions[command.action]["query"]}')
+        interact = AloneInteractions(
+            command.bot, alone_interactions[command.action], command.invoked_by, url=url)
+    else:
+        # filter mentions from params. double mentions are ignored
+        if command.params != None and len(command.mentions) > 0:
+            command.params = command.params[len(command.mentions):]
+            mentions = [i.display_name for i in command.mentions]
+        elif command.params != None and command.params[0] == "everyone":
+            command.params = command.params[1:]  # filter everyone
+            mentions = ["everyone"]
+        else:
+            mentions = []
 
+        # what other type of interaction is this?
+        if command.action in social_interactions.keys():
+            # no mentions. not good
+            if len(mentions) < 1:
+                return BadCommandResponse(command)
+
+            url = await command.bot.api.tenor.get_interact(f'anime {social_interactions[command.action]["query"]}')
+            interact = SocialInteraction(
+                command.bot, social_interactions[command.action], command.invoked_by, mentions, url)
+
+        elif command.action in music_interactions.keys():
+            url = await command.bot.api.tenor.get_interact(f'anime {music_interactions[command.action]["query"]}')
+            interact = MusicInteraction(
+                command.bot, music_interactions[command.action], command.invoked_by, mentions, url)
+        else:
+            return BadCommandResponse(command)
+
+    if command.params != None and len(command.params) > 0:
+        interact.add_message(" ".join(command.params))
+
+    return interact
 # base interaction
 
 
 class Interaction(ImageResponse):
-    def __init__(self, bot: discord.Client, type: dict, user: discord.Member, title: str = "Interaction", color: int = 0xffffff):
-        super().__init__(title, url=bot.api.tenor.get_interact(f'anime {type["query"]}'),
-                         color=color, icon=bot.config.izzymojis[type["emoji"]])
-        self.type = type
+    def __init__(self, bot: discord.Client, interaction_type: dict, user: discord.Member, url: str, title: str = "Interaction", color: int = 0xffffff):
+        super().__init__(title, url=url,
+                         color=color, icon=bot.config.izzymojis[interaction_type["emoji"]])
+        self.interaction_type = type
         self.user = user
 
     def add_message(self, msg: str) -> None:
@@ -34,14 +63,19 @@ class Interaction(ImageResponse):
 
 # social Interaction
 class SocialInteraction(Interaction):
-    def __init__(self, type: dict, user: discord.Member, mentions: list):
-        super().__init__(type, user, color=0xa251af)
+    def __init__(self, bot: discord.Client, interaction_type: dict, user: discord.Member, mentions: list, url: str):
+        super().__init__(bot, interaction_type, user, url, color=0xa251af)
+        if len(mentions) > 1:
+            self.interact_with = f'{", ".join(mentions[:-1])} and {mentions[-1]}'
+        else:
+            self.interact_with = f'{mentions[0]}'
+        self.title = f'{user.display_name} {interaction_type["action"]} {self.interact_with}'
 
 
 # music interaction, a special case that has both Alone and Social aspects
 class MusicInteraction(Interaction):
-    def __init__(self, type: dict, user: discord.Member):
-        super().__init__(type, user, color=0x1db954)
+    def __init__(self, bot: discord.Client, interaction_type: dict, user: discord.Member, mentions: list, url: str):
+        super().__init__(bot, interaction_type, user, url, color=0x1db954)
 
         spotify = list(filter(lambda x: isinstance(
             x, discord.Spotify), user.activities))
@@ -49,10 +83,22 @@ class MusicInteraction(Interaction):
 
         if self.spotify != None:
             self.add_field(name=self.spotify.title,
-                           value=self.spotify.artist, inline=False)
+                           value=f'**Artist:** __{self.spotify.artist}__\n**Album:** __{self.spotify.album}__', inline=False)
+            self.url = f'https://open.spotify.com/track/{self.spotify.track_id}'
 
+        if len(mentions) > 1:
+            self.interact_with = f'{", ".join(mentions[:-1])} and {mentions[-1]}'
+            self.title = f'{user.display_name} {interaction_type["action"]} {self.interact_with}'
 
+        elif len(mentions) == 1:
+            self.interact_with = f'{mentions[0]}'
+            self.title = f'{user.display_name} {interaction_type["action"]} {self.interact_with}'
+        else:
+            self.title = f'{bot.config.izzymojis[interaction_type["emoji"]]} {user.display_name} {interaction_type["action"]["alone"]}'
+
+    
 # alone interaction, stuff you do yourself
 class AloneInteractions(Interaction):
-    def __init__(self, bot: discord.Client, type: dict, user: discord.Member):
-        super().__init__(bot, type, user, color=0xe2268f, title=f'{user.display_name} {type["action"]}.')
+    def __init__(self, bot: discord.Client, interaction_type: dict, user: discord.Member, url: str):
+        super().__init__(bot, interaction_type, user, url, color=0xe2268f,
+                         title=f'{user.display_name} {interaction_type["action"]}.')

@@ -93,12 +93,10 @@ class CommandConfig(object):
         for i in self.command_info.keys():
             for j in self.command_info[i]["commands"]:
                 self.list.append(j)
-
-        for i in self.interactions.keys():
-            for j in self.interactions[i].keys():
-                temp = self.interactions[i][j]
-                temp["ratelimit"] = self.command_info["interactions"]["ratelimit"]
-                self.list.append(temp)
+        self.list.append({
+            "command":"interaction", 
+            "ratelimit":self.command_info["interactions"]["ratelimit"]
+        })
         
         self.ratelimits = RateLimiter(self.list)
 class RelationshipConfig(object):
