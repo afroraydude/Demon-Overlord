@@ -26,7 +26,7 @@ class Command(object):
         # is it a special case??
         # WE DO
         if temp[1] in bot.commands.interactions["alone"].keys() or temp[1] in bot.commands.interactions["social"].keys() or temp[1] in bot.commands.interactions["music"].keys():
-            self.command = "interaction"
+            self.command = "interactions"
             self.action = temp[1]
             self.special = bot.commands.interactions
             self.params = temp[2:] if len(temp) > 2 else None
@@ -50,7 +50,7 @@ class Command(object):
                 response = await quote.handler(self)
             elif self.command == "help":
                 response = await help.handler(self)
-            elif self.command == "interaction":
+            elif self.command == "interactions":
                 response = await interactions.handler(self)
             else:
                 response = BadCommandResponse(self)

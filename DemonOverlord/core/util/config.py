@@ -94,7 +94,7 @@ class CommandConfig(object):
             for j in self.command_info[i]["commands"]:
                 self.list.append(j)
         self.list.append({
-            "command":"interaction", 
+            "command":"interactions", 
             "ratelimit":self.command_info["interactions"]["ratelimit"]
         })
         
