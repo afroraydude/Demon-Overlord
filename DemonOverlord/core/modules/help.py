@@ -20,7 +20,7 @@ async def handler(command) -> discord.Embed:
 # each normal command only gets this.
 class HelpCommandCategory(TextResponse):
     def __init__(self, command, help_dict: dict):
-        super().__init__(f'Help - {command.action}', color=0x2cd5c9, icon='❓')
+        super().__init__(f'Help - {command.action}', color=0x2cd5c9, icon=command.bot.config.izzymojis["what"] or '❓')
         self.help = help_dict
         self.timeout = self.help["timeout"]
         self.syntax = f'`{command.bot.config.mode["prefix"]} {self.help["command_syntax"]}`'
@@ -58,7 +58,7 @@ class HelpMain(HelpCommandCategory):
 # commands are special help pages. they focus on nothing but that command
 class HelpCommand(TextResponse):
     def __init__(self, command, help_dict: dict):
-        super().__init__(f'Help - {command.action}',  color=0x2cd5c9, icon='❓')
+        super().__init__(f'Help - {command.action}',  color=0x2cd5c9, icon=command.bot.config.izzymojis["what"] or '❓')
         self.help = help_dict
         self.description = self.help["description"]
         self.syntax = f'{command.bot.config.mode["prefix"]} {self.help["syntax"]}'

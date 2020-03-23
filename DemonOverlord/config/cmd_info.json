@@ -93,6 +93,10 @@
         "command_syntax": "{action} {@user}",
         "description": "Commands for easier interactions",
         "timeout": 25,
+        "ratelimit":{
+            "limit": 0,
+            "user_dependent": true
+        },
         "commands": []
     },
     "relations": {

@@ -26,7 +26,8 @@ class Command(object):
         # is it a special case??
         # WE DO
         if temp[1] in bot.commands.interactions["alone"].keys() or temp[1] in bot.commands.interactions["social"].keys() or temp[1] in bot.commands.interactions["music"].keys():
-            self.action = "interaction"
+            self.command = "interaction"
+            self.action = temp[1]
             self.special = bot.commands.interactions
             self.params = temp[2:] if len(temp) > 2 else None
 

@@ -16,7 +16,7 @@ class TenorAPI(API):
     def __init__(self, apikey:str):
         super().__init__(apikey, "tenor", "https://api.tenor.com/v1")
     
-    async def get_interact(self: object, name: str) -> str:
+    async def get_interact(self, name: str) -> str:
         res = await self.__request_list(name, 20)
         res_list = list(res["results"])
 

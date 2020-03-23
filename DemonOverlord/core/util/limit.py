@@ -8,12 +8,19 @@ class RateLimiter(object):
         self.limits = {}
         self.lastExec = {}
         for i in cmd_list:
-            exec_template = {
-                "name": i["command"],
-                "ulist": []
-            }
+            if i["ratelimit"]["user_dependent"]:
+                exec_template = {
+                    "name": i["command"],
+                    "ulist": []
+                }
+            else:
+                exec_template = {
+                    "name": i["command"],
+                    "timestamp": 0
+                }
             self.limits[i["command"]] = RateLimit(
                 i["ratelimit"]["limit"], i["ratelimit"]["user_dependent"])
+            self.lastExec[i["command"]] = exec_template
 
     # use the ratelimiter
 
@@ -22,29 +29,36 @@ class RateLimiter(object):
             "user": command.invoked_by.id,
             "timestamp": 0
         }
+
         # is this command limited? overwrites global limis
-        if self.limits[command.command].limit > 0:
-            last_exec = list(filter(lambda x: x[1]["user"] == command.invoked_by.id, enumerate(
-                self.lastExec[command.action]["ulist"])))
+        if self.limits[command.command].limit: 
 
-            if len(last_exec) > 0:
+            # the limit is per-user           
+            if self.limits[command.command].user_dependent:
+                last_exec = list(filter(lambda x: x[1]["user"] == command.invoked_by.id, enumerate(
+                self.lastExec[command.command]["ulist"])))
+                if len(last_exec) > 0:
 
-                if self.limits[command.command].test(int(time()), last_exec[0][1]):
-                    self.lastExec[command.command]["ulist"][last_exec[0]
-                                                           [0]]["timestamp"] = int(time())
+                    if self.limits[command.command].test(int(time()), last_exec[0][1]):
+                        self.lastExec[command.command]["ulist"][last_exec[0]
+                                                                [0]]["timestamp"] = int(time())
+                        return True
+                    else:
+                        return False
+
+                
+                else:
+                    # set the user profile, first execution so we can let it pass
+                    self.lastExec[command.command]["ulist"].append(user_template)
+                    return True
+            # global command limit
+            else:
+                last_exec = self.lastExec[command.command]
+                if self.limits[command.command].test(last_exec["timestamp"]):
+                    self.lastExec[command.command]["timestamp"] = int(time())
                     return True
                 else:
                     return False
-
-            else:
-                # set the user profile, first execution so we can let it pass
-                self.lastExec[command.command]["ulist"].append(
-                    {
-                        "user": command.invoked_by.id,
-                        "timestamp": int(time())
-                    }
-                )
-                return True
         else:
             return True
 

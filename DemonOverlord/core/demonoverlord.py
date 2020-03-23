@@ -22,8 +22,15 @@ class DemonOverlord(discord.Client):
 
     async def on_ready(self):
         print("====== CONNECTED SUCCESSFULLY ======")
-        print(f'Connected as: {self.user.name}')
-
+        print(f'[MSG]: Connected as: {self.user.name}')
+        print("====== LOADING EXTRA MODULES ======")
+        try:
+            self.config.post_connect(self)
+        except Exception as e:
+            print("[WARN] : Izzymojis not loaded")
+        else:
+            print("[MSG]: Loaded Izzymojis")
+        print("====== STARTUP DONE ======")
     async def on_message(self, message: discord.Message):
         if message.author != self.user and message.content.startswith(self.config.mode["prefix"]):
             command = Command(self, message)

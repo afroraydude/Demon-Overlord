@@ -23,10 +23,6 @@ class BotConfig(object):
         with open(os.path.join(confdir, "config.json")) as f:
             self.raw = json.load(f)
 
-        # generate izzymoji list
-        for key in self.raw["izzymojis"].keys():
-            self.izzymojis[key] = bot.get_emoji(self.raw["izzymojis"][key])
-
         # create config from cli stuff
         for arg in argv:
             # set bot mode
@@ -38,6 +34,11 @@ class BotConfig(object):
         # set the token
         self.token = os.environ.get(self.mode["tokenvar"])
         self.env = self.raw["env_vars"]
+    
+    def post_connect(self, bot:discord.Client):
+        # generate izzymoji list
+        for key in self.raw["izzymojis"].keys():
+            self.izzymojis[key] = bot.get_emoji(self.raw["izzymojis"][key])
 
     def check_config(self):
         if not self.raw:
@@ -92,6 +93,12 @@ class CommandConfig(object):
         for i in self.command_info.keys():
             for j in self.command_info[i]["commands"]:
                 self.list.append(j)
+
+        for i in self.interactions.keys():
+            for j in self.interactions[i].keys():
+                temp = self.interactions[i][j]
+                temp["ratelimit"] = self.command_info["interactions"]["ratelimit"]
+                self.list.append(temp)
         
         self.ratelimits = RateLimiter(self.list)
 class RelationshipConfig(object):

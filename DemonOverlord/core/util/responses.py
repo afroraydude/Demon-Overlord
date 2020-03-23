@@ -58,6 +58,3 @@ class BadCommandResponse(TextResponse):
             name="Message:",
             value=f'''Sorry, but this doesn\'t seem to be a valid command.
             Please use `{command.prefix} help` to find out about the available commands.''')
-
-
-
