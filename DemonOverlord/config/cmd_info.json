@@ -112,6 +112,7 @@
         "commands": [
             {
                 "command": "chat",
+                "syntax": "chat {category}",
                 "description": "shows information about the Chats on the Server.",
                 "ratelimit": {
                     "limit": 0,

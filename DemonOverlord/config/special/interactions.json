@@ -1,5 +1,11 @@
 {
     "alone": {
+        "facepalm": {
+            "query": "facepalm",
+            "type": "alone",
+            "action": "facepalms",
+            "emoji": "frustrated"
+        },
         "blush": {
             "query": "blush",
             "type": "alone",

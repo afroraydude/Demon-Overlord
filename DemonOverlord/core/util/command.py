@@ -35,7 +35,9 @@ class Command(object):
         elif temp[1] in bot.commands.relations.keys():
             self.action = "relation"
             self.params = temp[2:] if len(temp) > 2 else None
-
+        elif self.command == "chat":
+            self.action = None
+            self.params = temp[2:] if len(temp) > 2 else None
         # Y'AIN'T SPECIAL, YA LIL BITCH
         else:
             self.action = temp[2] if len(temp) > 2 else None

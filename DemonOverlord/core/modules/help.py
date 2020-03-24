@@ -4,23 +4,28 @@ from DemonOverlord.core.util.responses import TextResponse, BadCommandResponse
 
 
 async def handler(command) -> discord.Embed:
-    command_help = list(filter(lambda x : x["command"] == command.action, command.bot.commands.list))
+    command_help = list(
+        filter(lambda x: x["command"] == command.action, command.bot.commands.list))
 
     if command.action is None or command.action == "help":
         return HelpMain(command, command.bot.commands.command_info["help"])
     elif command.action in command.bot.commands.command_info:
-        return HelpCommandCategory(command, command.bot.commands.command_info[command.action])
+        if len(command.bot.commands.command_info[command.action]["commands"]) == 0:
+            if command.action == "interactions":
+                return HelpInteractionsCategory(command, command.bot.commands.command_info[command.action], command.bot.commands.interactions)
+        else:
+            return HelpCommandCategory(command, command.bot.commands.command_info[command.action])
     elif len(command_help) > 0:
         return HelpCommand(command, command_help[0])
     else:
         return BadCommandResponse(command)
 
 
-
 # each normal command only gets this.
 class HelpCommandCategory(TextResponse):
     def __init__(self, command, help_dict: dict):
-        super().__init__(f'Help - {command.action}', color=0x2cd5c9, icon=command.bot.config.izzymojis["what"] or '❓')
+        super().__init__(f'Help - {command.action}', color=0x2cd5c9,
+                         icon=command.bot.config.izzymojis["what"] or '❓')
         self.help = help_dict
         self.timeout = self.help["timeout"]
         self.syntax = f'`{command.bot.config.mode["prefix"]} {self.help["command_syntax"]}`'
@@ -37,8 +42,9 @@ class HelpCommandCategory(TextResponse):
         self.add_field(name='Available Commands:',
                        value=f'```asciidoc\n{self.actions}\n```', inline=False)
 
+
 class HelpMain(HelpCommandCategory):
-    def __init__(self, command, help_dict:dict):
+    def __init__(self, command, help_dict: dict):
         command.action = "Main"
         super().__init__(command, help_dict)
         self.main_syntax = f'`{command.bot.config.mode["prefix"]} {{command}} {{action}} {{parameters}}`'
@@ -49,8 +55,8 @@ class HelpMain(HelpCommandCategory):
             self.categories += f'{i["command"]}\n'
 
         # add all the necessary fields
-        self.insert_field_at(1,name='General Command Syntax:',
-                       value=self.main_syntax, inline=False)
+        self.insert_field_at(1, name='General Command Syntax:',
+                             value=self.main_syntax, inline=False)
         self.add_field(name='Available Categories:',
                        value=f'```asciidoc\n{self.categories}\n```', inline=False)
 
@@ -58,7 +64,8 @@ class HelpMain(HelpCommandCategory):
 # commands are special help pages. they focus on nothing but that command
 class HelpCommand(TextResponse):
     def __init__(self, command, help_dict: dict):
-        super().__init__(f'Help - {command.action}',  color=0x2cd5c9, icon=command.bot.config.izzymojis["what"] or '❓')
+        super().__init__(f'Help - {command.action}',  color=0x2cd5c9,
+                         icon=command.bot.config.izzymojis["what"] or '❓')
         self.help = help_dict
         self.description = self.help["description"]
         self.syntax = f'{command.bot.config.mode["prefix"]} {self.help["syntax"]}'
@@ -86,7 +93,20 @@ class HelpCommand(TextResponse):
         self.actions = f'```asciidoc\n{actionlist}\n```'
 
         # add all necessary fields
-        self.add_field(name="Syntax:",value=self.syntax, inline=False)
+        self.add_field(name="Syntax:", value=self.syntax, inline=False)
         if self.help["ratelimit"]["limit"] > 0:
-            self.add_field(name="Ratelimit:", value=self.ratelimit, inline=False)
+            self.add_field(name="Ratelimit:",
+                           value=self.ratelimit, inline=False)
         self.add_field(name="Actions:", value=self.actions)
+
+
+class HelpInteractionsCategory(TextResponse):
+    def __init__(self, command, help_dict: dict, interactons_dict: dict):
+        super().__init__(f'Help - {command.action}', color=0x2cd5c9,
+                         icon=command.bot.config.izzymojis["what"] or '❓')
+        self.help = help_dict
+        self.interact = interactons_dict
+        self.timeout = self.help["timeout"]
+        self.syntax = f'`{command.bot.config.mode["prefix"]} {self.help["command_syntax"]}`'
+        self.description = self.help["description"]
+        self.actions = None
