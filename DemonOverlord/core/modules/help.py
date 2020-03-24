@@ -104,13 +104,15 @@ class HelpInteractionsCategory(HelpCommandCategory):
     def __init__(self, command, help_dict: dict, interact_dict: dict):
         super().__init__(command, help_dict)
         self.interact = interact_dict
-        self.syntax = self.help["command_syntax"].replace("%prefix%", command.bot.config.mode["prefix"])
+        self.syntax = self.help["command_syntax"].replace(
+            "%prefix%", command.bot.config.mode["prefix"])
         self.remove_field(1)
 
         self.set_field_at(0, name='Command usage:',
-                       value=f'{self.syntax}', inline=False)
+                          value=f'{self.syntax}', inline=False)
 
         # add the action list
         for i in self.interact.keys():
             actions = "\n".join(self.interact[i].keys())
-            self.add_field(name=f'{i.upper()} INTERACTIONS', value=f'```diff\n{actions}\n```')
+            self.add_field(name=f'{i.upper()} INTERACTIONS',
+                           value=f'```diff\n{actions}\n```')
