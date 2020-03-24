@@ -1,6 +1,6 @@
 import discord
 
-from DemonOverlord.core.modules import hello, quote, help, interactions, izzy, chat
+from DemonOverlord.core.modules import hello, quote, help, interactions, izzy, chat, vote
 from DemonOverlord.core.util.responses import TextResponse, RateLimitResponse, ErrorResponse, BadCommandResponse
 
 
@@ -26,7 +26,7 @@ class Command(object):
         # is it a special case??
         # WE DO
         if (
-               temp[1] in bot.commands.interactions["alone"].keys() 
+            temp[1] in bot.commands.interactions["alone"].keys()
             or temp[1] in bot.commands.interactions["social"].keys()
             or temp[1] in bot.commands.interactions["combine"].keys()
         ):
@@ -62,17 +62,18 @@ class Command(object):
                 response = await izzy.handler(self)
             elif self.command == "chat":
                 response = await chat.handler(self)
+            elif self.command == "vote":
+                response = await vote.handler(self)
             else:
                 response = BadCommandResponse(self)
         else:
             # rate limit error
             response = RateLimitResponse(self)
-
         message = await self.channel.send(embed=response)
 
-        # remove error messages
+        # remove error messages and messages with timeout
         if isinstance(response, (TextResponse)):
-            if response.timeout >0:
+            if response.timeout > 0:
                 await message.delete(delay=response.timeout)
 
             if isinstance(response, (ErrorResponse)):

@@ -65,5 +65,24 @@
         "smugizzy":685366186216652811,
         "izzyhug":684134086243254310,
         "trashlove":686300993507557376
+    },
+    "vote_emoji":{
+        "yes_no": [
+            {"name": ":thumbsup:", "emoji": "👍"},
+            {"name": ":thumbsdown:", "emoji": "👎"}
+        ],
+        "number" : [
+            {"name": ":zero:", "emoji": "0️⃣"},
+            {"name": ":one:", "emoji": "1️⃣"},
+            {"name": ":two:", "emoji": "2️⃣"},
+            {"name": ":three:", "emoji": "3️⃣"},
+            {"name": ":four:", "emoji": "4️⃣"},
+            {"name": ":five:", "emoji": "5️⃣"},
+            {"name": ":six:", "emoji": "6️⃣"},
+            {"name": ":seven:", "emoji": "7️⃣"},
+            {"name": ":eight:", "emoji": "8️⃣"},
+            {"name": ":nine:", "emoji": "9️⃣"},
+            {"name": ":keycap_ten:", "emoji": "🔟"}
+        ]
     }
 }
