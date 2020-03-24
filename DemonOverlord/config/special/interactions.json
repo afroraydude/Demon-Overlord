@@ -3,8 +3,14 @@
         "facepalm": {
             "query": "facepalm",
             "type": "alone",
-            "action": "facepalms",
+            "action": "facepalms.",
             "emoji": "frustrated"
+        },
+        "bored":{
+            "query":"bored",
+            "type": "alone",
+            "action": "is bored.",
+            "emoji": "izzyhug"
         },
         "blush": {
             "query": "blush",
@@ -17,13 +23,6 @@
             "type": "alone",
             "action": "cries",
             "emoji": "izzycry"
-        },
-        
-        "pout": {
-            "query": "pout",
-            "type": "alone",
-            "action": "pouts",
-            "emoji":"done"
         },
         "tilt": {
             "query": "question",
@@ -41,13 +40,13 @@
             "query": "panic",
             "type": "alone",
             "action": "panics",
-            "emoji":"anxiousizzy"
+            "emoji": "anxiousizzy"
         },
         "nya": {
             "query": "neko",
             "type": "alone",
             "action": "~nya",
-            "emoji":"happyizzy"
+            "emoji": "happyizzy"
         },
         "yes": {
             "query": "approve",
@@ -73,7 +72,6 @@
             "action": "smugs",
             "emoji": "smugizzy"
         }
-        
     },
     "combine": {
         "dance": {
@@ -85,6 +83,15 @@
                 "social": "dances to a Song with"
             }
         },
+        "pout": {
+            "query": "pout",
+            "type": "combine",
+            "emoji": "done",
+            "action": {
+                "alone": "pouts.",
+                "social": "pouts at"
+            }
+        },
         "sing": {
             "query": "sing",
             "type": "music",
@@ -93,7 +100,6 @@
                 "alone": "sings a song.",
                 "social": "sings a song with"
             }
-            
         },
         "listen": {
             "query": "listen",
@@ -113,8 +119,8 @@
                 "social": "smiles at"
             }
         },
-        "play":{
-            "query":"anime play games",
+        "play": {
+            "query": "anime play games",
             "type": "game",
             "emoji": "happyizzy",
             "action": {
@@ -125,17 +131,16 @@
         "run": {
             "query": "run",
             "type": "combine",
-            "emoji":"stress",
+            "emoji": "stress",
             "action": {
                 "alone": "runs.",
                 "social": "runs from"
             }
-
         },
         "shrug": {
             "query": "shrug",
             "type": "combine",
-            "emoji":"izzytired",
+            "emoji": "izzytired",
             "action": {
                 "alone": "shrugs.",
                 "social": "shrugs at"
@@ -144,7 +149,7 @@
         "laugh": {
             "query": "laugh",
             "type": "combine",
-            "emoji":"happyizzy",
+            "emoji": "happyizzy",
             "action": {
                 "alone": "laughs.",
                 "social": "laughs at"
@@ -153,16 +158,16 @@
         "drink": {
             "query": "drink",
             "type": "combine",
-            "emoji":"siip",
+            "emoji": "siip",
             "action": {
                 "alone": "drinks.",
                 "social": "drinks with"
             }
         },
-        "eat":{
+        "eat": {
             "query": "eat",
             "type": "combine",
-            "emoji":"siip",
+            "emoji": "siip",
             "action": {
                 "alone": "eats.",
                 "social": "with with"
@@ -174,7 +179,7 @@
             "query": "scream",
             "type": "alone",
             "action": "screams",
-            "emoji":"frustrated"
+            "emoji": "frustrated"
         },
         "kick": {
             "query": "kick",
@@ -191,12 +196,14 @@
         "hold": {
             "query": "hold hands",
             "type": "social",
-            "action": "holds hands with"
+            "action": "holds hands with",
+            "emoji": "izzyhug"
         },
         "boop": {
             "query": "cheek kiss",
             "type": "social",
-            "action": "kisses"
+            "action": "kisses",
+            "emoji": "izzyhug"
         },
         "hug": {
             "query": "hug",
@@ -208,7 +215,7 @@
             "query": "pat",
             "type": "social",
             "action": "pats",
-            "emoji" : "trashlove"
+            "emoji": "trashlove"
         },
         "poke": {
             "query": "poke",
@@ -244,12 +251,13 @@
             "query": "stab",
             "type": "social",
             "action": "stabs",
-            "emoji": "izzyeyes"
+            "emoji": "knife"
         },
         "highfive": {
             "query": "highfive",
             "type": "social",
-            "action": "highfives"
+            "action": "highfives",
+            "emoji": "happyizzy"
         }
     }
 }
