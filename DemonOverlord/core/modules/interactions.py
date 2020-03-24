@@ -41,6 +41,9 @@ async def handler(command) -> discord.Embed:
             if combine_interactions[command.action]["type"] == "music":
                 interact = MusicInteraction(
                     command.bot, combine_interactions[command.action], command.invoked_by, mentions, url)
+            elif combine_interactions[command.action]["type"] == "game":
+                interact = GameInteraction(
+                    command.bot, combine_interactions[command.action], command.invoked_by, mentions, url)
             else:
                 interact = CombineInteraction(
                     command.bot, combine_interactions[command.action], command.invoked_by, mentions, url)
@@ -105,7 +108,27 @@ class MusicInteraction(CombineInteraction):
             self.url = f'https://open.spotify.com/track/{self.spotify.track_id}'
 
 
+class GameInteraction(CombineInteraction):
+    def __init__(self, bot: discord.Client, interaction_type: dict, user: discord.Member, mentions: list, url: str):
+        super().__init__(bot, interaction_type, user, mentions, url, color=0x1db954)
+
+        game = list(filter(lambda x: isinstance(
+            x, (discord.Game, discord.Streaming)), user.activities))
+        print(user.activities)
+        self.game = game[0] if len(game) > 0 else None
+
+        if self.game != None:
+            # is playing a
+            if isinstance(self.game, discord.Game):
+                self.insert_field_at(0, name="Game:",
+                                     value=self.game.name, inline=False)
+            else:
+                self.insert_field_at(0, name= f'Streaming on {self.game.platform}', value=f'**__Game:__** {self.game.game}')
+                self.url = self.game.url
+
 # alone interaction, stuff you do yourself
+
+
 class AloneInteractions(Interaction):
     def __init__(self, bot: discord.Client, interaction_type: dict, user: discord.Member, url: str):
         super().__init__(bot, interaction_type, user, url, color=0xe2268f,

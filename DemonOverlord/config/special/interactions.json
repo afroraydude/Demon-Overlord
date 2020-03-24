@@ -113,6 +113,15 @@
                 "social": "smiles at"
             }
         },
+        "play":{
+            "query":"anime play games",
+            "type": "game",
+            "emoji": "happyizzy",
+            "action": {
+                "alone": "plays a game.",
+                "social": "plays a game with"
+            }
+        },
         "run": {
             "query": "run",
             "type": "combine",
