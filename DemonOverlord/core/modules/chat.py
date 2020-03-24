@@ -20,5 +20,6 @@ class ChatDescription(TextResponse):
         for i in chat_desc:
             self.add_field(
                 name = i["name"].upper(),
-                value = i["description"]
+                value = i["description"],
+                inline = False
             )

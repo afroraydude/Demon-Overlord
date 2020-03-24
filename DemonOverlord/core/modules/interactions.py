@@ -103,6 +103,7 @@ class MusicInteraction(CombineInteraction):
         self.spotify = spotify[0] if len(spotify) > 0 else None
 
         if self.spotify != None:
+            self.description = f'{user.display_name} seems to be listening to music. Click on the title to open it in Spotify.'
             self.insert_field_at(0, name=self.spotify.title,
                                  value=f'**Artist:** __{self.spotify.artist}__\n**Album:** __{self.spotify.album}__', inline=False)
             self.url = f'https://open.spotify.com/track/{self.spotify.track_id}'
