@@ -100,13 +100,13 @@ class HelpCommand(TextResponse):
         self.add_field(name="Actions:", value=self.actions)
 
 
-class HelpInteractionsCategory(TextResponse):
-    def __init__(self, command, help_dict: dict, interactons_dict: dict):
-        super().__init__(f'Help - {command.action}', color=0x2cd5c9,
-                         icon=command.bot.config.izzymojis["what"] or '❓')
-        self.help = help_dict
-        self.interact = interactons_dict
-        self.timeout = self.help["timeout"]
-        self.syntax = f'`{command.bot.config.mode["prefix"]} {self.help["command_syntax"]}`'
-        self.description = self.help["description"]
-        self.actions = None
+class HelpInteractionsCategory(HelpCommandCategory):
+    def __init__(self, command, help_dict: dict, interact_dict: dict):
+        super().__init__(command, help_dict)
+        self.interact = interact_dict
+        self.remove_field(1)
+
+        # add the action list
+        for i in self.interact.keys():
+            actions = "\n".join(self.interact[i].keys())
+            self.add_field(name=f'{i.upper()} INTERACTIONS', value=f'```diff\n{actions}\n```')

@@ -90,7 +90,7 @@
         ]
     },
     "interactions": {
-        "command_syntax": "{action} {@user}",
+        "command_syntax": "{interaction} {@user}",
         "description": "Commands for easier interactions",
         "timeout": 25,
         "ratelimit":{

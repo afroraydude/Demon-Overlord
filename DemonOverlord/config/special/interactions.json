@@ -130,12 +130,6 @@
         }
     },
     "social": {
-        "counter": {
-            "query": "counter",
-            "type": "alone",
-            "action": "counters",
-            "emoji":"badplant"
-        },
         "scream": {
             "query": "scream",
             "type": "alone",
