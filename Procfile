@@ -1,1 +1,2 @@
-worker: python3 src/main.py --prod
+worker: python3 run.py --prod
+

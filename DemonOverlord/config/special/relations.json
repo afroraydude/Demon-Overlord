@@ -1,0 +1,17 @@
+{
+    "good": {
+        "friend": {
+            "multiple": true
+        },
+        "spouse":{
+            "multiple": false
+        }
+    },
+    "bad": {
+        "enemy": {
+            
+        },
+        "war": {
+        }
+    }
+}
