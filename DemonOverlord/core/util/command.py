@@ -25,7 +25,11 @@ class Command(object):
 
         # is it a special case??
         # WE DO
-        if temp[1] in bot.commands.interactions["alone"].keys() or temp[1] in bot.commands.interactions["social"].keys() or temp[1] in bot.commands.interactions["music"].keys():
+        if (
+               temp[1] in bot.commands.interactions["alone"].keys() 
+            or temp[1] in bot.commands.interactions["social"].keys()
+            or temp[1] in bot.commands.interactions["combine"].keys()
+        ):
             self.command = "interactions"
             self.action = temp[1]
             self.special = bot.commands.interactions

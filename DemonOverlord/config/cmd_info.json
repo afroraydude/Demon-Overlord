@@ -91,7 +91,7 @@
     },
     "interactions": {
         "command_syntax": "Social Interactions: `%prefix% {interaction} {@user} {message}`\nAlone  Interactions: `%prefix% {interaction} {message}`",
-        "description": "Commands for easier interactions.\nAlone Interations are things you do on your own, Social intractions are thingy you do to or with others. Music interactions can do BOTH.",
+        "description": "Commands for easier interactions and more wholesomeness among the server members. You can add custom messages, but they are optional.\nAnd as a measure of sparing people from notifications, {@User} can be replaced by `everyone` without @ to interact with everyone\n\n**__Alone Interations__** are things you do on your own.\n**__Social Interactions__** are thingies you do to or with others.\n**__Combine Interactions__** can do BOTH.",
         "timeout": 40,
         "ratelimit": {
             "limit": 0,

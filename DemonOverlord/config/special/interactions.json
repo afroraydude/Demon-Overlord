@@ -18,25 +18,14 @@
             "action": "cries",
             "emoji": "izzycry"
         },
-        "laugh": {
-            "query": "laugh",
-            "type": "alone",
-            "action": "laughs",
-            "emoji":"happyizzy"
-        },
+        
         "pout": {
             "query": "pout",
             "type": "alone",
             "action": "pouts",
             "emoji":"done"
         },
-        "shrug": {
-            "query": "shrug",
-            "type": "alone",
-            "action": "shrugs",
-            "emoji":"izzytired"
-        },
-        "question": {
+        "tilt": {
             "query": "question",
             "type": "alone",
             "action": "tilts head",
@@ -47,13 +36,6 @@
             "type": "alone",
             "action": "sleeps",
             "emoji": "bedhead"
-        },
-        "run": {
-            "query": "run",
-            "type": "alone",
-            "action": "runs",
-            "emoji":"stress"
-
         },
         "panic": {
             "query": "panic",
@@ -79,12 +61,6 @@
             "action": "disapproves",
             "emoji": "izzyangry"
         },
-        "smile": {
-            "query": "smile",
-            "type": "alone",
-            "action": "smiles",
-            "emoji": "happyizzy"
-        },
         "eat": {
             "query": "eat",
             "type": "alone",
@@ -99,7 +75,7 @@
         }
         
     },
-    "music": {
+    "combine": {
         "dance": {
             "query": "dance",
             "type": "music",
@@ -127,6 +103,61 @@
                 "alone": "listens to Music.",
                 "social": "listens to Music with"
             }
+        },
+        "smile": {
+            "query": "smile",
+            "type": "combine",
+            "emoji": "happyizzy",
+            "action": {
+                "alone": "smiles.",
+                "social": "smiles at"
+            }
+        },
+        "run": {
+            "query": "run",
+            "type": "combine",
+            "emoji":"stress",
+            "action": {
+                "alone": "runs.",
+                "social": "runs from"
+            }
+
+        },
+        "shrug": {
+            "query": "shrug",
+            "type": "combine",
+            "emoji":"izzytired",
+            "action": {
+                "alone": "shrugs.",
+                "social": "shrugs at"
+            }
+        },
+        "laugh": {
+            "query": "laugh",
+            "type": "combine",
+            "emoji":"happyizzy",
+            "action": {
+                "alone": "laughs.",
+                "social": "laughs at"
+            }
+        },
+        "drink": {
+            "query": "drink",
+            "type": "combine",
+            "emoji":"siip",
+            "action": {
+                "alone": "drinks.",
+                "social": "drinks with"
+            }
+        },
+        "eat":{
+            "query": "eat",
+            "type": "combine",
+            "emoji":"siip",
+            "action": {
+                "alone": "eats.",
+                "social": "with with"
+            }
         }
     },
     "social": {
@@ -135,12 +166,6 @@
             "type": "alone",
             "action": "screams",
             "emoji":"frustrated"
-        },
-        "drink": {
-            "query": "drink",
-            "type": "alone",
-            "action": "drinks",
-            "emoji":"siip"
         },
         "kick": {
             "query": "kick",
