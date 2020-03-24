@@ -38,7 +38,7 @@ class HelpCommandCategory(TextResponse):
             self.actions += f'{i["command"]}\n'
 
         self.add_field(name='Command usage:',
-                       value=self.syntax, inline=False)
+                       value=f'`{self.syntax}`', inline=False)
         self.add_field(name='Available Commands:',
                        value=f'```asciidoc\n{self.actions}\n```', inline=False)
 
@@ -104,7 +104,11 @@ class HelpInteractionsCategory(HelpCommandCategory):
     def __init__(self, command, help_dict: dict, interact_dict: dict):
         super().__init__(command, help_dict)
         self.interact = interact_dict
+        self.syntax = self.help["command_syntax"].replace("%prefix%", command.bot.config.mode["prefix"])
         self.remove_field(1)
+
+        self.set_field_at(0, name='Command usage:',
+                       value=f'{self.syntax}', inline=False)
 
         # add the action list
         for i in self.interact.keys():
