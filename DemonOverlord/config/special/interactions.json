@@ -74,6 +74,15 @@
         }
     },
     "combine": {
+        "wave": {
+            "query": "wave",
+            "type": "combine",
+            "emoji": "hello",
+            "action": {
+                "alone": "waves.",
+                "social": "waves at"
+            }
+        },
         "dance": {
             "query": "dance",
             "type": "music",
@@ -240,12 +249,6 @@
             "type": "social",
             "action": "tackles",
             "emoji": "izzyeyes"
-        },
-        "wave": {
-            "query": "wave",
-            "type": "social",
-            "action": "waves at",
-            "emoji": "hello"
         },
         "stab": {
             "query": "stab",
