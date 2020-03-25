@@ -8,7 +8,7 @@ from DemonOverlord.core.util.command import Command
 
 
 class DemonOverlord(discord.Client):
-    def __init__(self, argv):
+    def __init__(self, argv:list):
         super().__init__()
         workdir = os.path.dirname(os.path.abspath(__file__))
         confdir = os.path.join(workdir, "../config")
@@ -20,7 +20,7 @@ class DemonOverlord(discord.Client):
         self.api = APIConfig(self.config)
         self.relationships = RelationshipConfig(self.database)
 
-    async def on_ready(self):
+    async def on_ready(self) -> None:
         print("====== CONNECTED SUCCESSFULLY ======")
         print(f'[MSG]: Connected as: {self.user.name}')
         print("====== LOADING EXTRA MODULES ======")
@@ -31,7 +31,8 @@ class DemonOverlord(discord.Client):
         else:
             print("[MSG]: Loaded Izzymojis")
         print("====== STARTUP DONE ======")
-    async def on_message(self, message: discord.Message):
+
+    async def on_message(self, message: discord.Message) -> None:
         if message.author != self.user and message.content.startswith(self.config.mode["prefix"]):
             command = Command(self, message)
             await command.exec()

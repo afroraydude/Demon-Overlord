@@ -84,5 +84,5 @@ class Command(object):
 
         await self.message.delete(delay=1)
 
-    async def rand_status(self):
+    async def rand_status(self) -> discord.BaseActivity:
         pass

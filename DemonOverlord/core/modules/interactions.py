@@ -76,7 +76,7 @@ class SocialInteraction(Interaction):
             self.interact_with = f'{", ".join(mentions[:-1])} and {mentions[-1]}'
         else:
             self.interact_with = f'{mentions[0]}'
-        self.title = f'{user.display_name} {interaction_type["action"]} {self.interact_with}'
+        self.title = f'{bot.config.izzymojis[interaction_type["emoji"]]} {user.display_name} {interaction_type["action"]} {self.interact_with}'
 
 
 class CombineInteraction(Interaction):

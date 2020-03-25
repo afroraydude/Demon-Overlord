@@ -11,7 +11,7 @@ class TextResponse(discord.Embed):
 
 # main image response class
 class ImageResponse(discord.Embed):
-    def __init__(self, title: str, url: str, color: int = 0xffffff, icon=""):
+    def __init__(self, title: str, url: str, color: int = 0xffffff, icon:str=""):
         super().__init__(title=f'{icon} {title}'.lstrip(" "), color=color)
         self.set_image(url=url)
 

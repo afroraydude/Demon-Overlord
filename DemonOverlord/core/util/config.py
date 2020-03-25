@@ -40,19 +40,6 @@ class BotConfig(object):
         for key in self.raw["izzymojis"].keys():
             self.izzymojis[key] = bot.get_emoji(self.raw["izzymojis"][key])
 
-    def check_config(self):
-        if not self.raw:
-            return False
-        elif not self.mode:
-            return False
-        elif not self.izzymojis:
-            return False
-        elif not self.token:
-            return False
-
-        else:
-            return True
-
 
 class APIConfig(object):
 

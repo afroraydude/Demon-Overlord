@@ -74,5 +74,5 @@ class RateLimit(object):
             return False
         return True
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'{self.limit} - {self.user_dependent}'

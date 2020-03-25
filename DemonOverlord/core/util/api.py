@@ -24,7 +24,7 @@ class TenorAPI(API):
         result = res_list[index]["media"][0]["gif"]["url"]
         return result
 
-    async def __request_list(self: object, query: str, limit: int) -> object:
+    async def __request_list(self: object, query: str, limit: int) -> dict:
         try:
             url = f'{self.url}/search?q={query.replace(" ", "+")}&key={self.apikey}&limit={limit}'
             response = req.get(url)
@@ -42,7 +42,7 @@ class InspirobotAPI(API):
         super().__init__("", "inspirobot", "https://inspirobot.me")
 
     # get the list of stuff from inspirobot
-    async def __get_flow(self):
+    async def __get_flow(self) -> str:
 
         # let's try getting something
         try:
@@ -62,7 +62,7 @@ class InspirobotAPI(API):
             return response.text
 
     # public function that gets data from inspiro and then gets the shortest quote
-    async def get_quote(self):
+    async def get_quote(self) -> str:
 
         # get a flow and init quotes array
         img = await self.__get_flow()
