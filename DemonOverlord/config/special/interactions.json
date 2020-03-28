@@ -196,7 +196,7 @@
             "action": "kicks",
             "emoji": "izzyeyes"
         },
-        "snuggle": {
+        "cuddle": {
             "query": "snuggle",
             "type": "social",
             "action": "snuggles with",

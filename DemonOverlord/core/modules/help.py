@@ -85,7 +85,7 @@ class HelpCommand(TextResponse):
                 actionlist += f'Action      :: {i["action"]}\n'
                 actionlist += f'Description :: {i["description"]}\n'
                 actionlist += f'Usage       :: {command.bot.config.mode["prefix"]} {i["usage"]}\n'
-                actionlist += f'Parameters  :: \n{paramlist}\n'
+                actionlist += f'Parameters  :: \n  {paramlist}\n'
                 actionlist += "\n"
         else:
             actionlist = None

@@ -4,29 +4,28 @@
             "--dev": {
                 "name": "development",
                 "prefix": "-testmao",
-                "tokenvar":"DISCORD_TESTBOT_TOKEN"
+                "tokenvar": "DISCORD_TESTBOT_TOKEN"
             },
             "--prod": {
                 "name": "production",
                 "prefix": "-mao",
-                "tokenvar":"DISCORD_MAIN_TOKEN"
+                "tokenvar": "DISCORD_MAIN_TOKEN"
             }
         }
     },
-    "env_vars":{
-        "db":{
-            "mongodb":[
+    "env_vars": {
+        "db": {
+            "mongodb": [
                 "MONGO_URL",
                 "MONGO_USER",
                 "MONGO_PASS"
             ]
         },
-        "api":{
-            "tenor":[
+        "api": {
+            "tenor": [
                 "TENOR_TOKEN"
             ]
         }
-        
     },
     "data": {
         "chat": [
@@ -49,40 +48,46 @@
         "what": 685399354827079717,
         "badplant": 686301708607029255,
         "done": 684138794257088629,
-        "hello":688829899120967696,
-        "izzycry":688780476449947650,
-        "happyizzy":684404363699027994,
-        "izzytired":684282743277748224,
-        "bedhead":684402955973427327,
-        "anxiousizzy":685366908362817542,
-        "stress":687937203556712500,
-        "knife":690530998231891968,
-        "izzyyay":688830013742776495,
-        "eeh":686300195851337729,
-        "frustrated":688829975897440352,
+        "hello": 688829899120967696,
+        "izzycry": 688780476449947650,
+        "happyizzy": 684404363699027994,
+        "izzytired": 684282743277748224,
+        "bedhead": 684402955973427327,
+        "anxiousizzy": 685366908362817542,
+        "stress": 687937203556712500,
+        "knife": 690530998231891968,
+        "izzyyay": 688830013742776495,
+        "eeh": 686300195851337729,
+        "frustrated": 688829975897440352,
         "siip": 684277623500832769,
         "izzyeyes": 684125911460741144,
-        "smugizzy":685366186216652811,
-        "izzyhug":684134086243254310,
-        "trashlove":686300993507557376
+        "smugizzy": 685366186216652811,
+        "izzyhug": 684134086243254310,
+        "trashlove": 686300993507557376
     },
-    "vote_emoji":{
+    "emoji":{
         "yes_no": [
-            {"name": ":thumbsup:", "emoji": "👍"},
-            {"name": ":thumbsdown:", "emoji": "👎"}
+            "👍",
+            "👎"
         ],
-        "number" : [
-            {"name": ":zero:", "emoji": "0️⃣"},
-            {"name": ":one:", "emoji": "1️⃣"},
-            {"name": ":two:", "emoji": "2️⃣"},
-            {"name": ":three:", "emoji": "3️⃣"},
-            {"name": ":four:", "emoji": "4️⃣"},
-            {"name": ":five:", "emoji": "5️⃣"},
-            {"name": ":six:", "emoji": "6️⃣"},
-            {"name": ":seven:", "emoji": "7️⃣"},
-            {"name": ":eight:", "emoji": "8️⃣"},
-            {"name": ":nine:", "emoji": "9️⃣"},
-            {"name": ":keycap_ten:", "emoji": "🔟"}
-        ]
+        "numbers": [
+            "0️⃣",
+            "1️⃣",
+            "2️⃣",
+            "3️⃣",
+            "4️⃣",
+            "5️⃣",
+            "6️⃣",
+            "7️⃣",
+            "8️⃣",
+            "9️⃣",
+            "🔟"
+        ],
+        "minesweeper": {
+            "B": "💥",
+            "F": "🚩",
+            "X": "🅾️",
+            "N": "⬛"
+        }
     }
 }

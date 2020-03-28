@@ -16,6 +16,7 @@ class BotConfig(object):
         self.izzymojis = dict()
         self.token = None
         self.env = None
+        self.emoji = None
 
         # set all vars to their final value.
 
@@ -34,6 +35,7 @@ class BotConfig(object):
         # set the token
         self.token = os.environ.get(self.mode["tokenvar"])
         self.env = self.raw["env_vars"]
+        self.emoji = self.raw["emoji"]
     
     def post_connect(self, bot:discord.Client):
         # generate izzymoji list
