@@ -8,9 +8,9 @@ A discord bot custom built for the use of The InnerDemons discord community
 
 ## Installation
 
+**THE BOT ONLY WORKS ON PYTHON 3.6+**
 
-
-The both uses three environment variables
+The bot uses three environment variables
 
 - DISCORD_TESTBOT_TOKEN
 - DISCORD_MAIN_TOKEN
@@ -35,10 +35,9 @@ Once you have the bot key, add the environment vatriable.
 
 
 
-Then, install the requirements. 
+The demon overlord automatically installs other requirements when run incase you do not have the required permissons, use 
 
-`pip install -r requirements.txt`
-
+`pip --user install -r requirements.txt`
 
 
 ## Running The Bot
