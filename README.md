@@ -8,7 +8,7 @@ A discord bot custom built for the use of The InnerDemons discord community
 
 ## Installation
 
-**THE BOT ONLY WORKS ON PYTHON 3.6+**
+**THE BOT ONLY WORKS ON PYTHON 3.7+**
 
 The bot uses three environment variables
 
